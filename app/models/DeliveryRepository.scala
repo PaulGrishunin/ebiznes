@@ -19,7 +19,7 @@ class DeliveryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
     def order_id = column[Long]("orderid")
     def address = column[String]("address")
 
-    def * = (id, order_id, address) <> ((DeliveryRepository.apply _).tupled, Delivery.unapply)
+    def * = (id, order_id, address) <> ((Delivery.apply _).tupled, Delivery.unapply)
 
   }
 
@@ -28,7 +28,7 @@ class DeliveryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   def create(order_id: Long, address: String): Future[Delivery] = db.run {
     (delivery.map(d => (d.order_id, d.address))
       returning delivery.map(_.id)
-      into (order_id, address, id) => Delivery(id, order_id, address))
+      into {case ((order_id, address), id) => Delivery(id, order_id, address)}
     ) += (order_id, address)
   }
 
@@ -40,9 +40,9 @@ class DeliveryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
     delivery.filter(_.id === id).result.head
   }
 
-  def delete(id: Long): Future[Delivery] = db.run(delivery.filter(_.id === id).delete).map(_ => ())
+  def delete(id: Long): Future[Unit] = db.run(delivery.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_delivery: Delivery): Future[Delivery] = {
+  def update(id: Long, new_delivery: Delivery): Future[Unit] = {
     val deliveryToUpdate: Delivery = new_delivery.copy(id)
     db.run(delivery.filter(_.id === id).update(deliveryToUpdate)).map(_ => ())
   }

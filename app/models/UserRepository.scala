@@ -26,7 +26,7 @@ class UserRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implic
   def create(login: String, password: String, email: String): Future[User] = db.run {
     (user.map(c => (c.login, c.password, c.email))
       returning user.map(_.id)
-      into ((login, password, email, id) => User(id, login, password, email))
+      into {case ((login, password, email), id) => User(id, login, password, email)}
       ) += (login, password, email)
   }
 
@@ -38,9 +38,9 @@ class UserRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implic
     user.filter(_.id === id).result.head
   }
 
-  def delete(id: Long): Future[User] = db.run(user.filter(_.id === id).delete).map(_ => ())
+  def delete(id: Long): Future[Unit] = db.run(user.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_user: User): Future[User] = {
+  def update(id: Long, new_user: User): Future[Unit] = {
     val userToUpdate: User = new_user.copy(id)
     db.run(user.filter(_.id === id).update(userToUpdate)).map(_ => ())
   }

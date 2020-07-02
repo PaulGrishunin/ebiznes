@@ -7,7 +7,7 @@
 		revision="1.0"
 		conf="test"
 		confs="universal, universal-docs, universal-src, compile, runtime, test, provided, optional, windows, docker, linux, web-assets, web-assets-test, web-plugin, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20200528174603"/>
+		date="20200624201416"/>
 	<dependencies>
 		<module organisation="org.xerial" name="sqlite-jdbc">
 			<revision name="3.30.1" status="release" pubdate="20191223215123" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="82">
@@ -1204,14 +1204,14 @@
 			</revision>
 		</module>
 		<module organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310">
-			<revision name="2.10.1" status="release" pubdate="20191110003047" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="30">
+			<revision name="2.10.1" status="release" pubdate="20191110003047" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="30">
 				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="successful" details="" size="4549" time="250" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/ivy-2.10.1.xml" searched="true" original-local-location="/home/paul/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/ivy-2.10.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.1/jackson-datatype-jsr310-2.10.1.pom"/>
+				<metadata-artifact status="no" details="" size="30570" time="0" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/ivy-2.10.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.1/jackson-datatype-jsr310-2.10.1.pom"/>
 				<caller organisation="com.typesafe.akka" name="akka-serialization-jackson_2.12" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="2.6.3"/>
 				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.10.1" rev-constraint-default="2.10.1" rev-constraint-dynamic="2.10.1" callerrev="2.8.1"/>
 				<caller organisation="com.typesafe.play" name="play_2.12" conf="compile, runtime" rev="2.10.1" rev-constraint-default="2.10.1" rev-constraint-dynamic="2.10.1" callerrev="2.8.1"/>
 				<artifacts>
-					<artifact name="jackson-datatype-jsr310" type="bundle" ext="jar" status="successful" details="" size="105899" time="298" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/bundles/jackson-datatype-jsr310-2.10.1.jar">
+					<artifact name="jackson-datatype-jsr310" type="bundle" ext="jar" status="no" details="" size="105899" time="0" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/bundles/jackson-datatype-jsr310-2.10.1.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.1/jackson-datatype-jsr310-2.10.1.jar"/>
 					</artifact>
 				</artifacts>
@@ -1225,14 +1225,14 @@
 			</revision>
 		</module>
 		<module organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8">
-			<revision name="2.10.1" status="release" pubdate="20191110003045" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="29">
+			<revision name="2.10.1" status="release" pubdate="20191110003045" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="29">
 				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="successful" details="" size="2219" time="201" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/ivy-2.10.1.xml" searched="true" original-local-location="/home/paul/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/ivy-2.10.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.1/jackson-datatype-jdk8-2.10.1.pom"/>
+				<metadata-artifact status="no" details="" size="30277" time="0" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/ivy-2.10.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.1/jackson-datatype-jdk8-2.10.1.pom"/>
 				<caller organisation="com.typesafe.akka" name="akka-serialization-jackson_2.12" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="2.6.3"/>
 				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.10.1" rev-constraint-default="2.10.1" rev-constraint-dynamic="2.10.1" callerrev="2.8.1"/>
 				<caller organisation="com.typesafe.play" name="play_2.12" conf="compile, runtime" rev="2.10.1" rev-constraint-default="2.10.1" rev-constraint-dynamic="2.10.1" callerrev="2.8.1"/>
 				<artifacts>
-					<artifact name="jackson-datatype-jdk8" type="bundle" ext="jar" status="successful" details="" size="34399" time="232" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.10.1.jar">
+					<artifact name="jackson-datatype-jdk8" type="bundle" ext="jar" status="no" details="" size="34399" time="0" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.10.1.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.1/jackson-datatype-jdk8-2.10.1.jar"/>
 					</artifact>
 				</artifacts>
@@ -1246,9 +1246,9 @@
 			</revision>
 		</module>
 		<module organisation="com.fasterxml.jackson.core" name="jackson-databind">
-			<revision name="2.10.1" status="release" pubdate="20191110001246" resolver="public" artresolver="public" homepage="http://github.com/FasterXML/jackson" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="25">
+			<revision name="2.10.1" status="release" pubdate="20191110001246" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/FasterXML/jackson" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="25">
 				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="successful" details="" size="6891" time="224" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.10.1.xml" searched="true" original-local-location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.10.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.10.1/jackson-databind-2.10.1.pom"/>
+				<metadata-artifact status="no" details="" size="24522" time="0" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.10.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.10.1/jackson-databind-2.10.1.pom"/>
 				<caller organisation="com.typesafe.akka" name="akka-serialization-jackson_2.12" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="2.6.3"/>
 				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-paranamer" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="2.10.2"/>
 				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.10.1" rev-constraint-default="2.10.1" rev-constraint-dynamic="2.10.1" callerrev="2.10.1"/>
@@ -1259,7 +1259,7 @@
 				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.12" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="2.10.2"/>
 				<caller organisation="com.typesafe.play" name="play_2.12" conf="compile, runtime" rev="2.10.1" rev-constraint-default="2.10.1" rev-constraint-dynamic="2.10.1" callerrev="2.8.1"/>
 				<artifacts>
-					<artifact name="jackson-databind" type="bundle" ext="jar" status="successful" details="" size="1403051" time="1052" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.10.1.jar">
+					<artifact name="jackson-databind" type="bundle" ext="jar" status="no" details="" size="1403051" time="0" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.10.1.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.10.1/jackson-databind-2.10.1.jar"/>
 					</artifact>
 				</artifacts>
@@ -1282,9 +1282,9 @@
 			</revision>
 		</module>
 		<module organisation="com.fasterxml.jackson.core" name="jackson-annotations">
-			<revision name="2.10.1" status="release" pubdate="20191109235822" resolver="public" artresolver="public" homepage="http://github.com/FasterXML/jackson" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="24">
+			<revision name="2.10.1" status="release" pubdate="20191109235822" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/FasterXML/jackson" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="24">
 				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="successful" details="" size="3437" time="197" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/ivy-2.10.1.xml" searched="true" original-local-location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/ivy-2.10.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.10.1/jackson-annotations-2.10.1.pom"/>
+				<metadata-artifact status="no" details="" size="8106" time="0" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/ivy-2.10.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.10.1/jackson-annotations-2.10.1.pom"/>
 				<caller organisation="com.typesafe.akka" name="akka-serialization-jackson_2.12" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="2.6.3"/>
 				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.10.1" rev-constraint-default="2.10.1" rev-constraint-dynamic="2.10.1" callerrev="2.10.1"/>
 				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.10.1" rev-constraint-default="2.10.1" rev-constraint-dynamic="2.10.1" callerrev="2.8.1"/>
@@ -1292,7 +1292,7 @@
 				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.12" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="2.10.2"/>
 				<caller organisation="com.typesafe.play" name="play_2.12" conf="compile, runtime" rev="2.10.1" rev-constraint-default="2.10.1" rev-constraint-dynamic="2.10.1" callerrev="2.8.1"/>
 				<artifacts>
-					<artifact name="jackson-annotations" type="bundle" ext="jar" status="successful" details="" size="68081" time="287" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.10.1.jar">
+					<artifact name="jackson-annotations" type="bundle" ext="jar" status="no" details="" size="68081" time="0" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.10.1.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.10.1/jackson-annotations-2.10.1.jar"/>
 					</artifact>
 				</artifacts>
@@ -1307,9 +1307,9 @@
 			</revision>
 		</module>
 		<module organisation="com.fasterxml.jackson.core" name="jackson-core">
-			<revision name="2.10.1" status="release" pubdate="20191110000923" resolver="public" artresolver="public" homepage="https://github.com/FasterXML/jackson-core" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="23">
+			<revision name="2.10.1" status="release" pubdate="20191110000923" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/FasterXML/jackson-core" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="23">
 				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="successful" details="" size="4640" time="572" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/ivy-2.10.1.xml" searched="true" original-local-location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/ivy-2.10.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.1/jackson-core-2.10.1.pom"/>
+				<metadata-artifact status="no" details="" size="23761" time="0" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/ivy-2.10.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.1/jackson-core-2.10.1.pom"/>
 				<caller organisation="com.typesafe.akka" name="akka-serialization-jackson_2.12" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="2.6.3"/>
 				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.10.1" rev-constraint-default="2.10.1" rev-constraint-dynamic="2.10.1" callerrev="2.10.1"/>
 				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.10.1" rev-constraint-default="2.10.1" rev-constraint-dynamic="2.10.1" callerrev="2.8.1"/>
@@ -1320,7 +1320,7 @@
 				<caller organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.12" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="2.10.2"/>
 				<caller organisation="com.typesafe.play" name="play_2.12" conf="compile, runtime" rev="2.10.1" rev-constraint-default="2.10.1" rev-constraint-dynamic="2.10.1" callerrev="2.8.1"/>
 				<artifacts>
-					<artifact name="jackson-core" type="bundle" ext="jar" status="successful" details="" size="348625" time="711" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.10.1.jar">
+					<artifact name="jackson-core" type="bundle" ext="jar" status="no" details="" size="348625" time="0" location="/home/paul/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.10.1.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.1/jackson-core-2.10.1.jar"/>
 					</artifact>
 				</artifacts>

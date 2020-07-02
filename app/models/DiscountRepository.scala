@@ -29,7 +29,7 @@ class DiscountRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   def create(product_id: Long, name: String, description: String): Future[Discount] = db.run {
     (discount.map(d => (d.product_id, d.name, d.description))
       returning discount.map(_.id)
-      into (product_id, name, description, id) => Discount(id, product_id, name, description))
+      into {case ((product_id, name, description), id) => Discount(id, product_id, name, description)}
     ) += (product_id, name, description)
   }
 
@@ -41,9 +41,9 @@ class DiscountRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
     discount.filter(_.id === id).result.head
   }
 
-  def delete(id: Long): Future[Discount] = db.run(discount.filter(_.id === id).delete).map(_ => ())
+  def delete(id: Long): Future[Unit] = db.run(discount.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_discount: Discount): Future[Discount] = {
+  def update(id: Long, new_discount: Discount): Future[Unit] = {
     val discountToUpdate: Discount = new_discount.copy(id)
     db.run(discount.filter(_.id === id).update(discountToUpdate)).map(_ => ())
   }

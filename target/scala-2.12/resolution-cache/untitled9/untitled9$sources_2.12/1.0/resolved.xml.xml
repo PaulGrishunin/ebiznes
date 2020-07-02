@@ -4,7 +4,7 @@
 		module="untitled9$sources_2.12"
 		revision="1.0"
 		status="integration"
-		publication="20200528174639"
+		publication="20200701152157"
 	/>
 	<configurations>
 		<conf name="universal" visibility="public" description=""/>
@@ -58,6 +58,9 @@
 		</dependency>
 		<dependency org="com.typesafe.play" name="play-ws-standalone_2.12" rev="2.1.2" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="play-ws-standalone_2.12" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" rev="2.10.1" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
+			<artifact name="jackson-datatype-jsr310" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
 		<dependency org="com.typesafe.slick" name="slick_2.12" rev="3.3.0" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="slick_2.12" type="src" ext="jar" conf="sources" e:classifier="sources"/>
@@ -167,9 +170,6 @@
 		<dependency org="org.scala-lang.modules" name="scala-xml_2.12" rev="1.0.6" transitive="false" conf="scala-tool->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="scala-xml_2.12" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
-		<dependency org="com.fasterxml.jackson.core" name="jackson-annotations" rev="2.10.2" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
-			<artifact name="jackson-annotations" type="src" ext="jar" conf="sources" e:classifier="sources"/>
-		</dependency>
 		<dependency org="com.typesafe.play" name="play_2.12" rev="2.8.1" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master" info.apiURL="https://www.playframework.com/documentation/2.8.1/api/scala/index.html">
 			<artifact name="play_2.12" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
@@ -179,8 +179,8 @@
 		<dependency org="org.scala-lang.modules" name="scala-parser-combinators_2.12" rev="1.1.2" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="scala-parser-combinators_2.12" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
-		<dependency org="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8" rev="2.10.2" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
-			<artifact name="jackson-datatype-jdk8" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.29" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
+			<artifact name="slf4j-api" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
 		<dependency org="commons-logging" name="commons-logging" rev="1.2" transitive="false" conf="test->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="commons-logging" type="src" ext="jar" conf="sources" e:classifier="sources"/>
@@ -199,9 +199,6 @@
 		</dependency>
 		<dependency org="net.bytebuddy" name="byte-buddy-agent" rev="1.9.10" transitive="false" conf="test->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="byte-buddy-agent" type="src" ext="jar" conf="sources" e:classifier="sources"/>
-		</dependency>
-		<dependency org="com.google.guava" name="listenablefuture" rev="9999.0-empty-to-avoid-conflict-with-guava" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
-			<artifact name="listenablefuture" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
 		<dependency org="org.seleniumhq.selenium" name="htmlunit-driver" rev="2.36.0" transitive="false" conf="test->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="htmlunit-driver" type="src" ext="jar" conf="sources" e:classifier="sources"/>
@@ -233,6 +230,9 @@
 		<dependency org="org.pegdown" name="pegdown" rev="1.6.0" transitive="false" conf="docs->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="pegdown" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
+		<dependency org="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8" rev="2.10.1" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
+			<artifact name="jackson-datatype-jdk8" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
 		<dependency org="com.typesafe.play" name="play-ws-standalone-json_2.12" rev="2.1.2" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="play-ws-standalone-json_2.12" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
@@ -257,14 +257,14 @@
 		<dependency org="com.typesafe.akka" name="akka-actor_2.12" rev="2.6.3" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master" info.apiURL="https://doc.akka.io/api/akka/2.6.3">
 			<artifact name="akka-actor_2.12" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-core" rev="2.10.1" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
+			<artifact name="jackson-core" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
 		<dependency org="commons-net" name="commons-net" rev="3.6" transitive="false" conf="test->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="commons-net" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
 		<dependency org="org.apache.commons" name="commons-lang3" rev="3.9" transitive="false" conf="test->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="commons-lang3" type="src" ext="jar" conf="sources" e:classifier="sources"/>
-		</dependency>
-		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.30" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
-			<artifact name="slf4j-api" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
 		<dependency org="org.fluentlenium" name="fluentlenium-core" rev="3.7.1" transitive="false" conf="test->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="fluentlenium-core" type="src" ext="jar" conf="sources" e:classifier="sources"/>
@@ -329,9 +329,6 @@
 		<dependency org="org.codehaus.mojo" name="animal-sniffer-annotations" rev="1.18" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="animal-sniffer-annotations" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
-		<dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.10.2" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
-			<artifact name="jackson-databind" type="src" ext="jar" conf="sources" e:classifier="sources"/>
-		</dependency>
 		<dependency org="org.atteo.classindex" name="classindex" rev="3.4" transitive="false" conf="test->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="classindex" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
@@ -377,9 +374,6 @@
 		<dependency org="org.eclipse.jetty" name="jetty-client" rev="9.4.20.v20190813" transitive="false" conf="test->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="jetty-client" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
-		<dependency org="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" rev="2.10.2" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
-			<artifact name="jackson-datatype-jsr310" type="src" ext="jar" conf="sources" e:classifier="sources"/>
-		</dependency>
 		<dependency org="com.typesafe.akka" name="akka-http-core_2.12" rev="10.1.11" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master" info.apiURL="https://doc.akka.io/api/akka-http/10.1.11/">
 			<artifact name="akka-http-core_2.12" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
@@ -418,6 +412,9 @@
 		</dependency>
 		<dependency org="net.sourceforge.htmlunit" name="htmlunit-core-js" rev="2.36.0" transitive="false" conf="test->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="htmlunit-core-js" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.10.1" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
+			<artifact name="jackson-databind" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
 		<dependency org="com.typesafe.play" name="play-specs2_2.12" rev="2.8.1" transitive="false" conf="test->default,compile,runtime,default(compile),master;test-internal->default,compile,runtime,default(compile),master" info.apiURL="https://www.playframework.com/documentation/2.8.1/api/scala/index.html">
 			<artifact name="play-specs2_2.12" type="src" ext="jar" conf="sources" e:classifier="sources"/>
@@ -458,6 +455,9 @@
 		<dependency org="javax.inject" name="javax.inject" rev="1" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="javax.inject" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-annotations" rev="2.10.1" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
+			<artifact name="jackson-annotations" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
 		<dependency org="com.novocode" name="junit-interface" rev="0.11" transitive="false" conf="test->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master">
 			<artifact name="junit-interface" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
@@ -472,9 +472,6 @@
 		</dependency>
 		<dependency org="com.typesafe.play" name="play-ahc-ws_2.12" rev="2.8.1" transitive="false" conf="compile->default,compile,runtime,default(compile),master;runtime->default,compile,runtime,default(compile),master;test->default,compile,runtime,default(compile),master;compile-internal->default,compile,runtime,default(compile),master;runtime-internal->default,compile,runtime,default(compile),master;test-internal->default,compile,runtime,default(compile),master" info.apiURL="https://www.playframework.com/documentation/2.8.1/api/scala/index.html">
 			<artifact name="play-ahc-ws_2.12" type="src" ext="jar" conf="sources" e:classifier="sources"/>
-		</dependency>
-		<dependency org="com.fasterxml.jackson.core" name="jackson-core" rev="2.10.2" transitive="false" conf="compile->compile,runtime(*),master(compile),runtime,compile(*),master;runtime->compile,runtime(*),master(compile),runtime,compile(*),master;test->compile,runtime(*),master(compile),runtime,compile(*),master;compile-internal->compile,runtime(*),master(compile),runtime,compile(*),master;runtime-internal->compile,runtime(*),master(compile),runtime,compile(*),master;test-internal->compile,runtime(*),master(compile),runtime,compile(*),master;docs->compile,runtime(*),master(compile),runtime,compile(*),master">
-			<artifact name="jackson-core" type="src" ext="jar" conf="sources" e:classifier="sources"/>
 		</dependency>
 		<dependency org="com.typesafe.play" name="play-ehcache_2.12" rev="2.8.1" transitive="false" conf="compile->default,compile,runtime,default(compile),master;runtime->default,compile,runtime,default(compile),master;test->default,compile,runtime,default(compile),master;compile-internal->default,compile,runtime,default(compile),master;runtime-internal->default,compile,runtime,default(compile),master;test-internal->default,compile,runtime,default(compile),master" info.apiURL="https://www.playframework.com/documentation/2.8.1/api/scala/index.html">
 			<artifact name="play-ehcache_2.12" type="src" ext="jar" conf="sources" e:classifier="sources"/>

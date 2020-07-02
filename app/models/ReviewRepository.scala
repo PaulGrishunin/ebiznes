@@ -27,12 +27,12 @@ class ReviewRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
   def create(user_id: Long, product_id: Long, content: String, rate: Byte): Future[Review] = db.run {
     (review.map(r => (r.user_id, r.product_id, r.content, r.rate))
       returning review.map(_.id)
-      into (user_id, product_id, content, rate, id) => Review(id, user_id, product_id, content, rate))
+      into {case((user_id, product_id, content, rate), id) => Review(id, user_id, product_id, content, rate)}
       ) += (user_id, product_id, content, rate)
   }
 
   def list(): Future[Seq[Review]] = db.run {
-    order.result
+    review.result
   }
 
   def getById(id: Long): Future[Review] = db.run {
@@ -43,9 +43,9 @@ class ReviewRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
     review.filter(_.product_id === product_id).result.head
   }
 
-  def delete(id: Long): Future[Review] = db.run(review.filter(_.id === id).delete).map(_ => ())
+  def delete(id: Long): Future[Unit] = db.run(review.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_review: Review): Future[Review] = {
+  def update(id: Long, new_review: Review): Future[Unit] = {
     val reviewToUpdate: Review = new_review.copy(id)
     db.run(review.filter(_.id === id).update(reviewToUpdate)).map(_ => ())
   }

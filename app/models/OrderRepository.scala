@@ -27,7 +27,7 @@ class OrderRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impli
   def create(user_id: Long, product_id: Long, quantity: Int, completed: Boolean): Future[Order] = db.run {
     (order.map(o => (o.user_id, o.product_id, o.quantity, o.completed))
       returning order.map(_.id)
-      into (user_id, product_id, quantity, completed, id) => Order(id, user_id, product_id, quantity, completed))
+      into {case ((user_id, product_id, quantity, completed), id) => Order(id, user_id, product_id, quantity, completed)}
       ) += (user_id, product_id, quantity, completed)
   }
 
@@ -43,9 +43,9 @@ class OrderRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impli
     order.filter(_.user_id === user_id).result.head
   }
 
-  def delete(id: Long): Future[Order] = db.run(order.filter(_.id === id).delete).map(_ => ())
+  def delete(id: Long): Future[Unit] = db.run(order.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_order: Order): Future[Order] = {
+  def update(id: Long, new_order: Order): Future[Unit] = {
     val orderToUpdate: Order = new_order.copy(id)
     db.run(order.filter(_.id === id).update(orderToUpdate)).map(_ => ())
   }

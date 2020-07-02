@@ -26,7 +26,7 @@ class BasketRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
   def create(user_id: Long, product_id: Long, quantity: Int): Future[Basket] = db.run {
     (basket.map(b => (b.user_id, b.product_id, b.quantity))
       returning basket.map(_.id)
-      into (user_id, product_id, quantity, id) => Basket(id, user_id, product_id, quantity))
+      into {case ((user_id, product_id, quantity), id) => Basket(id, user_id, product_id, quantity)}
       ) += (user_id, product_id, quantity)
   }
 
@@ -42,9 +42,9 @@ class BasketRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
     basket.filter(_.user_id === user_id).result.head
   }
 
-  def delete(id: Long): Future[Basket] = db.run(basket.filter(_.id === id).delete).map(_ => ())
+  def delete(id: Long): Future[Unit] = db.run(basket.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_basket: Basket): Future[Basket] = {
+  def update(id: Long, new_basket: Basket): Future[Unit] = {
     val basketToUpdate: Basket = new_basket.copy(id)
     db.run(basket.filter(_.id === id).update(basketToUpdate)).map(_ => ())
   }
