@@ -30,5 +30,6 @@ class CategoryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   def list(): Future[Seq[Category]] = db.run {
     category.result
   }
+
 }
 
