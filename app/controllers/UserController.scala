@@ -1,10 +1,11 @@
 package controllers
 
 import javax.inject._
-import models.{Category, CategoryRepository, Product, ProductRepository}
+import models.{UserRepository}
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.mvc._
+
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
 /**
@@ -13,7 +14,7 @@ import scala.util.{Failure, Success}
  */
 @Singleton
 class UserController @Inject()(usersRepo: UserRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
-
+/**
   val userForm: Form[CreateUserForm] = Form {
     mapping(
       "login" -> nonEmptyText,
@@ -141,7 +142,7 @@ class UserController @Inject()(usersRepo: UserRepository, cc: MessagesController
     val formValidationResult = productForm.bindFromRequest
     formValidationResult.fold(errorFunction, successFunction)
   }
-  */
+  */ **/
 }
 
 case class CreateUserForm(login: String, password: String, email: String)

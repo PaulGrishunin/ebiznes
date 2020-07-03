@@ -4,7 +4,9 @@ import javax.inject._
 import models.{Category, CategoryRepository, Product, ProductRepository}
 import play.api.data.Form
 import play.api.data.Forms._
+import play.api.libs.json.Json
 import play.api.mvc._
+
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
 /**
@@ -37,15 +39,12 @@ class HomeController @Inject()(productsRepo: ProductRepository, categoryRepo: Ca
 
   def getProducts: Action[AnyContent] = Action.async { implicit request =>
     val produkty = productsRepo.list()
-    produkty.map( products => Ok(views.html.products(products)))
+    produkty.map( products => Ok(Json.toJson(products)))
   }
 
   def getProduct(id: Long): Action[AnyContent] = Action.async { implicit request =>
     val produkt = productsRepo.getByIdOption(id)
-    produkt.map(product => product match {
-      case Some(p) => Ok(views.html.product(p))
-      case None => Redirect(routes.HomeController.getProducts())
-    })
+    produkt.map( products => Ok(Json.toJson(products)))
   }
 
   def delete(id: Long): Action[AnyContent] = Action {
@@ -54,41 +53,19 @@ class HomeController @Inject()(productsRepo: ProductRepository, categoryRepo: Ca
   }
 
   def updateProduct(id: Long): Action[AnyContent] = Action.async { implicit request: MessagesRequest[AnyContent] =>
-    var categ:Seq[Category] = Seq[Category]()
-    val categories = categoryRepo.list().onComplete{
-      case Success(cat) => categ = cat
-      case Failure(_) => print("fail")
+    val produkt = productsRepo.getByIdOption(id)
+    produkt.map( products => Ok(Json.toJson(products)))
     }
-
-    val produkt = productsRepo.getById(id)
-    produkt.map(product => {
-      val prodForm = updateProductForm.fill(UpdateProductForm(product.id, product.name, product.description,product.category))
-      //  id, product.name, product.description, product.category)
-      //updateProductForm.fill(prodForm)
-      Ok(views.html.productupdate(prodForm, categ))
-    })
-  }
 
   def updateProductHandle = Action.async { implicit request =>
-    var categ:Seq[Category] = Seq[Category]()
-    val categories = categoryRepo.list().onComplete{
-      case Success(cat) => categ = cat
-      case Failure(_) => print("fail")
-    }
+    val id = request.body.asJson.get("id").as[Long]
+    val name = request.body.asJson.get("name").as[String]
+    val description = request.body.asJson.get("description").as[String]
+    val category = request.body.asJson.get("category").as[Int]
 
-    updateProductForm.bindFromRequest.fold(
-      errorForm => {
-        Future.successful(
-          BadRequest(views.html.productupdate(errorForm, categ))
-        )
-      },
-      product => {
-        productsRepo.update(product.id, Product(product.id, product.name, product.description, product.category)).map { _ =>
-          Redirect(routes.HomeController.updateProduct(product.id)).flashing("success" -> "product updated")
+        productsRepo.update(id, Product(id, name, description, category)).map { _ =>
+          Ok(Json.toJson(Product(id,name,description,category)))
         }
-      }
-    )
-
   }
 
 

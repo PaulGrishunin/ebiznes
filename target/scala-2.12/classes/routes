@@ -1,0 +1,124 @@
+
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+GET     /addproduct                 controllers.HomeController.addProduct
+POST    /addproducthandle           controllers.HomeController.addProductHandle
+GET     /updateproduct/:id          controllers.HomeController.updateProduct(id: Long)
+POST    /updateproducthandle        controllers.HomeController.updateProductHandle
+
+GET     /products                   controllers.HomeController.getProducts
+GET     /product/:id                controllers.HomeController.getProduct(id: Long)
+GET     /delete/:id                 controllers.HomeController.delete(id: Long)
+
+#
+##category
+#GET     /addcategory              controllers.CategoryController.addCategory
+#POST    /addcategory              controllers.CategoryController.addCategoryHandle
+#GET     /updatecategory/:id       controllers.CategoryController.updateCategory(id: Long)
+#POST    /updatecategoryhandle     controllers.CategoryController.updateCategoryHandle
+#
+#GET     /category/:id             controllers.CategoryController.getCategory(id: Long)
+#GET     /categories               controllers.CategoryController.getCategories
+#GET     /deletecategory/:id       controllers.CategoryController.deleteCategory(id: Long)
+#
+#
+##user
+#GET     /adduser                  controllers.UserController.addUser
+#POST    /adduserhandle            controllers.UserController.addUserHandle
+#GET     /updateuser/:id           controllers.UserController.updateUser(id: Long)
+#POST    /updateuserhandle         controllers.UserController.updateUserHandle
+#
+#GET     /user/:id                 controllers.UserController.getUser(id: Long)
+#GET     /users                    controllers.UserController.getUsers
+#GET     /deleteuser/:id           controllers.UserController.deleteUser(id: Long)
+#
+#
+##order
+#GET     /addorder                 controllers.OrderController.addOrder
+#POST    /addorderhandle           controllers.OrderController.addOrderHandle
+#GET     /updateorder/:id          controllers.OrderController.updateOrder(id: Long)
+#POST    /updateorderhandle        controllers.OrderController.updateOrderHandle
+#
+#GET     /orders                   controllers.OrderController.getOrders
+#GET     /order/:id                controllers.OrderController.getOrder(id: Long)
+#GET     /deleteorder/:id          controllers.OrderController.deleteOrder(id: Long)
+#
+#
+##basket
+#GET     /additembasket             controllers.BasketController.addItemBasket
+#POST    /additembaskethandle       controllers.BasketController.addItemBasketHandle
+#GET     /updateitembasket/:id      controllers.BasketController.updateOrder(id: Long)
+#POST    /updateitembaskethandle    controllers.BasketController.updateItemBasketHandle
+#
+#GET     /itemsbasket               controllers.BasketController.getItemsBasket
+#GET     /itembasket/:id            controllers.BasketController.getItemBasket(id: Long)
+#GET     /deleteitembasket/:id      controllers.BasketController.deleteItemBasket(id: Long)
+#
+#
+##payment
+#GET     /addpayment                controllers.PaymentController.addPayment
+#POST    /addpaymenthandle          controllers.PaymentController.addPaymentHandle
+#GET     /updatepayment/:id         controllers.PaymentController.updatePayment(id: Long)
+#POST    /updatepaymenthandle       controllers.PaymentController.updatePaymentHandle
+#
+#GET     /payment/:id               controllers.PaymentController.getPayment(id: Long)
+#GET     /payments                  controllers.PaymentController.getPayments
+#GET     /deletepayment/:id         controllers.PaymentController.deletePayment(id: Long)
+#
+#
+##product review
+#GET     /addreview                 controllers.ReviewController.addReview
+#POST    /addreviewhandle           controllers.ReviewController.addReviewHandle
+#GET     /updatereview/:id          controllers.ReviewController.updateReview(id: Long)
+#POST    /updatereviewhandle        controllers.ReviewController.updateReviewHandle
+#
+#GET     /reviews                   controllers.ReviewController.getReviews
+#GET     /review/:id                controllers.ReviewController.getReview(id: Long)
+#GET     /deletereview/:id          controllers.ReviewController.deleteReview(id: Long)
+#
+#
+##discount
+#GET     /adddiscount               controllers.DiscountController.addDiscount
+#POST    /adddiscounthandle         controllers.DiscountController.addDiscountHandle
+#GET     /updatediscount/:id        controllers.DiscountController.updateDiscount(id: Long)
+#POST    /updatediscounthandle      controllers.DiscountController.updateDiscountHandle
+#
+#GET     /discounts                 controllers.ReviewController.getDiscounts
+#GET     /discount/:id              controllers.ReviewController.getDiscount(id: Long)
+#GET     /deletediscount/:id        controllers.ReviewController.deleteDiscount(id: Long)
+#
+#
+##delivery
+#GET     /addaddress                controllers.DeliveryController.addAddress
+#POST    /addaddresshandle          controllers.DeliveryController.addAddressHandle
+#GET     /updateaddress/:id         controllers.DeliveryController.updateAddress(id: Long)
+#POST    /updateaddresshandle       controllers.DeliveryController.updateAddressHandle
+#
+#GET     /addresses                 controllers.DeliveryController.getAddresses
+#GET     /address/:id               controllers.DeliveryController.getAddress(id: Long)
+#GET     /deleteaddress/:id         controllers.DeliveryController.deleteAddress(id: Long)
+#
+#
+##product question
+#GET     /addquestion               controllers.QuestionController.addQuestion
+#POST    /addquestionhandle         controllers.QuestionController.addQuestionHandle
+#GET     /updatequestion/:id        controllers.QuestionController.updateQuestion(id: Long)
+#POST    /updatequestionhandle      controllers.QuestionController.updateQuestionHandle
+#
+#GET     /questions                 controllers.QuestionController.getQuestions
+#GET     /question/:id              controllers.QuestionController.getQuestion(id: Long)
+#GET     /deletequestion/:id        controllers.QuestionController.deleteQuestion(id: Long)
+#
+
+# An example controller showing how to use dependency injection
+GET     /count                    controllers.CountController.count
+# An example controller showing how to write asynchronous code
+GET     /message                  controllers.AsyncController.message
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file             controllers.Assets.versioned(path="/public", file: Asset)
+
