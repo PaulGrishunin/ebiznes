@@ -16,21 +16,21 @@ class DiscountRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   class DiscountTable(tag: Tag) extends Table[Discount](tag, "discount") {
 
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-    def product_id = column[Long]("productid")
-    def name = column[String]("name")
+    def product_id = column[Long]("product_id")
+    def amount = column[Int]("name")
     def description = column[String]("description")
 
-    def * = (id, product_id, name, description) <> ((Discount.apply _).tupled, Discount.unapply)
+    def * = (id, product_id, amount, description) <> ((Discount.apply _).tupled, Discount.unapply)
 
   }
 
   val discount = TableQuery[DiscountTable]
 
-  def create(product_id: Long, name: String, description: String): Future[Discount] = db.run {
-    (discount.map(d => (d.product_id, d.name, d.description))
+  def create(product_id: Long, amount: Int, description: String): Future[Discount] = db.run {
+    (discount.map(d => (d.product_id, d.amount, d.description))
       returning discount.map(_.id)
-      into {case ((product_id, name, description), id) => Discount(id, product_id, name, description)}
-    ) += (product_id, name, description)
+      into {case ((product_id, amount, description), id) => Discount(id, product_id, amount, description)}
+    ) += (product_id, amount, description)
   }
 
   def list(): Future[Seq[Discount]] = db.run {
@@ -39,6 +39,14 @@ class DiscountRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
 
   def getById(id: Long): Future[Discount] = db.run {
     discount.filter(_.id === id).result.head
+  }
+
+  def getByIdOption(id: Long): Future[Option[Discount]] = db.run {
+    discount.filter(_.id === id).result.headOption
+  }
+
+  def getByProductId(id: Long): Future[Option[Discount]] =db.run {
+    discount.filter(_.product_id === id).result.headOption
   }
 
   def delete(id: Long): Future[Unit] = db.run(discount.filter(_.id === id).delete).map(_ => ())

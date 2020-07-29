@@ -16,7 +16,7 @@ class DeliveryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   class DeliveryTable(tag: Tag) extends Table[Delivery](tag, "delivery") {
 
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-    def order_id = column[Long]("orderid")
+    def order_id = column[Long]("order_id")
     def address = column[String]("address")
 
     def * = (id, order_id, address) <> ((Delivery.apply _).tupled, Delivery.unapply)
@@ -39,6 +39,14 @@ class DeliveryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   def getById(id: Long): Future[Delivery] = db.run {
     delivery.filter(_.id === id).result.head
   }
+
+  def getByIdOption(id: Long): Future[Option[Delivery]] = db.run {
+    delivery.filter(_.id === id).result.headOption
+  }
+  def getByOrderIdOption(order_id: Long): Future[Option[Delivery]] = db.run {
+    delivery.filter(_.order_id === order_id).result.headOption
+  }
+
 
   def delete(id: Long): Future[Unit] = db.run(delivery.filter(_.id === id).delete).map(_ => ())
 

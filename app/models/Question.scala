@@ -7,4 +7,3 @@ case class Question(id: Long, product_id: Long, user_id: Long, content: String, 
 object Question{
   implicit val questionFormat = Json.format[Question]
 }
-

@@ -28,7 +28,7 @@ class QuestionRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
     (question.map(q => (q.product_id, q.user_id, q.content, q.answer))
       returning question.map(_.id)
       into {case ((product_id, user_id, content, answer), id) => Question(id, product_id, user_id, content, answer)}
-    ) += (product_id, user_id, content, answer)
+      ) += (product_id, user_id, content, answer)
   }
 
   def list(): Future[Seq[Question]] = db.run {
@@ -39,12 +39,12 @@ class QuestionRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
     question.filter(_.id === id).result.head
   }
 
-  def getByProduct_Id(product_id: Long): Future[Question] = db.run {
-    question.filter(_.product_id === product_id).result.head
+  def getByIdOption(id: Long): Future[Option[Question]] = db.run {
+    question.filter(_.id === id).result.headOption
   }
 
-  def getByUser_Id(user_id: Long): Future[Question] = db.run {
-    question.filter(_.user_id === user_id).result.head
+  def getByProduct_Id(product_id: Long): Future[Question] = db.run {
+    question.filter(_.product_id === product_id).result.head
   }
 
   def delete(id: Long): Future[Unit] = db.run(question.filter(_.id === id).delete).map(_ => ())
@@ -55,4 +55,3 @@ class QuestionRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   }
 
 }
-

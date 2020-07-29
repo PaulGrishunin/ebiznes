@@ -15,20 +15,22 @@ class OrderRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impli
 
   class OrderTable(tag: Tag) extends Table[Order](tag, "order") {
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-    def user_id = column[Long]("userid")
-    def product_id = column[Long]("productid")
+    def user_id = column[Long]("user_id")
+    def product_id = column[Long]("product_id")
     def quantity = column[Int]("quantity")
+    def price = column[Double]("price")
+    def date = column[String]("date")
     def completed = column[Boolean]("completed")
-    def * = (id, user_id, product_id, quantity, completed) <> ((Order.apply _).tupled, Order.unapply)
+    def * = (id, user_id, product_id, quantity, price, date, completed) <> ((Order.apply _).tupled, Order.unapply)
   }
 
   val order = TableQuery[OrderTable]
 
-  def create(user_id: Long, product_id: Long, quantity: Int, completed: Boolean): Future[Order] = db.run {
-    (order.map(o => (o.user_id, o.product_id, o.quantity, o.completed))
+  def create(user_id: Long, product_id: Long, quantity: Int, price: Double, date: String, completed: Boolean): Future[Order] = db.run {
+    (order.map(o => (o.user_id, o.product_id, o.quantity, o.price, o.date, o.completed))
       returning order.map(_.id)
-      into {case ((user_id, product_id, quantity, completed), id) => Order(id, user_id, product_id, quantity, completed)}
-      ) += (user_id, product_id, quantity, completed)
+      into {case ((user_id, product_id, quantity, price, date, completed), id) => Order(id, user_id, product_id, quantity, price, date, completed)}
+      ) += (user_id, product_id, quantity, price, date, completed)
   }
 
   def list(): Future[Seq[Order]] = db.run {
@@ -39,7 +41,11 @@ class OrderRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impli
     order.filter(_.id === id).result.head
   }
 
-  def getByUser_Id(user_id: Long): Future[Order] = db.run {
+  def getByIdOption(id: Long): Future[Option[Order]] = db.run {
+    order.filter(_.id === id).result.headOption
+  }
+
+  def getByUser(user_id: Long): Future[Order] = db.run {
     order.filter(_.user_id === user_id).result.head
   }
 

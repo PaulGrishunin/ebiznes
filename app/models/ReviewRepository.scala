@@ -1,53 +1,51 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
-class ReviewRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
-  val dbConfig = dbConfigProvider.get[JdbcProfile]
+class ReviewRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
+  private val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
   import profile.api._
 
-  class ReviewTable(tag: Tag) extends Table[Review](tag, "review") {
-    def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-    def product_id = column[Long]("productid")
-    def user_id = column[Long]("userid")
-    def content = column[String]("content")
-    def rate = column[Byte]("rate")
-    def * = (id, user_id, product_id, content, rate) <> ((Review.apply _).tupled, Review.unapply)
+  private class ReviewTable(tag: Tag) extends Table[Review](tag, "review") {
+    def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
+    def user_id = column[Long]("user_id")
+    def rate: Rep[Byte] = column[Byte]("rate")
+    def text: Rep[String] = column[String]("text")
+    def * = (id, user_id, rate, text) <> ((Review.apply _).tupled, Review.unapply)
   }
 
-  val review = TableQuery[ReviewTable]
+  private val review = TableQuery[ReviewTable]
 
-  def create(user_id: Long, product_id: Long, content: String, rate: Byte): Future[Review] = db.run {
-    (review.map(r => (r.user_id, r.product_id, r.content, r.rate))
+  def create(user_id: Long, rate: Byte, text: String): Future[Review] = db.run {
+    (review.map(r => (r.user_id, r.rate, r.text))
       returning review.map(_.id)
-      into {case((user_id, product_id, content, rate), id) => Review(id, user_id, product_id, content, rate)}
-      ) += (user_id, product_id, content, rate)
+      into { case ((user_id, rate, text), id) => Review(id, user_id, rate, text) }
+      ) += (user_id, rate, text)
   }
 
   def list(): Future[Seq[Review]] = db.run {
     review.result
   }
 
-  def getById(id: Long): Future[Review] = db.run {
-    review.filter(_.id === id).result.head
-  }
+  def delete(id: Int): Future[Unit] = db.run(review.filter(_.id === id).delete).map(_ => ())
 
-  def getByProduct_Id(product_id: Long): Future[Review] = db.run {
-    review.filter(_.product_id === product_id).result.head
-  }
-
-  def delete(id: Long): Future[Unit] = db.run(review.filter(_.id === id).delete).map(_ => ())
-
-  def update(id: Long, new_review: Review): Future[Unit] = {
+  def update(id: Int, new_review: Review): Future[Unit] = {
     val reviewToUpdate: Review = new_review.copy(id)
     db.run(review.filter(_.id === id).update(reviewToUpdate)).map(_ => ())
   }
-}
 
+  def getById(id: Int): Future[Review] = db.run {
+    review.filter(_.id === id).result.head
+  }
+
+  def getByIdOption(id: Int): Future[Option[Review]] = db.run {
+    review.filter(_.id === id).result.headOption
+  }
+}

@@ -9,6 +9,9 @@ import play.api.mvc._
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
+import play.api.data.format.Formats._
+import play.api.libs.json.Json
+
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
@@ -16,18 +19,19 @@ import scala.util.{Failure, Success}
 @Singleton
 class CategoryController @Inject()(categoryRepo: CategoryRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
-  //  val categoryForm: Form[CreateCategoryForm] = Form {
-  //    mapping(
-  //      "name" -> nonEmptyText,
-  //    )(CreateCategoryForm.apply)(CreateCategoryForm.unapply)
-  //  }
-  //
-  //  val updateCategoryForm: Form[UpdateCategoryForm] = Form {
-  //    mapping(
-  //           "id" -> longNumber,
-  //      "name" -> nonEmptyText,
-  //    )(UpdateCategoryForm.apply)(UpdateCategoryForm.unapply)
-  //  }
+  val categoryForm: Form[CreateCategoryForm] = Form {
+    mapping(
+      "name" -> nonEmptyText,
+    )(CreateCategoryForm.apply)(CreateCategoryForm.unapply)
+  }
+
+  val updateCategoryForm: Form[UpdateCategoryForm] = Form {
+    mapping(
+      "id" -> number,
+      "name" -> nonEmptyText,
+    )(UpdateCategoryForm.apply)(UpdateCategoryForm.unapply)
+  }
+
 
   def addCategory = Action {
     Ok("Your new application is ready.")
@@ -65,11 +69,11 @@ class CategoryController @Inject()(categoryRepo: CategoryRepository, cc: Message
     cat.map(category => Ok(Json.toJson(category)))
   }
 
-  def getCategorys: Action[AnyContent] = Action.async { implicit request =>
+  def getCategories: Action[AnyContent] = Action.async { implicit request =>
     val cat = categoryRepo.list()
     cat.map(categories => Ok(Json.toJson(categories)))
   }
 }
 
-case class CreateProductForm(name: String, description: String, category: Int)
-case class UpdateProductForm(id: Long, name: String, description: String, category: Int)
+case class CreateCategoryForm(name: String)
+case class UpdateCategoryForm(id: Int, name: String)

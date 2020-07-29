@@ -18,16 +18,17 @@ class UserRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implic
     def login = column[String]("login")
     def password = column[String]("password")
     def email = column[String]("email")
-    def * = (id, login, password, email) <> ((User.apply _).tupled, User.unapply)
+    def admin = column[Boolean]("admin")
+    def * = (id, login, password, email, admin) <> ((User.apply _).tupled, User.unapply)
   }
 
   val user = TableQuery[UserTable]
 
-  def create(login: String, password: String, email: String): Future[User] = db.run {
-    (user.map(c => (c.login, c.password, c.email))
+  def create(login: String, password: String, email: String, admin: Boolean): Future[User] = db.run {
+    (user.map(u => (u.login, u.password, u.email, u.admin))
       returning user.map(_.id)
-      into {case ((login, password, email), id) => User(id, login, password, email)}
-      ) += (login, password, email)
+      into {case ((login, password, email, admin), id) => User(id, login, password, email, admin)}
+      ) += (login, password, email, admin)
   }
 
   def list(): Future[Seq[User]] = db.run {
