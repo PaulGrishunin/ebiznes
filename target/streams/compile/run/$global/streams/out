@@ -1,0 +1,6 @@
+java.io.IOException: User limit of inotify watches reached
+	at java.base/sun.nio.fs.LinuxWatchService$Poller.implRegister(LinuxWatchService.java:266)
+	at java.base/sun.nio.fs.AbstractPoller.processRequests(AbstractPoller.java:265)
+	at java.base/sun.nio.fs.LinuxWatchService$Poller.run(LinuxWatchService.java:366)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[error] (compile:run) java.io.IOException: User limit of inotify watches reached

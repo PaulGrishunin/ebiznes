@@ -12,23 +12,17 @@ class ProductRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, cat
   import dbConfig._
   import profile.api._
 
-
   private class ProductTable(tag: Tag) extends Table[Product](tag, "product") {
 
     /** The ID column, which is the primary key, and auto incremented */
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-
     /** The name column */
     def name = column[String]("name")
-
     /** The age column */
     def description = column[String]("description")
-
     def category = column[Int]("category")
-
-    def category_fk = foreignKey("cat_fk",category, cat)(_.id)
-
-
+    def price = column[Double]("price")
+//    def category_fk = foreignKey("cat_fk",category, cat)(_.id)
     /**
      * This is the tables default "projection".
      *
@@ -37,7 +31,7 @@ class ProductRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, cat
      * In this case, we are simply passing the id, name and page parameters to the Person case classes
      * apply and unapply methods.
      */
-    def * = (id, name, description, category) <> ((Product.apply _).tupled, Product.unapply)
+    def * = (id, name, description, category, price) <> ((Product.apply _).tupled, Product.unapply)
 
   }
 
@@ -45,11 +39,11 @@ class ProductRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, cat
    * The starting point for all queries on the people table.
    */
 
-  import categoryRepository.CategoryTable
+//  import categoryRepository.CategoryTable
 
   private val product = TableQuery[ProductTable]
 
-  private val cat = TableQuery[CategoryTable]
+//  private val cat = TableQuery[CategoryTable]
 
 
   /**
@@ -58,16 +52,16 @@ class ProductRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, cat
    * This is an asynchronous operation, it will return a future of the created person, which can be used to obtain the
    * id for that person.
    */
-  def create(name: String, description: String, category: Int): Future[Product] = db.run {
+  def create(name: String, description: String, category: Int, price: Double): Future[Product] = db.run {
     // We create a projection of just the name and age columns, since we're not inserting a value for the id column
-    (product.map(p => (p.name, p.description,p.category))
+    (product.map(p => (p.name, p.description,p.category, p.price))
       // Now define it to return the id, because we want to know what id was generated for the person
       returning product.map(_.id)
       // And we define a transformation for the returned value, which combines our original parameters with the
       // returned id
-      into {case ((name,description,category),id) => Product(id,name, description,category)}
+      into { case ((name, description, category, price),id) => Product(id, name, description, category, price)}
       // And finally, insert the product into the database
-      ) += (name, description,category)
+      ) += (name, description, category, price)
   }
 
   /**

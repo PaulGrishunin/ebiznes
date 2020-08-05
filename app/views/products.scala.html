@@ -4,6 +4,7 @@
   <b>@product.name</b>
   @product.description
   @product.category
-  <a href="@controllers.routes.HomeController.updateProduct(product.id)">Edit</a>
-  <a href="@controllers.routes.HomeController.delete(product.id)">Delete</a>
+  @product.price
+  <a href="@controllers.routes.ProductController.updateProduct(product.id)">Edit</a>
+  <a href="@controllers.routes.ProductController.delete(product.id)">Delete</a>
 }

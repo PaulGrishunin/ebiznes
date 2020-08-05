@@ -28,9 +28,10 @@ Seq[Any](format.raw/*2.1*/("""
   """),format.raw/*4.3*/("""<b>"""),_display_(/*4.7*/product/*4.14*/.name),format.raw/*4.19*/("""</b>
   """),_display_(/*5.4*/product/*5.11*/.description),format.raw/*5.23*/("""
   """),_display_(/*6.4*/product/*6.11*/.category),format.raw/*6.20*/("""
-  """),format.raw/*7.3*/("""<a href=""""),_display_(/*7.13*/controllers/*7.24*/.routes.HomeController.updateProduct(product.id)),format.raw/*7.72*/("""">Edit</a>
-  <a href=""""),_display_(/*8.13*/controllers/*8.24*/.routes.HomeController.delete(product.id)),format.raw/*8.65*/("""">Delete</a>
-""")))}),format.raw/*9.2*/("""
+  """),_display_(/*7.4*/product/*7.11*/.price),format.raw/*7.17*/("""
+  """),format.raw/*8.3*/("""<a href=""""),_display_(/*8.13*/controllers/*8.24*/.routes.ProductController.updateProduct(product.id)),format.raw/*8.75*/("""">Edit</a>
+  <a href=""""),_display_(/*9.13*/controllers/*9.24*/.routes.ProductController.delete(product.id)),format.raw/*9.68*/("""">Delete</a>
+""")))}),format.raw/*10.2*/("""
 """))
       }
     }
@@ -47,11 +48,11 @@ Seq[Any](format.raw/*2.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2020-07-03T14:26:44.181011
+                  DATE: 2020-08-05T00:34:39.570376
                   SOURCE: /home/paul/ebiznes/app/views/products.scala.html
-                  HASH: 63a8688f163a04393dd2c463ed91b41151788f71
-                  MATRIX: 738->1|856->26|883->28|922->52|961->54|990->57|1019->61|1034->68|1059->73|1092->81|1107->88|1139->100|1168->104|1183->111|1212->120|1241->123|1277->133|1296->144|1364->192|1413->215|1432->226|1493->267|1536->281
-                  LINES: 21->1|26->2|27->3|27->3|27->3|28->4|28->4|28->4|28->4|29->5|29->5|29->5|30->6|30->6|30->6|31->7|31->7|31->7|31->7|32->8|32->8|32->8|33->9
+                  HASH: bd5e9eb8d7fe096c37cc88ceabfdac93c6ae75aa
+                  MATRIX: 738->1|856->26|883->28|922->52|961->54|990->57|1019->61|1034->68|1059->73|1092->81|1107->88|1139->100|1168->104|1183->111|1212->120|1241->124|1256->131|1282->137|1311->140|1347->150|1366->161|1437->212|1486->235|1505->246|1569->290|1613->304
+                  LINES: 21->1|26->2|27->3|27->3|27->3|28->4|28->4|28->4|28->4|29->5|29->5|29->5|30->6|30->6|30->6|31->7|31->7|31->7|32->8|32->8|32->8|32->8|33->9|33->9|33->9|34->10
                   -- GENERATED --
               */
           

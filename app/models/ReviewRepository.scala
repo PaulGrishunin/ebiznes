@@ -15,19 +15,20 @@ class ReviewRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(impli
 
   private class ReviewTable(tag: Tag) extends Table[Review](tag, "review") {
     def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
+    def product_id = column[Long]("product_id")
     def user_id = column[Long]("user_id")
     def rate: Rep[Byte] = column[Byte]("rate")
     def text: Rep[String] = column[String]("text")
-    def * = (id, user_id, rate, text) <> ((Review.apply _).tupled, Review.unapply)
+    def * = (id, product_id, user_id, rate, text) <> ((Review.apply _).tupled, Review.unapply)
   }
 
   private val review = TableQuery[ReviewTable]
 
-  def create(user_id: Long, rate: Byte, text: String): Future[Review] = db.run {
-    (review.map(r => (r.user_id, r.rate, r.text))
+  def create(product_id: Long, user_id: Long, rate: Byte, text: String): Future[Review] = db.run {
+    (review.map(r => (r.product_id, r.user_id, r.rate, r.text))
       returning review.map(_.id)
-      into { case ((user_id, rate, text), id) => Review(id, user_id, rate, text) }
-      ) += (user_id, rate, text)
+      into { case ((product_id, user_id, rate, text), id) => Review(id, product_id, user_id, rate, text) }
+      ) += (product_id, user_id, rate, text)
   }
 
   def list(): Future[Seq[Review]] = db.run {

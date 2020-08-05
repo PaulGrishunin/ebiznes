@@ -4,15 +4,15 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
-GET     /addproduct                 controllers.HomeController.addProduct
-POST    /addproducthandle           controllers.HomeController.addProductHandle
-GET     /updateproduct/:id          controllers.HomeController.updateProduct(id: Long)
-POST    /updateproducthandle        controllers.HomeController.updateProductHandle
+GET     /                           controllers.ProductController.index
+GET     /addproduct                 controllers.ProductController.addProduct
+POST    /addproducthandle           controllers.ProductController.addProductHandle
+GET     /updateproduct/:id          controllers.ProductController.updateProduct(id: Long)
+POST    /updateproducthandle        controllers.ProductController.updateProductHandle
 
-GET     /products                   controllers.HomeController.getProducts
-GET     /product/:id                controllers.HomeController.getProduct(id: Long)
-GET     /delete/:id                 controllers.HomeController.delete(id: Long)
+GET     /products                   controllers.ProductController.getProducts
+GET     /product/:id                controllers.ProductController.getProduct(id: Long)
+GET     /delete/:id                 controllers.ProductController.delete(id: Long)
 
 
 #category
@@ -50,7 +50,7 @@ GET     /deleteorder/:id          controllers.OrderController.deleteOrder(id: Lo
 
 
 #basket
-GET     /addtobasket             controllers.BasketController.addToBasket
+GET     /addtobasket/:id         controllers.BasketController.addToBasket(id: Long)
 #POST   /addbaskethandle         controllers.BasketController.addBasketHandle
 GET     /updatebask/:id          controllers.BasketController.updateBasket(id: Long)
 POST    /updatebaskethandle      controllers.BasketController.updateBasketHandle
@@ -72,7 +72,7 @@ GET     /deletepayment/:id         controllers.PaymentController.deletePayment(i
 
 
 #product Questions
-GET     /addquestion                 controllers.QuestionController.addQuestion
+GET     /addquestion                controllers.QuestionController.addQuestion
 POST    /addquestionhandle           controllers.QuestionController.addQuestionHandle
 GET     /updatequestion/:id          controllers.QuestionController.updateQuestion(id: Int)
 POST    /updatequestionhandle        controllers.QuestionController.updateQuestionHandle
@@ -84,7 +84,7 @@ GET     /deletequestion/:id          controllers.QuestionController.deleteQuesti
 
 #
 #discount
-GET     /adddiscount               controllers.DiscountController.addDiscount
+GET     /adddiscount/:product_id   controllers.DiscountController.addDiscount(product_id: Long)
 POST    /adddiscounthandle         controllers.DiscountController.addDiscountHandle
 GET     /updatediscount/:id        controllers.DiscountController.updateDiscount(id: Long)
 POST    /updatediscounthandle      controllers.DiscountController.updateDiscountHandle
@@ -107,12 +107,12 @@ GET     /deletedelivery/:id         controllers.DeliveryController.deleteDeliver
 
 
 #product Review
-GET     /addreview               controllers.ReviewController.addReview
+GET     /addreview              controllers.ReviewController.addReview
 POST    /addreviewhandle         controllers.ReviewController.addReviewHandle
 GET     /updatereview/:id        controllers.ReviewController.updateReview(id: Int)
 POST    /updatereviewhandle      controllers.ReviewController.updateReviewHandle
 
-GET     /reviews                 controllers.ReviewController.getReview
+GET     /reviews                 controllers.ReviewController.getReviews
 GET     /review/:id              controllers.ReviewController.getReview(id: Int)
 GET     /deletereview/:id        controllers.ReviewController.deleteReview(id: Int)
 

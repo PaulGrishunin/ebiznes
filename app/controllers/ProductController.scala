@@ -17,13 +17,14 @@ import play.api.libs.json.Json
  * application's home page.
  */
 @Singleton
-class HomeController @Inject()(productsRepo: ProductRepository, categoryRepo: CategoryRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
+class ProductController @Inject()(productsRepo: ProductRepository, categoryRepo: CategoryRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
   val productForm: Form[CreateProductForm] = Form {
     mapping(
       "name" -> nonEmptyText,
       "description" -> nonEmptyText,
       "category" -> number,
+      "price" ->  of(doubleFormat),
     )(CreateProductForm.apply)(CreateProductForm.unapply)
   }
 
@@ -33,6 +34,7 @@ class HomeController @Inject()(productsRepo: ProductRepository, categoryRepo: Ca
       "name" -> nonEmptyText,
       "description" -> nonEmptyText,
       "category" -> number,
+      "price" ->  of(doubleFormat),
     )(UpdateProductForm.apply)(UpdateProductForm.unapply)
   }
 
@@ -65,9 +67,10 @@ class HomeController @Inject()(productsRepo: ProductRepository, categoryRepo: Ca
     val name = request.body.asJson.get("name").as[String]
     val description = request.body.asJson.get("description").as[String]
     val category = request.body.asJson.get("category").as[Int]
+    val price = request.body.asJson.get("price").as[Double]
 
-        productsRepo.update(id, Product(id, name, description, category)).map { _ =>
-          Ok(Json.toJson(Product(id,name,description,category)))
+        productsRepo.update(id, Product(id, name, description, category, price)).map { _ =>
+          Ok(Json.toJson(Product(id,name,description,category, price)))
         }
   }
 
@@ -91,8 +94,8 @@ class HomeController @Inject()(productsRepo: ProductRepository, categoryRepo: Ca
         )
       },
       product => {
-        productsRepo.create(product.name, product.description, product.category).map { _ =>
-          Redirect(routes.HomeController.addProduct()).flashing("success" -> "product.created")
+        productsRepo.create(product.name, product.description, product.category, product.price).map { _ =>
+          Redirect(routes.ProductController.addProduct()).flashing("success" -> "product.created")
         }
       }
     )
@@ -127,5 +130,5 @@ class HomeController @Inject()(productsRepo: ProductRepository, categoryRepo: Ca
   */
 }
 
-case class CreateProductForm(name: String, description: String, category: Int)
-case class UpdateProductForm(id: Long, name: String, description: String, category: Int)
+case class CreateProductForm(name: String, description: String, category: Int, price: Double)
+case class UpdateProductForm(id: Long, name: String, description: String, category: Int, price: Double)
