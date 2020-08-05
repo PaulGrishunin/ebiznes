@@ -19,7 +19,7 @@ CREATE TABLE "user" (
  "login" VARCHAR NOT NULL,
  "password" VARCHAR NOT NULL,
  "email" VARCHAR NOT NULL,
- "admin" BIT NOT NULL,
+ "admin" BIT NOT NULL
 );
 
 CREATE TABLE "order" (
@@ -46,8 +46,8 @@ CREATE TABLE "basket" (
 CREATE TABLE "payment" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
  "order_id" VARCHAR NOT NULL,
- "date" VARCHAR NOT NULL
- FOREIGN KEY(order_id) references order(id),
+ "date" VARCHAR NOT NULL,
+ FOREIGN KEY(order_id) references "order"(id)
 );
 
 CREATE TABLE "review" (
@@ -72,7 +72,7 @@ CREATE TABLE "delivery" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
  "order_id" INTEGER NOT NULL,
  "address" TEXT NOT NULL,
- FOREIGN KEY(order_id) references order(id)
+ FOREIGN KEY(order_id) references "order"(id)
 );
 
 CREATE TABLE "question" (
