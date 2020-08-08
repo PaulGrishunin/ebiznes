@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Wed Aug 05 00:09:12 MSK 2020
+// @DATE:Fri Aug 07 16:35:39 MSK 2020
 
 package controllers;
 

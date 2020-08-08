@@ -13256,12 +13256,12 @@
 [debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-native-packager;1.5.1!sbt-native-packager.jar
 [debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-native-packager;1.5.1!sbt-native-packager.jar(doc)
 [debug] 	[NOT REQUIRED] com.lightbend.sbt#sbt-javaagent;0.1.5!sbt-javaagent.jar
+[debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-web;1.4.4!sbt-web.jar
 [debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-web;1.4.4!sbt-web.jar(doc)
 [debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-web;1.4.4!sbt-web.jar(src)
-[debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-web;1.4.4!sbt-web.jar
 [debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-js-engine;1.2.3!sbt-js-engine.jar(src)
-[debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-js-engine;1.2.3!sbt-js-engine.jar(doc)
 [debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-js-engine;1.2.3!sbt-js-engine.jar
+[debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-js-engine;1.2.3!sbt-js-engine.jar(doc)
 [debug] 	[NOT REQUIRED] org.scala-lang#scala-library;2.10.7!scala-library.jar
 [debug] 	[NOT REQUIRED] com.typesafe.play#twirl-api_2.10;1.5.0!twirl-api_2.10.jar
 [debug] 	[NOT REQUIRED] com.typesafe.play#build-link;2.8.1!build-link.jar
@@ -13340,7 +13340,7 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#template-resolver;0.1!template-resolver.jar
 [debug] 	[NOT REQUIRED] org.scala-lang#jline;2.10.7!jline.jar
 [debug] 	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar
-[debug] :: resolution report :: resolve 29570ms :: artifacts dl 611ms
+[debug] :: resolution report :: resolve 9358ms :: artifacts dl 266ms
 [debug] 	report for default#ebiznes-build;0.1-SNAPSHOT compile produced in /home/paul/ebiznes/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-ebiznes-build-compile.xml
 [debug] 	report for default#ebiznes-build;0.1-SNAPSHOT runtime produced in /home/paul/ebiznes/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-ebiznes-build-runtime.xml
 [debug] 	report for default#ebiznes-build;0.1-SNAPSHOT test produced in /home/paul/ebiznes/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-ebiznes-build-test.xml
@@ -13354,7 +13354,7 @@
 [debug] 	report for default#ebiznes-build;0.1-SNAPSHOT docs produced in /home/paul/ebiznes/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-ebiznes-build-docs.xml
 [debug] 	report for default#ebiznes-build;0.1-SNAPSHOT pom produced in /home/paul/ebiznes/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-ebiznes-build-pom.xml
 [debug] 	report for default#ebiznes-build;0.1-SNAPSHOT scala-tool produced in /home/paul/ebiznes/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-ebiznes-build-scala-tool.xml
-[debug] 	resolve done (29570ms resolve - 611ms download)
+[debug] 	resolve done (9358ms resolve - 266ms download)
 [info] Done updating.
 [warn] Found version conflict(s) in library dependencies; some are suspected to be binary incompatible:
 [warn] 

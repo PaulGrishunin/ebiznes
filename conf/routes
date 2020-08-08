@@ -6,8 +6,10 @@
 # An example controller showing a sample home page
 GET     /                           controllers.ProductController.index
 GET     /addproduct                 controllers.ProductController.addProduct
++nocsrf
 POST    /addproducthandle           controllers.ProductController.addProductHandle
 GET     /updateproduct/:id          controllers.ProductController.updateProduct(id: Long)
++nocsrf
 POST    /updateproducthandle        controllers.ProductController.updateProductHandle
 
 GET     /products                   controllers.ProductController.getProducts
@@ -17,8 +19,10 @@ GET     /delete/:id                 controllers.ProductController.delete(id: Lon
 
 #category
 GET     /addcategory              controllers.CategoryController.addCategory
++nocsrf
 POST    /addcategory              controllers.CategoryController.addCategoryHandle
 GET     /updatecategory/:id       controllers.CategoryController.updateCategory(id: Int)
++nocsrf
 POST    /updatecategoryhandle     controllers.CategoryController.updateCategoryHandle
 
 GET     /category/:id             controllers.CategoryController.getCategory(id: Int)
@@ -28,8 +32,10 @@ GET     /deletecategory/:id       controllers.CategoryController.deleteCategory(
 
 #user
 GET     /adduser                  controllers.UserController.addUser
++nocsrf
 POST    /adduserhandle            controllers.UserController.addUserHandle
 GET     /updateuser/:id           controllers.UserController.updateUser(id: Long)
++nocsrf
 POST    /updateuserhandle         controllers.UserController.updateUserHandle
 
 GET     /user/:id                 controllers.UserController.getUser(id: Long)
@@ -39,8 +45,10 @@ GET     /deleteuser/:id           controllers.UserController.deleteUser(id: Long
 
 #order
 GET     /addorder                 controllers.OrderController.addOrder
++nocsrf
 POST    /addorderhandle           controllers.OrderController.addOrderHandle
 GET     /updateorder/:id          controllers.OrderController.updateOrder(id: Long)
++nocsrf
 POST    /updateorderhandle        controllers.OrderController.updateOrderHandle
 
 GET     /orders                   controllers.OrderController.getOrders
@@ -53,6 +61,7 @@ GET     /deleteorder/:id          controllers.OrderController.deleteOrder(id: Lo
 GET     /addtobasket/:id         controllers.BasketController.addToBasket(id: Long)
 #POST   /addbaskethandle         controllers.BasketController.addBasketHandle
 GET     /updatebask/:id          controllers.BasketController.updateBasket(id: Long)
++nocsrf
 POST    /updatebaskethandle      controllers.BasketController.updateBasketHandle
 
 #GET    /basket                  controllers.BasketController.getBasket
@@ -61,8 +70,10 @@ GET     /deletefrombasket/:id    controllers.BasketController.deleteFromBasket(i
 
 #payment
 GET     /addpayment                controllers.PaymentController.addPayment
++nocsrf
 POST    /addpaymenthandle          controllers.PaymentController.addPaymentHandle
 GET     /updatepayment/:id         controllers.PaymentController.updatePayment(id: Long)
++nocsrf
 POST    /updatepaymenthandle       controllers.PaymentController.updatePaymentHandle
 
 GET     /payment/:id               controllers.PaymentController.getPayment(id: Long)
@@ -73,8 +84,10 @@ GET     /deletepayment/:id         controllers.PaymentController.deletePayment(i
 
 #product Questions
 GET     /addquestion                controllers.QuestionController.addQuestion
++nocsrf
 POST    /addquestionhandle           controllers.QuestionController.addQuestionHandle
 GET     /updatequestion/:id          controllers.QuestionController.updateQuestion(id: Int)
++nocsrf
 POST    /updatequestionhandle        controllers.QuestionController.updateQuestionHandle
 
 GET     /questions                   controllers.QuestionController.getQuestions
@@ -85,8 +98,10 @@ GET     /deletequestion/:id          controllers.QuestionController.deleteQuesti
 #
 #discount
 GET     /adddiscount/:product_id   controllers.DiscountController.addDiscount(product_id: Long)
++nocsrf
 POST    /adddiscounthandle         controllers.DiscountController.addDiscountHandle
 GET     /updatediscount/:id        controllers.DiscountController.updateDiscount(id: Long)
++nocsrf
 POST    /updatediscounthandle      controllers.DiscountController.updateDiscountHandle
 
 GET     /discounts                 controllers.DiscountController.getDiscounts
@@ -96,8 +111,10 @@ GET     /deletediscount/:id        controllers.DiscountController.deleteDiscount
 
 #delivery
 GET     /adddelivery                controllers.DeliveryController.addDelivery
++nocsrf
 POST    /adddeliveryhandle          controllers.DeliveryController.addDeliveryHandle
 GET     /updatedelivery/:id         controllers.DeliveryController.updateDelivery(id: Long)
++nocsrf
 POST    /updatedeliveryhandle       controllers.DeliveryController.updateDeliveryHandle
 
 GET     /deliverys                  controllers.DeliveryController.getDeliverys
@@ -108,8 +125,10 @@ GET     /deletedelivery/:id         controllers.DeliveryController.deleteDeliver
 
 #product Review
 GET     /addreview              controllers.ReviewController.addReview
++nocsrf
 POST    /addreviewhandle         controllers.ReviewController.addReviewHandle
 GET     /updatereview/:id        controllers.ReviewController.updateReview(id: Int)
++nocsrf
 POST    /updatereviewhandle      controllers.ReviewController.updateReviewHandle
 
 GET     /reviews                 controllers.ReviewController.getReviews

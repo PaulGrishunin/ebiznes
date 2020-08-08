@@ -9,7 +9,7 @@
 		extra-sbtVersion="0.13"
 		conf="test-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20200703142459"/>
+		date="20200806013350"/>
 	<dependencies>
 		<module organisation="com.typesafe.play" name="sbt-plugin">
 			<revision name="2.8.1" status="release" pubdate="20200131224131" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://playframework.com" extra-scalaVersion="2.10" extra-sbtVersion="0.13" extra-info.apiURL="https://www.playframework.com/documentation/2.8.1/api/scala/index.html" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="0">
@@ -31,11 +31,11 @@
 					<artifact name="sbt-js-engine" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="8541" time="0" location="/home/paul/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-js-engine/srcs/sbt-js-engine-1.2.3-sources.jar">
 						<origin-location is-local="false" location="https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-js-engine/scala_2.10/sbt_0.13/1.2.3/srcs/sbt-js-engine-sources.jar"/>
 					</artifact>
-					<artifact name="sbt-js-engine" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="445670" time="0" location="/home/paul/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-js-engine/docs/sbt-js-engine-1.2.3-javadoc.jar">
-						<origin-location is-local="false" location="https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-js-engine/scala_2.10/sbt_0.13/1.2.3/docs/sbt-js-engine-javadoc.jar"/>
-					</artifact>
 					<artifact name="sbt-js-engine" type="jar" ext="jar" status="no" details="" size="148474" time="0" location="/home/paul/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-js-engine/jars/sbt-js-engine-1.2.3.jar">
 						<origin-location is-local="false" location="https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-js-engine/scala_2.10/sbt_0.13/1.2.3/jars/sbt-js-engine.jar"/>
+					</artifact>
+					<artifact name="sbt-js-engine" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="445670" time="0" location="/home/paul/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-js-engine/docs/sbt-js-engine-1.2.3-javadoc.jar">
+						<origin-location is-local="false" location="https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-js-engine/scala_2.10/sbt_0.13/1.2.3/docs/sbt-js-engine-javadoc.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
@@ -153,14 +153,14 @@
 				<caller organisation="com.typesafe.sbt" name="sbt-js-engine" conf="compile" rev="1.4.4" rev-constraint-default="1.4.4" rev-constraint-dynamic="1.4.4" callerrev="1.2.3" extra-scalaVersion="2.10" extra-sbtVersion="0.13"/>
 				<caller organisation="com.typesafe.play" name="sbt-plugin" conf="compile" rev="1.4.4" rev-constraint-default="1.4.4" rev-constraint-dynamic="1.4.4" callerrev="2.8.1" extra-scalaVersion="2.10" extra-sbtVersion="0.13"/>
 				<artifacts>
+					<artifact name="sbt-web" type="jar" ext="jar" status="no" details="" size="316704" time="0" location="/home/paul/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-web/jars/sbt-web-1.4.4.jar">
+						<origin-location is-local="false" location="https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-web/scala_2.10/sbt_0.13/1.4.4/jars/sbt-web.jar"/>
+					</artifact>
 					<artifact name="sbt-web" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="486716" time="0" location="/home/paul/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-web/docs/sbt-web-1.4.4-javadoc.jar">
 						<origin-location is-local="false" location="https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-web/scala_2.10/sbt_0.13/1.4.4/docs/sbt-web-javadoc.jar"/>
 					</artifact>
 					<artifact name="sbt-web" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="20256" time="0" location="/home/paul/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-web/srcs/sbt-web-1.4.4-sources.jar">
 						<origin-location is-local="false" location="https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-web/scala_2.10/sbt_0.13/1.4.4/srcs/sbt-web-sources.jar"/>
-					</artifact>
-					<artifact name="sbt-web" type="jar" ext="jar" status="no" details="" size="316704" time="0" location="/home/paul/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-web/jars/sbt-web-1.4.4.jar">
-						<origin-location is-local="false" location="https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-web/scala_2.10/sbt_0.13/1.4.4/jars/sbt-web.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
