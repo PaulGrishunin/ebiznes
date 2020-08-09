@@ -105,6 +105,7 @@ GET     /updatediscount/:id        controllers.DiscountController.updateDiscount
 POST    /updatediscounthandle      controllers.DiscountController.updateDiscountHandle
 
 GET     /discounts                 controllers.DiscountController.getDiscounts
+GET     /discountpr/:id            controllers.DiscountController.getDiscountpr(id: Long)
 GET     /discount/:id              controllers.DiscountController.getDiscount(id: Long)
 GET     /deletediscount/:id        controllers.DiscountController.deleteDiscount(id: Long)
 
