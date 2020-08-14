@@ -18,7 +18,7 @@ class DeliveryController @Inject()(deliveryRepo: DeliveryRepository, orderRepo: 
 
   val deliveryForm: Form[CreateDeliveryForm] = Form {
     mapping(
-      "order_id" -> longNumber,
+      "order" -> longNumber,
       "adress" -> nonEmptyText,
     )(CreateDeliveryForm.apply)(CreateDeliveryForm.unapply)
   }
@@ -26,7 +26,7 @@ class DeliveryController @Inject()(deliveryRepo: DeliveryRepository, orderRepo: 
   val updateDeliveryForm: Form[UpdateDeliveryForm] = Form {
     mapping(
            "id" -> longNumber,
-      "order_id" -> longNumber,
+      "order" -> longNumber,
       "address" -> nonEmptyText,
     )(UpdateDeliveryForm.apply)(UpdateDeliveryForm.unapply)
   }
@@ -36,10 +36,10 @@ class DeliveryController @Inject()(deliveryRepo: DeliveryRepository, orderRepo: 
   }
 
   def addDeliveryHandle = Action.async { implicit request =>
-    val order_id = request.body.asJson.get("order_id").as[Long]
+    val order = request.body.asJson.get("order").as[Long]
     val address = request.body.asJson.get("address").as[String]
 
-    deliveryRepo.create(order_id, address).map { delivery =>
+    deliveryRepo.create(order, address).map { delivery =>
       Ok(Json.toJson(delivery))
     }
   }
@@ -50,11 +50,11 @@ class DeliveryController @Inject()(deliveryRepo: DeliveryRepository, orderRepo: 
   }
   def updateDeliveryHandle = Action.async { implicit request =>
     val id = request.body.asJson.get("id").as[Long]
-    val order_id = request.body.asJson.get("order_id").as[Long]
+    val order = request.body.asJson.get("order").as[Long]
     val address = request.body.asJson.get("address").as[String]
 
-    deliveryRepo.update(id, Delivery(id, order_id, address)).map { delivery =>
-      Ok(Json.toJson(Delivery(id, order_id, address)))
+    deliveryRepo.update(id, Delivery(id, order, address)).map { delivery =>
+      Ok(Json.toJson(Delivery(id, order, address)))
     }
   }
 
@@ -80,5 +80,5 @@ class DeliveryController @Inject()(deliveryRepo: DeliveryRepository, orderRepo: 
 
 }
 
-case class CreateDeliveryForm(order_id: Long, address: String)
-case class UpdateDeliveryForm(id: Long, order_id: Long, address: String)
+case class CreateDeliveryForm(order: Long, address: String)
+case class UpdateDeliveryForm(id: Long, order: Long, address: String)

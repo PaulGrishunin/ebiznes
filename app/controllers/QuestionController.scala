@@ -15,8 +15,8 @@ class QuestionController @Inject()(userRepo: UserRepository, productRepo: Produc
   
   val questionForm: Form[CreateQuestionForm] = Form {
     mapping(
-      "user_id" -> longNumber,
-      "product_id" -> longNumber,
+      "user" -> longNumber,
+      "product" -> longNumber,
       "content" -> nonEmptyText,
       "answer" -> nonEmptyText,
     )(CreateQuestionForm.apply)(CreateQuestionForm.unapply)
@@ -25,8 +25,8 @@ class QuestionController @Inject()(userRepo: UserRepository, productRepo: Produc
   val updateQuestionForm: Form[UpdateQuestionForm] = Form {
     mapping(
       "id" -> number,
-      "user_id" -> longNumber,
-      "product_id" -> longNumber,
+      "user" -> longNumber,
+      "product" -> longNumber,
       "content" -> nonEmptyText,
       "answer" -> nonEmptyText,
     )(UpdateQuestionForm.apply)(UpdateQuestionForm.unapply)
@@ -37,12 +37,12 @@ class QuestionController @Inject()(userRepo: UserRepository, productRepo: Produc
   }
 
   def addQuestionHandle = Action.async { implicit request =>
-    val user_id = request.body.asJson.get("user_id").as[Long]
-    val product_id = request.body.asJson.get("product_id").as[Long]
+    val user = request.body.asJson.get("user").as[Long]
+    val product = request.body.asJson.get("product").as[Long]
     val content = request.body.asJson.get("content").as[String]
     val answer = request.body.asJson.get("answer").as[String]
 
-    questRepo.create(user_id, product_id, content, answer).map { question =>
+    questRepo.create(user, product, content, answer).map { question =>
       Ok(Json.toJson(question))
     }
   }
@@ -54,13 +54,13 @@ class QuestionController @Inject()(userRepo: UserRepository, productRepo: Produc
 
   def updateQuestionHandle = Action.async { implicit request =>
     val id = request.body.asJson.get("id").as[Int]
-    val user_id = request.body.asJson.get("user_id").as[Long]
-    val product_id = request.body.asJson.get("product_id").as[Long]
+    val user = request.body.asJson.get("user").as[Long]
+    val product = request.body.asJson.get("product").as[Long]
     val content = request.body.asJson.get("content").as[String]
     val answer = request.body.asJson.get("answer").as[String]
 
-    questRepo.update(id, Question(id, user_id, product_id, content, answer)).map { question =>
-      Ok(Json.toJson(Question(id, user_id, product_id, content, answer)))
+    questRepo.update(id, Question(id, user, product, content, answer)).map { question =>
+      Ok(Json.toJson(Question(id, user, product, content, answer)))
     }
   }
 
@@ -74,8 +74,8 @@ class QuestionController @Inject()(userRepo: UserRepository, productRepo: Produc
     que.map( questions => Ok(Json.toJson(questions)))
   }
 
-  def getQuestionProd(product_id: Long): Action[AnyContent] = Action.async { implicit request =>
-    val questprod = questRepo.getByProduct_Id(product_id)
+  def getQuestionProd(product: Long): Action[AnyContent] = Action.async { implicit request =>
+    val questprod = questRepo.getByProduct_Id(product)
     questprod.map( question => Ok(Json.toJson(question)))
   }
 
@@ -86,5 +86,5 @@ class QuestionController @Inject()(userRepo: UserRepository, productRepo: Produc
 
 }
 
-case class CreateQuestionForm( user_id: Long, product_id: Long, content: String, answer: String)
-case class UpdateQuestionForm(id: Int, user_id: Long, product_id: Long, content: String, answer: String)
+case class CreateQuestionForm( user: Long, product: Long, content: String, answer: String)
+case class UpdateQuestionForm(id: Int, user: Long, product: Long, content: String, answer: String)

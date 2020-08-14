@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Table} from "reactstrap";
 
 class Categories extends Component {
 
@@ -27,12 +28,13 @@ class Categories extends Component {
             let categories = data.map((cat) => {
                 let link = "/category/" + cat.id;
                 let linkid = "listbutton";
-                if(this.props.location.pathname == link) linkid = "listbuttonSelected"
+                if(this.props.location.pathname === link) linkid = "listbuttonSelected"
                 return (
                     <div key={cat.id}>
                         <div className="name"><a id={linkid} href={link}>{cat.name}</a></div>
                     </div>
                 )
+
             })
             this.setState({categories: categories})
         })
@@ -40,9 +42,27 @@ class Categories extends Component {
 
     render() {
         return (
-            <div className="categories">
-                {this.state.categories}
-            </div>
+                <div style={{display: 'flex',  justifyContent:'center', alignItems:'top', height: '100vh', marginLeft: '10vh', marginTop: '20px', marginRight: '10vh'}}>
+                    <Table>
+                        <thead>
+                        <tr>
+                            <th>CATEGORIES:</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th><div className="categories">
+                                {this.state.categories}
+                            </div>
+                            </th>
+                        </tr>
+
+
+                        </tbody>
+                    </Table>
+                </div>
+
+
         )
     }
 }

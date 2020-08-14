@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Table} from "reactstrap";
 
 class Products extends Component {
 
@@ -10,7 +11,7 @@ class Products extends Component {
     }
 
     componentDidMount() {
-        var url = "http://localhost:9000/products/" + this.props.match.params.cat
+        var url = "http://localhost:9000/products"
 
         fetch(url, {
             mode: 'cors',
@@ -25,7 +26,7 @@ class Products extends Component {
                 return results.json();
             }).then(data => {
             let products = data.map((prod) => {
-                var url1 = "http://localhost:9000/promotionpr/" + prod.id
+                var url1 = "http://localhost:9000/discountpr/" + prod.id
                 fetch(url1, {
                     mode: 'cors',
                     headers:{

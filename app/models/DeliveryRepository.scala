@@ -16,20 +16,20 @@ class DeliveryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   class DeliveryTable(tag: Tag) extends Table[Delivery](tag, "delivery") {
 
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-    def order_id = column[Long]("order_id")
+    def order = column[Long]("order")
     def address = column[String]("address")
 
-    def * = (id, order_id, address) <> ((Delivery.apply _).tupled, Delivery.unapply)
+    def * = (id, order, address) <> ((Delivery.apply _).tupled, Delivery.unapply)
 
   }
 
   val delivery = TableQuery[DeliveryTable]
 
-  def create(order_id: Long, address: String): Future[Delivery] = db.run {
-    (delivery.map(d => (d.order_id, d.address))
+  def create(order: Long, address: String): Future[Delivery] = db.run {
+    (delivery.map(d => (d.order, d.address))
       returning delivery.map(_.id)
-      into {case ((order_id, address), id) => Delivery(id, order_id, address)}
-    ) += (order_id, address)
+      into {case ((order, address), id) => Delivery(id, order, address)}
+    ) += (order, address)
   }
 
   def list(): Future[Seq[Delivery]] = db.run {
@@ -43,8 +43,8 @@ class DeliveryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   def getByIdOption(id: Long): Future[Option[Delivery]] = db.run {
     delivery.filter(_.id === id).result.headOption
   }
-  def getByOrderIdOption(order_id: Long): Future[Option[Delivery]] = db.run {
-    delivery.filter(_.order_id === order_id).result.headOption
+  def getByOrderIdOption(order: Long): Future[Option[Delivery]] = db.run {
+    delivery.filter(_.order === order).result.headOption
   }
 
 

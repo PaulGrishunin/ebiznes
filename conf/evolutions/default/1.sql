@@ -24,65 +24,65 @@ CREATE TABLE "user" (
 
 CREATE TABLE "order" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
- "user_id" INTEGER NOT NULL,
- "product_id" INTEGER NOT NULL,
+ "user" INTEGER NOT NULL,
+ "product" INTEGER NOT NULL,
  "quantity" INT NOT NULL,
  "price" DOUBLE NOT NULL,
  "date" VARCHAR NOT NULL,
  "completed" BIT NOT NULL,
- FOREIGN KEY(user_id) references user(id),
- FOREIGN KEY(product_id) references product(id)
+ FOREIGN KEY(user) references user(id),
+ FOREIGN KEY(product) references product(id)
 );
 
 CREATE TABLE "basket" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
- "user_id" INTEGER NOT NULL,
- "product_id" INTEGER NOT NULL,
+ "user" INTEGER NOT NULL,
+ "product" INTEGER NOT NULL,
  "quantity" INT NOT NULL,
- FOREIGN KEY(user_id) references user(id),
- FOREIGN KEY(product_id) references product(id)
+ FOREIGN KEY(user) references user(id),
+ FOREIGN KEY(product) references product(id)
 );
 
 CREATE TABLE "payment" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
- "order_id" VARCHAR NOT NULL,
+ "order" VARCHAR NOT NULL,
  "date" VARCHAR NOT NULL,
- FOREIGN KEY(order_id) references "order"(id)
+ FOREIGN KEY(order) references "order"(id)
 );
 
 CREATE TABLE "review" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
- "product_id" INTEGER NOT NULL,
- "user_id" INTEGER NOT NULL,
+ "product" INTEGER NOT NULL,
+ "user" INTEGER NOT NULL,
  "rate" TINYINT NOT NULL,
  "text" TEXT NOT NULL,
- FOREIGN KEY(user_id) references user(id),
- FOREIGN KEY(product_id) references product(id)
+ FOREIGN KEY(user) references user(id),
+ FOREIGN KEY(product) references product(id)
 );
 
 CREATE TABLE "discount" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
- "product_id" INTEGER NOT NULL,
+ "product" INTEGER NOT NULL,
  "amount" INTEGER NOT NULL,
  "description" TEXT NOT NULL,
- FOREIGN KEY(product_id) references product(id)
+ FOREIGN KEY(product) references product(id)
 );
 
 CREATE TABLE "delivery" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
- "order_id" INTEGER NOT NULL,
+ "order" INTEGER NOT NULL,
  "address" TEXT NOT NULL,
- FOREIGN KEY(order_id) references "order"(id)
+ FOREIGN KEY(order) references "order"(id)
 );
 
 CREATE TABLE "question" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
- "product_id" INTEGER NOT NULL,
- "user_id" INTEGER NOT NULL,
+ "product" INTEGER NOT NULL,
+ "user" INTEGER NOT NULL,
  "content" TEXT NOT NULL,
  "answer" TEXT NULL,
- FOREIGN KEY(user_id) references user(id),
- FOREIGN KEY(product_id) references product(id)
+ FOREIGN KEY(user) references user(id),
+ FOREIGN KEY(product) references product(id)
 );
 
 # --- !Downs

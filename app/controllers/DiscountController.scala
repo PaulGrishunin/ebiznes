@@ -15,7 +15,7 @@ class DiscountController @Inject()(productsRepo: ProductRepository, discoRepo: D
 
   val discountForm: Form[CreateDiscountForm] = Form {
     mapping(
-      "product_id" -> longNumber,
+      "product" -> longNumber,
       "amount" -> number,
       "description" -> nonEmptyText,
     )(CreateDiscountForm.apply)(CreateDiscountForm.unapply)
@@ -24,23 +24,23 @@ class DiscountController @Inject()(productsRepo: ProductRepository, discoRepo: D
   val updatediscountForm: Form[UpdateDiscountForm] = Form {
     mapping(
       "id" -> longNumber,
-      "product_id" -> longNumber,
+      "product" -> longNumber,
       "amount" -> number,
       "description" -> nonEmptyText,
     )(UpdateDiscountForm.apply)(UpdateDiscountForm.unapply)
   }
 
-  def addDiscount(product_id: Long) = Action {
+  def addDiscount(product: Long) = Action {
     val dis = discoRepo.list()
     //dis.map( discounts => Ok(views.html.discounts(discounts)))
     Ok("Your new application is ready.")
   }
   def addDiscountHandle = Action.async { implicit request =>
-    val product_id = request.body.asJson.get("product_id").as[Long]
+    val product = request.body.asJson.get("product").as[Long]
     val amount = request.body.asJson.get("amount").as[Int]
     val description = request.body.asJson.get("description").as[String]
 
-    discoRepo.create(product_id, amount, description).map { discount =>
+    discoRepo.create(product, amount, description).map { discount =>
       Ok(Json.toJson(discount))
     }
   }
@@ -52,12 +52,12 @@ class DiscountController @Inject()(productsRepo: ProductRepository, discoRepo: D
 
   def updateDiscountHandle = Action.async { implicit request =>
     val id = request.body.asJson.get("id").as[Int]
-    val product_id = request.body.asJson.get("product_id").as[Long]
+    val product = request.body.asJson.get("product").as[Long]
     val amount = request.body.asJson.get("amount").as[Int]
     val description = request.body.asJson.get("description").as[String]
 
-    discoRepo.update(id, Discount(id, product_id, amount, description)).map { discount =>
-      Ok(Json.toJson(Discount(id, product_id, amount, description)))
+    discoRepo.update(id, Discount(id, product, amount, description)).map { discount =>
+      Ok(Json.toJson(Discount(id, product, amount, description)))
     }
   }
 
@@ -83,5 +83,5 @@ class DiscountController @Inject()(productsRepo: ProductRepository, discoRepo: D
 
 }
 
-case class CreateDiscountForm( product_id: Long, amount: Int, description: String)
-case class UpdateDiscountForm(id: Long, product_id: Long, amount: Int, description: String)
+case class CreateDiscountForm( product: Long, amount: Int, description: String)
+case class UpdateDiscountForm(id: Long, product: Long, amount: Int, description: String)

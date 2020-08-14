@@ -20,7 +20,7 @@ class PaymentController @Inject()( paymentRepo: PaymentRepository, orderRepo: Or
 
   val paymentForm: Form[CreatePaymentForm] = Form {
     mapping(
-      "order_id" -> longNumber,
+      "order" -> longNumber,
       "date" -> nonEmptyText,
     )(CreatePaymentForm.apply)(CreatePaymentForm.unapply)
   }
@@ -28,7 +28,7 @@ class PaymentController @Inject()( paymentRepo: PaymentRepository, orderRepo: Or
   val updatePaymentForm: Form[UpdatePaymentForm] = Form {
     mapping(
       "id" -> longNumber,
-      "order_id" -> longNumber,
+      "order" -> longNumber,
       "date" -> nonEmptyText,
     )(UpdatePaymentForm.apply)(UpdatePaymentForm.unapply)
   }
@@ -39,10 +39,10 @@ class PaymentController @Inject()( paymentRepo: PaymentRepository, orderRepo: Or
   }
 
   def addPaymentHandle = Action.async { implicit request =>
-    val order_id = request.body.asJson.get("order_id").as[Long]
+    val order = request.body.asJson.get("order").as[Long]
     val date = request.body.asJson.get("date").as[String]
 
-    paymentRepo.create(order_id, date).map { payment =>
+    paymentRepo.create(order, date).map { payment =>
       Ok(Json.toJson(payment))
     }
   }
@@ -52,11 +52,11 @@ class PaymentController @Inject()( paymentRepo: PaymentRepository, orderRepo: Or
   }
   def updatePaymentHandle = Action.async { implicit request =>
     val id = request.body.asJson.get("id").as[Long]
-    val order_id = request.body.asJson.get("order_id").as[Long]
+    val order = request.body.asJson.get("order").as[Long]
     val date = request.body.asJson.get("date").as[String]
 
-    paymentRepo.update(id,Payment(id, order_id, date)).map { payment =>
-      Ok(Json.toJson(Payment(id, order_id, date)))
+    paymentRepo.update(id,Payment(id, order, date)).map { payment =>
+      Ok(Json.toJson(Payment(id, order, date)))
     }
   }
 
@@ -82,5 +82,5 @@ class PaymentController @Inject()( paymentRepo: PaymentRepository, orderRepo: Or
 
 }
 
-case class CreatePaymentForm( order_id: Long, date: String)
-case class UpdatePaymentForm(id: Long, order_id: Long ,date: String)
+case class CreatePaymentForm( order: Long, date: String)
+case class UpdatePaymentForm(id: Long, order: Long ,date: String)

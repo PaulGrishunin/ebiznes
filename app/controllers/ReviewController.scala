@@ -15,8 +15,8 @@ class ReviewController @Inject()(userRepo: UserRepository, reviewRepo: ReviewRep
   
   val reviewForm: Form[CreateReviewForm] = Form {
     mapping(
-      "product_id" -> longNumber,
-      "user_id" -> longNumber,
+      "product" -> longNumber,
+      "user" -> longNumber,
            "rate" -> byteNumber,
       "text" -> nonEmptyText,
     )(CreateReviewForm.apply)(CreateReviewForm.unapply)
@@ -25,8 +25,8 @@ class ReviewController @Inject()(userRepo: UserRepository, reviewRepo: ReviewRep
   val updateReviewForm: Form[UpdateReviewForm] = Form {
     mapping(
       "id" -> longNumber,
-      "product_id" -> longNumber,
-      "user_id" -> longNumber,
+      "product" -> longNumber,
+      "user" -> longNumber,
       "rate" -> byteNumber,
       "text" -> nonEmptyText,
     )(UpdateReviewForm.apply)(UpdateReviewForm.unapply)
@@ -37,12 +37,12 @@ class ReviewController @Inject()(userRepo: UserRepository, reviewRepo: ReviewRep
   }
 
   def addReviewHandle = Action.async { implicit request =>
-    val product_id = request.body.asJson.get("product_id").as[Long]
-    val user_id = request.body.asJson.get("user_id").as[Long]
+    val product = request.body.asJson.get("product").as[Long]
+    val user = request.body.asJson.get("user").as[Long]
     val rate = request.body.asJson.get("rate").as[Byte]
     val text = request.body.asJson.get("text").as[String]
 
-    reviewRepo.create(product_id, user_id, rate, text).map { review =>
+    reviewRepo.create(product, user, rate, text).map { review =>
       Ok(Json.toJson(review))
     }
   }
@@ -53,13 +53,13 @@ class ReviewController @Inject()(userRepo: UserRepository, reviewRepo: ReviewRep
   }
   def updateReviewHandle = Action.async { implicit request =>
     val id = request.body.asJson.get("id").as[Int]
-    val product_id = request.body.asJson.get("product_id").as[Long]
-    val user_id = request.body.asJson.get("user_id").as[Long]
+    val product = request.body.asJson.get("product").as[Long]
+    val user = request.body.asJson.get("user").as[Long]
     val rate = request.body.asJson.get("rate").as[Byte]
     val text = request.body.asJson.get("text").as[String]
 
-    reviewRepo.update(id, Review(id, product_id, user_id, rate, text)).map { review =>
-      Ok(Json.toJson(Review(id, product_id, user_id, rate, text)))
+    reviewRepo.update(id, Review(id, product, user, rate, text)).map { review =>
+      Ok(Json.toJson(Review(id, product, user, rate, text)))
     }
   }
 
@@ -79,5 +79,5 @@ class ReviewController @Inject()(userRepo: UserRepository, reviewRepo: ReviewRep
 
 }
 
-case class CreateReviewForm( product_id: Long, user_id: Long, rate: Byte, text: String)
-case class UpdateReviewForm(id: Long, product_id: Long,  user_id: Long, rate: Byte, text: String)
+case class CreateReviewForm( product: Long, user: Long, rate: Byte, text: String)
+case class UpdateReviewForm(id: Long, product: Long,  user: Long, rate: Byte, text: String)

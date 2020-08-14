@@ -15,20 +15,20 @@ class QuestionRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
 
   class QuestionTable(tag: Tag) extends Table[Question](tag, "question") {
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-    def product_id = column[Long]("productid")
-    def user_id = column[Long]("userid")
+    def product = column[Long]("product")
+    def user = column[Long]("user")
     def content = column[String]("content")
     def answer = column[String]("answer")
-    def * = (id, product_id, user_id, content, answer) <> ((Question.apply _).tupled, Question.unapply)
+    def * = (id, product, user, content, answer) <> ((Question.apply _).tupled, Question.unapply)
   }
 
   val question= TableQuery[QuestionTable]
 
-  def create(product_id: Long, user_id: Long, content: String, answer: String): Future[Question] = db.run {
-    (question.map(q => (q.product_id, q.user_id, q.content, q.answer))
+  def create(product: Long, user: Long, content: String, answer: String): Future[Question] = db.run {
+    (question.map(q => (q.product, q.user, q.content, q.answer))
       returning question.map(_.id)
-      into {case ((product_id, user_id, content, answer), id) => Question(id, product_id, user_id, content, answer)}
-      ) += (product_id, user_id, content, answer)
+      into {case ((product, user, content, answer), id) => Question(id, product, user, content, answer)}
+      ) += (product, user, content, answer)
   }
 
   def list(): Future[Seq[Question]] = db.run {
@@ -43,8 +43,8 @@ class QuestionRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
     question.filter(_.id === id).result.headOption
   }
 
-  def getByProduct_Id(product_id: Long): Future[Question] = db.run {
-    question.filter(_.product_id === product_id).result.head
+  def getByProduct_Id(product: Long): Future[Question] = db.run {
+    question.filter(_.product === product).result.head
   }
 
   def delete(id: Long): Future[Unit] = db.run(question.filter(_.id === id).delete).map(_ => ())

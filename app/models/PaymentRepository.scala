@@ -15,19 +15,19 @@ class PaymentRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
 
   class PaymentTable(tag: Tag) extends Table[Payment](tag, "payment") {
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-    def order_id = column[Long]("order_id")
+    def order = column[Long]("order")
     def date = column[String]("date")
-    def * = (id, order_id, date) <> ((Payment.apply _).tupled, Payment.unapply)
+    def * = (id, order, date) <> ((Payment.apply _).tupled, Payment.unapply)
 
   }
 
   val payment = TableQuery[PaymentTable]
 
-  def create(order_id: Long, date: String): Future[Payment] = db.run {
-    (payment.map(p => (p.order_id, p.date))
+  def create(order: Long, date: String): Future[Payment] = db.run {
+    (payment.map(p => (p.order, p.date))
       returning payment.map(_.id)
-      into {case ((order_id, date), id) => Payment(id, order_id, date)}
-    ) += ( order_id, date)
+      into {case ((order, date), id) => Payment(id, order, date)}
+    ) += ( order, date)
   }
 
   def list(): Future[Seq[Payment]] = db.run {
@@ -41,8 +41,8 @@ class PaymentRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
   def getByIdOption(id: Long): Future[Option[Payment]] = db.run {
     payment.filter(_.id === id).result.headOption
   }
-  def getByOrdOption(order_id: Long): Future[Payment] = db.run {
-    payment.filter(_.order_id === order_id).result.head
+  def getByOrdOption(order: Long): Future[Payment] = db.run {
+    payment.filter(_.order === order).result.head
   }
 
   def delete(id: Long): Future[Unit] = db.run(payment.filter(_.id === id).delete).map(_ => ())

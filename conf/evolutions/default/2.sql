@@ -55,15 +55,17 @@ INSERT INTO "user"("login", "password", "email", "admin") VALUES("paul_gri", "qw
 -- INSERT INTO "payment"("order_id", "date") VALUES(1, "05.05.2020");
 -- INSERT INTO "payment"("order_id", "date") VALUES(2, "10.05.2020");
 
-INSERT INTO "review"("product_id", "user_id", "rate", "text") VALUES(1,1,5, "Great product! This is the future!");
-INSERT INTO "review"("product_id", "user_id", "rate", "text") VALUES(2,1,4, "Great brand! Great product! But I would like more distance on one charge.");
+INSERT INTO "review"("product", "user", "rate", "text") VALUES(1,1,5, "Great product! This is the future!");
+INSERT INTO "review"("product", "user", "rate", "text") VALUES(2,1,4, "Great brand! Great product! But I would like more distance on one charge.");
 
-INSERT INTO "discount"("product_id", "amount", "discription") VALUES(1, 5, "Only until the end of summer!");
+INSERT INTO "discount"("product", "amount", "description") VALUES(1,5, "Only until the end of summer!");
+INSERT INTO "discount"("product", "amount", "description") VALUES(2,50, "Two for the price of one!");
+
 
 -- INSERT INTO "delivery"("order_id", "address") VALUES("1",  "Krakow, Bydgoska, 19");
 -- INSERT INTO "delivery"("order_id", "address") VALUES("2",  "Krakow, Profesora Lojasiewicza, 11");
 
-INSERT INTO "question"("product_id", "user_id", "content", "answer") VALUES(2,2, "Are there any cars in white?", "Yes, there is a color white diamond. Waiting for you!");
+INSERT INTO "question"("product", "user", "content", "answer") VALUES(2,2, "Are there any cars in white?", "Yes, there is a color white diamond. Waiting for you!");
 
 
 # --- !Downs
@@ -76,6 +78,8 @@ DELETE FROM "user";
 delete from sqlite_sequence where name='user';
 DELETE FROM "review";
 delete from sqlite_sequence where name='review';
+DELETE FROM "discount";
+delete from sqlite_sequence where name='discount';
 
 
 -- DELETE FROM "category" WHERE name="Tesla";

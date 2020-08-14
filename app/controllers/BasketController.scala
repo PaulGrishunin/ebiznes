@@ -21,8 +21,8 @@ class BasketController @Inject()(basketRepo: BasketRepository, productRepo: Prod
 
   val basketForm: Form[CreateBasketForm] = Form {
     mapping(
-      "user_id" -> longNumber,
-      "product_id" -> longNumber,
+      "user" -> longNumber,
+      "product" -> longNumber,
       "quantity" -> number,
     )(CreateBasketForm.apply)(CreateBasketForm.unapply)
   }
@@ -30,8 +30,8 @@ class BasketController @Inject()(basketRepo: BasketRepository, productRepo: Prod
   val updateBasketForm: Form[UpdateBasketForm] = Form {
     mapping(
            "id" -> longNumber,
-      "product_id" -> longNumber,
-      "user_id" -> longNumber,
+      "product" -> longNumber,
+      "user" -> longNumber,
       "quantity" -> number,
     )(UpdateBasketForm.apply)(UpdateBasketForm.unapply)
   }
@@ -47,12 +47,12 @@ class BasketController @Inject()(basketRepo: BasketRepository, productRepo: Prod
 
   def updateBasketHandle = Action.async { implicit request =>
     val id = request.body.asJson.get("id").as[Long]
-    val user_id = request.body.asJson.get("user_id").as[Long]
-    val product_id = request.body.asJson.get("product_id").as[Long]
+    val user = request.body.asJson.get("user").as[Long]
+    val product = request.body.asJson.get("product").as[Long]
     val quantity = request.body.asJson.get("quantity").as[Int]
 
-    basketRepo.update(id, Basket(id, user_id, product_id, quantity)).map { basket =>
-      Ok(Json.toJson(Basket(id, user_id, product_id, quantity)))
+    basketRepo.update(id, Basket(id, user, product, quantity)).map { basket =>
+      Ok(Json.toJson(Basket(id, user, product, quantity)))
     }
   }
   def deleteFromBasket(id: Long) = Action {
@@ -62,5 +62,5 @@ class BasketController @Inject()(basketRepo: BasketRepository, productRepo: Prod
 
 }
 
-case class CreateBasketForm(user_id: Long, product_id: Long, quantity: Int)
-case class UpdateBasketForm(id: Long, user_id: Long, product_id: Long, quantity: Int)
+case class CreateBasketForm(user: Long, product: Long, quantity: Int)
+case class UpdateBasketForm(id: Long, user: Long, product: Long, quantity: Int)

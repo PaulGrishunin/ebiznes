@@ -15,19 +15,19 @@ class BasketRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
 
   class BasketTable(tag: Tag) extends Table[Basket](tag, "basket") {
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-    def user_id = column[Long]("userid")
-    def product_id = column[Long]("productid")
+    def user = column[Long]("user")
+    def product = column[Long]("product")
     def quantity = column[Int]("quantity")
-    def * = (id, user_id, product_id, quantity) <> ((Basket.apply _).tupled, Basket.unapply)
+    def * = (id, user, product, quantity) <> ((Basket.apply _).tupled, Basket.unapply)
   }
 
   val basket = TableQuery[BasketTable]
 
-  def create(user_id: Long, product_id: Long, quantity: Int): Future[Basket] = db.run {
-    (basket.map(b => (b.user_id, b.product_id, b.quantity))
+  def create(user: Long, product: Long, quantity: Int): Future[Basket] = db.run {
+    (basket.map(b => (b.user, b.product, b.quantity))
       returning basket.map(_.id)
-      into {case ((user_id, product_id, quantity), id) => Basket(id, user_id, product_id, quantity)}
-      ) += (user_id, product_id, quantity)
+      into {case ((user, product, quantity), id) => Basket(id, user, product, quantity)}
+      ) += (user, product, quantity)
   }
 
   def list(): Future[Seq[Basket]] = db.run {
@@ -38,8 +38,8 @@ class BasketRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
     basket.filter(_.id === id).result.head
   }
 
-  def getByUser_Id(user_id: Long): Future[Basket] = db.run {
-    basket.filter(_.user_id === user_id).result.head
+  def getByUserId(user: Long): Future[Basket] = db.run {
+    basket.filter(_.user === user).result.head
   }
 
   def delete(id: Long): Future[Unit] = db.run(basket.filter(_.id === id).delete).map(_ => ())
