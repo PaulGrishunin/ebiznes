@@ -49,15 +49,15 @@ class BasketController @Inject()(basketRepo: BasketRepository, productRepo: Prod
 //    userRepo.getByProvider(provider, key).flatMap(elem => {
 //      elem match {
 //        case Some(user) => {
-//          cartRepo.create(user.id, product, count).map { cart =>
-//            Ok(Json.toJson(cart))
+//          basketRepo.create(user.id, product, quantity).map { basket =>
+//            Ok(Json.toJson(basket))
 //          }
 //        }
 //        case None => Future.successful(Ok(Json.toJson("{status: \"success\"}")))
 //      }
 //    })
 //  }
-
+//
   def updateBasket(id: Long): Action[AnyContent] = Action.async { implicit request =>
     val basket = basketRepo.list()
     basket.map( basket => Ok(Json.toJson(basket)))

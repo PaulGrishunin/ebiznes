@@ -13,7 +13,7 @@ class Basket extends Component {
         };
         this.displayConfirmation = this.displayConfirmation.bind(this);
         this.clearBasket = this.clearBasket.bind(this);
-        this.buyBasket = this.buyBasket.bind(this);
+        // this.buyBasket = this.buyBasket.bind(this);
     }
 
     displayConfirmation() {
@@ -21,7 +21,7 @@ class Basket extends Component {
             <div>
                 <div id="darken" className="darkbcg"/>
                 <div id="framefloating" className="loginFrame">
-                    <h1>Przetwarzanie transakcji</h1>
+                    <h1>Order Processing</h1>
                 </div>
             </div>
         this.setState({ confirmFrame: frame });
@@ -167,13 +167,13 @@ class Basket extends Component {
                             <tr>
                                 <td id="left">
                                     <h3>
-                                        <t/><t/><t/>Łączna kwota: {(this.state.basketPrice).toFixed(2)} zł
+                                        <t/><t/><t/>Total price: {(this.state.basketPrice).toFixed(2)} usd
                                     </h3>
                                 </td>
                                 <td id="right">
-                                    <a id="button" href="#" onClick={this.clearBasket}>Wyczyść koszyk</a>
+                                    <a id="button" href="#" onClick={this.clearBasket}>Erase basket</a>
                                     <t/><t/><t/>
-                                    <a id="button" href="#" onClick={this.buyBasket}>Kupuję</a>
+                                    <a id="button" href="#" onClick={this.buyBasket}>Buy</a>
                                 </td>
                             </tr>
                         </table>
@@ -186,7 +186,7 @@ class Basket extends Component {
                 <div className="basket">
                     <div id="frame">
                         <h3>
-                            <t/><t/><t/>Koszyk jest pusty
+                            <t/><t/><t/>Empty Basket
                         </h3>
                     </div>
                 </div>

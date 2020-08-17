@@ -61,13 +61,13 @@ class BasketItem extends Component {
                                         <td>
                                             <h3>
                                                 <a id="linkh2" href={lnkBackToProduct}>{product.name}</a>
-                                                {(product.price * (100 - this.state.discount) / 100).toFixed(2)} zł, <t/>
-                                                sztuk: {this.props.number}, <t/>
-                                                razem: {(this.props.number * product.price * (100 - this.state.discount) / 100).toFixed(2)} zł
+                                                {(product.price * (100 - this.state.discount) / 100).toFixed(2)} usd, <t/>
+                                                pcs: {this.props.number}, <t/>
+                                                total: {(this.props.number * product.price * (100 - this.state.discount) / 100).toFixed(2)} usd
                                             </h3>
                                         </td>
                                         <td id="right">
-                                            <a id="button" href="#" onClick={this.removeItem}>Usuń z koszyka</a>
+                                            <a id="button" href="#" onClick={this.removeItem}>Delete from basket</a>
                                         </td>
                                     </tr>
                                 </table>

@@ -68,7 +68,7 @@ class CustomLayout extends React.Component{
                 <Menu.Item
                     key="discounts"
                     style={{float: 'center', marginLeft: '2%'}}>
-                    <Link to="/products"><PercentageOutlined />Discounts</Link>
+                    <Link to="/"><PercentageOutlined />Discounts</Link>
                 </Menu.Item>
                 <Menu.Item
                     key="orders"
@@ -96,8 +96,9 @@ class CustomLayout extends React.Component{
     }
 
     renderMenu = () => {
-        if ( this.menuType === "authorized" ) return <this.authorizedMenu/>;
-        else return <this.nonAuthorizedMenu />;
+        // if ( this.menuType === "authorized" )
+            return <this.authorizedMenu/>;
+        // else return <this.nonAuthorizedMenu />;
     }
 
     render(){
