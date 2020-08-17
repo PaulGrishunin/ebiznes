@@ -54,7 +54,7 @@ class ProductRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
    */
   def create(name: String, description: String, category: Int, price: Double): Future[Product] = db.run {
     // We create a projection of just the name and age columns, since we're not inserting a value for the id column
-    (product.map(p => (p.name, p.description,p.category, p.price))
+    (product.map(p => (p.name, p.description, p.category, p.price))
       // Now define it to return the id, because we want to know what id was generated for the person
       returning product.map(_.id)
       // And we define a transformation for the returned value, which combines our original parameters with the

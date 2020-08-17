@@ -31,7 +31,7 @@ class DiscountController @Inject()(productsRepo: ProductRepository, discoRepo: D
   }
 
   def addDiscount(product: Long) = Action {
-    val dis = discoRepo.list()
+//    val dis = discoRepo.list()
     //dis.map( discounts => Ok(views.html.discounts(discounts)))
     Ok("Your new application is ready.")
   }

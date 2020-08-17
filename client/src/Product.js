@@ -15,65 +15,65 @@ class Product extends Component {
             addToCartFrame: [],
         };
         this.updateNumber = this.updateNumber.bind(this);
-        this.addToCart = this.addToCart.bind(this);
-        this.hideAddToCartFrame = this.hideAddToCartFrame.bind(this);
-        this.showAddToCartFrame = this.showAddToCartFrame.bind(this);
+        this.addToBasket = this.addToBasket.bind(this);
+        this.hideAddToBasketFrame = this.hideAddToBasketFrame.bind(this);
+        this.showAddToBasketFrame = this.showAddToBasketFrame.bind(this);
     }
 
     updateNumber() {
         var finalPrice = document.getElementsByName("number")[0].value * (this.state.price * (100 - this.state.discount) / 100)
         finalPrice = finalPrice.toFixed(2)
-        document.getElementById('AddCartPrice').innerHTML = "Cena: " + finalPrice + " zł"
+        document.getElementById('AddBasketPrice').innerHTML = "Price: " + finalPrice + " usd"
     }
 
-    addToCart() {
-        fetch('http://localhost:9000/addtocarthandle', {
-            method: 'POST',
-            body: JSON.stringify({"product":this.state.id,"count":parseInt(document.getElementsByName("number")[0].value)
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8'
-            },
-            credentials:"include"
-        })
-            .then(res => res.json())
-            .then(console.log)
-        this.hideAddToCartFrame()
-    }
+    // addToBasket() {
+    //     fetch('http://localhost:9000/addtobaskethandle', {
+    //         method: 'POST',
+    //         body: JSON.stringify({"product":this.state.id,"count":parseInt(document.getElementsByName("number")[0].value)
+    //         }),
+    //         headers: {
+    //             'Content-type': 'application/json; charset=UTF-8'
+    //         },
+    //         credentials:"include"
+    //     })
+    //         .then(res => res.json())
+    //         .then(console.log)
+    //     this.hideAddToCartFrame()
+    // }
 
-    hideAddToCartFrame() {
+    hideAddToBasketFrame() {
         document.getElementsByClassName("addToCartFrame")[0].setAttribute("id","framefloating-fadeout");
         document.getElementsByClassName("darkbcg")[0].setAttribute("id","darken-fadeout");
 
         setTimeout(() => {
-            this.setState({addToCartFrame: ""});
+            this.setState({addToBasketFrame: ""});
         }, 500)
     }
 
-    showAddToCartFrame() {
+    showAddToBasketFrame() {
         let frame =
             <div>
                 <div id="darken" className="darkbcg"/>
-                <div id="framefloating" className="addToCartFrame">
-                    <h1>Dodaj do koszyka</h1>
+                <div id="framefloating" className="addToBasketFrame">
+                    <h1>Add to Basket</h1>
                     <h2>{this.state.name}</h2>
                     <table id="fullWidth">
                         <tr>
                             <td id="left">
                                 <h2>
-                                    Podaj ilość:
+                                    Add the quantity:
                                     <input type="number" id="textbox" name="number" min="1" max="100" defaultValue="1" onChange={this.updateNumber}/>
                                 </h2>
                             </td>
                             <td id="right">
-                                <h2 id="AddCartPrice">Cena: {this.state.price * (100 - this.state.discount) / 100} zł</h2>
+                                <h2 id="AddBasketPrice">Price: {this.state.price * (100 - this.state.discount) / 100} usd</h2>
                             </td>
                         </tr>
                         <tr>
                             <td/>
                             <td id="right">
-                                <a id="button" href="#" onClick={this.addToCart}>Dodaj produkty</a>
-                                <a id="button" href="#" onClick={this.hideAddToCartFrame}>Anuluj</a>
+                                <a id="button" href="#" onClick={this.addToBasket}>Add products</a>
+                                <a id="button" href="#" onClick={this.hideAddToBasketFrame}>Cancel</a>
                             </td>
                         </tr>
                     </table>
@@ -132,12 +132,12 @@ class Product extends Component {
                                         </td>
                                         <td>
                                             <div id="productname">{prod.name}</div>
-                                            <div id="productprice">Cena: {priceDisp}</div>
+                                            <div id="productprice">Price: {priceDisp}</div>
                                         </td>
                                     </tr>
                                 </table>
                                 <div id="productbuttons">
-                                    <a id="button" href="#" onClick={this.showAddToCartFrame}>Dodaj do koszyka</a>
+                                    <a id="button" href="#" onClick={this.showAddToBasketFrame}>Add to Basket</a>
                                     {/*<a id="button" href="#opinions">Opinie o produkcie</a>*/}
                                 </div>
                                 <div>{prod.description}</div>

@@ -47,7 +47,7 @@ CREATE TABLE "payment" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
  "order" VARCHAR NOT NULL,
  "date" VARCHAR NOT NULL,
- FOREIGN KEY(order) references "order"(id)
+ FOREIGN KEY("order") references "order"(id)
 );
 
 CREATE TABLE "review" (
@@ -72,7 +72,7 @@ CREATE TABLE "delivery" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
  "order" INTEGER NOT NULL,
  "address" TEXT NOT NULL,
- FOREIGN KEY(order) references "order"(id)
+ FOREIGN KEY("order") references "order"(id)
 );
 
 CREATE TABLE "question" (

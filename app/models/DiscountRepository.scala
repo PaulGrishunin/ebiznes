@@ -17,7 +17,7 @@ class DiscountRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
 
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
     def product = column[Long]("product")
-    def amount = column[Int]("name")
+    def amount = column[Int]("amount")
     def description = column[String]("description")
 
     def * = (id, product, amount, description) <> ((Discount.apply _).tupled, Discount.unapply)

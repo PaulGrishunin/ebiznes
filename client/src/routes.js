@@ -24,7 +24,7 @@ const BaseRouter = () => (
           {/*<Route exact path="/" component={Reviews}/>*/}
           <Route path="/category/:cat" component={Products}/>
        <Route path="/products" component={Products}/>
-       {/*<Route path="/categories" component={Categories}/>*/}
+       <Route path="/categories" component={Categories}/>
           {/*<Route path="/user/:user" component={UserPage}/>*/}
           {/*<Route path="/user/:user" component={Orders}/>*/}
           <Route path="/product/:product" component={Product}/>

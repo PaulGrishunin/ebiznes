@@ -59,8 +59,9 @@ GET     /deleteorder/:id          controllers.OrderController.deleteOrder(id: Lo
 
 #basket
 GET     /addtobasket/:id         controllers.BasketController.addToBasket(id: Long)
-#POST   /addbaskethandle         controllers.BasketController.addBasketHandle
-GET     /updatebask/:id          controllers.BasketController.updateBasket(id: Long)
+#+nocsrf
+#POST   /addtobaskethandle         controllers.BasketController.addToBasketHandle
+GET     /updatebasket/:id          controllers.BasketController.updateBasket(id: Long)
 +nocsrf
 POST    /updatebaskethandle      controllers.BasketController.updateBasketHandle
 

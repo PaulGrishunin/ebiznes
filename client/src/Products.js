@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Products.css';
 import {Table} from "reactstrap";
 
 class Products extends Component {
@@ -41,26 +42,18 @@ class Products extends Component {
                             this.setState({ discount: pro.discount });
                         let link = "/product/" + prod.id;
                         let img = "/img/products/" + prod.id + ".png";
-                        let priceDisp = (prod.price).toFixed(2) + " zł"
+                        let priceDisp = (prod.price).toFixed(2) + " usd"
                         if(pro != null)
-                            priceDisp = [<b><del>{prod.price} zł</del><t/>
-                                PROMOCJA - {pro.discount}%<t/>
-                                {(prod.price * (100 - pro.discount) / 100).toFixed(2)} zł <t/></b>]
+                            priceDisp = [<b><del>{prod.price} usd</del><t/>
+                                Discount - {pro.discount}%<t/>
+                                {(prod.price * (100 - pro.discount) / 100).toFixed(2)} usd <t/></b>]
 
                         products.splice (prod.id,0,[
-                            <a id="clearunderline" href={link} key={prod.id}>
-                                <div id="framebutton">
-                                    <table>
-                                        <tr>
-                                            <td>
+                            <a className="clearunderline" href={link} key={prod.id}>
+                                <div className="framebutton">
                                                 <img src={img} width="256" height="256"/>
-                                            </td>
-                                            <td>
-                                                <div id="productname">{prod.name}</div>
-                                                <div id="productprice">Cena: {priceDisp}</div>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                                <div className="productname">{prod.name}</div>
+                                                <div className="productprice">Price: {priceDisp}</div>
                                 </div>
                             </a>
                         ])

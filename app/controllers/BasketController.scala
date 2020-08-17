@@ -40,6 +40,24 @@ class BasketController @Inject()(basketRepo: BasketRepository, productRepo: Prod
     Ok("Your new application is ready.")
   }
 
+//  def addToBasketHandle = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
+//    val product = request.body.asJson.get("product").as[Long]
+//    val quantity = request.body.asJson.get("quantity").as[Int]
+//
+//    val provider = request.identity.loginInfo.providerID
+//    val key = request.identity.loginInfo.providerKey
+//    userRepo.getByProvider(provider, key).flatMap(elem => {
+//      elem match {
+//        case Some(user) => {
+//          cartRepo.create(user.id, product, count).map { cart =>
+//            Ok(Json.toJson(cart))
+//          }
+//        }
+//        case None => Future.successful(Ok(Json.toJson("{status: \"success\"}")))
+//      }
+//    })
+//  }
+
   def updateBasket(id: Long): Action[AnyContent] = Action.async { implicit request =>
     val basket = basketRepo.list()
     basket.map( basket => Ok(Json.toJson(basket)))
