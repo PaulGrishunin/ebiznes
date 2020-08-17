@@ -107,7 +107,7 @@ class CustomLayout extends React.Component{
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%', background: '#ffffff' }}>
                 <div style={{color: "black", float: "left", width: "200px"}}>
                     {/*<img src={logo} alt='logo'/>*/}
-                    <Link style={{paddingLeft: '100px', color: "green", float: 'left'}} to={this.iconPath}> <b><i>SUPER SHOP</i></b> </Link>
+                    <Link style={{paddingLeft: '50px', color: "green", float: 'left', fontWeight: "bold", fontSize: "large"}} to={this.iconPath}> <b><i>SUPER SHOP</i></b> </Link>
                 </div>
                 <this.renderMenu />
             </Header>

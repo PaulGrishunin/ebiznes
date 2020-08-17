@@ -47,6 +47,11 @@ class ProductController @Inject()(productsRepo: ProductRepository, categoryRepo:
     produkty.map( products => Ok(Json.toJson(products)))
   }
 
+  def getProductsByCat(category: Int): Action[AnyContent] = Action.async { implicit request =>
+    val produkti = productsRepo.getByCategory(category)
+    produkti.map( products => Ok(Json.toJson(products)))
+  }
+
   def getProduct(id: Long): Action[AnyContent] = Action.async { implicit request =>
     val produkt = productsRepo.getByIdOption(id)
     produkt.map( products => Ok(Json.toJson(products)))

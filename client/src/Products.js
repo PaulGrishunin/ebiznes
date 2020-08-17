@@ -12,7 +12,7 @@ class Products extends Component {
     }
 
     componentDidMount() {
-        var url = "http://localhost:9000/products"
+        var url = "http://localhost:9000/products/" + this.props.match.params.cat
 
         fetch(url, {
             mode: 'cors',

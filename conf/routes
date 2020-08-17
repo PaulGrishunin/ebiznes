@@ -13,6 +13,7 @@ GET     /updateproduct/:id          controllers.ProductController.updateProduct(
 POST    /updateproducthandle        controllers.ProductController.updateProductHandle
 
 GET     /products                   controllers.ProductController.getProducts
+GET     /products/:category         controllers.ProductController.getProductsByCat(category: Int)
 GET     /product/:id                controllers.ProductController.getProduct(id: Long)
 GET     /delete/:id                 controllers.ProductController.delete(id: Long)
 

@@ -80,7 +80,7 @@ class Discounts extends Component {
 
     render() {
         return (
-            <div className="promotions">
+            <div className="discounts">
                 <div id="frame">
                     <h3>
                         <t/><t/>DISCOUNTS

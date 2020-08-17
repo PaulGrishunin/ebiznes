@@ -83,7 +83,7 @@ class ProductRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
     product.filter(_.id === id).result.headOption
   }
 
-  def getByCategories(category_ids: List[Int]): Future[Seq[Product]] = db.run {
+  def getByCategory(category_ids: List[Int]): Future[Seq[Product]] = db.run {
     product.filter(_.category inSet category_ids).result
   }
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Category from './Category'
-//import Opinions from './Opinions'
+// import Reviews from './Reviews'
 
 class Product extends Component {
 
@@ -12,7 +12,7 @@ class Product extends Component {
             name: "",
             price: 0,
             discount: 0,
-            addToCartFrame: [],
+            addToBasketFrame: [],
         };
         this.updateNumber = this.updateNumber.bind(this);
         this.addToBasket = this.addToBasket.bind(this);
@@ -79,7 +79,7 @@ class Product extends Component {
                     </table>
                 </div>
             </div>
-        this.setState({ addToCartFrame: frame });
+        this.setState({ addToBasketFrame: frame });
     }
 
 
@@ -117,14 +117,14 @@ class Product extends Component {
                         this.setState({ id: prod.id });
                         this.setState({ name: prod.name });
                         this.setState({ price: prod.price });
-                        let priceDisp = (prod.price).toFixed(2) + " zł"
+                        let priceDisp = (prod.price).toFixed(2) + " usd"
                         if(this.state.discount > 0)
-                            priceDisp = [<b><del>{prod.price} zł</del><t/>
-                                PROMOCJA - {this.state.discount}%<t/>
-                                {(prod.price * (100 - this.state.discount) / 100).toFixed(2)} zł <t/></b>]
+                            priceDisp = [<b><del>{prod.price} usd</del><t/>
+                                Discount - {this.state.discount}%<t/>
+                                {(prod.price * (100 - this.state.discount) / 100).toFixed(2)} usd <t/></b>]
                         let products =
                             <div key={prod.id}>
-                                <Category beforeText="Inne produkty z kategorii " category={prod.category}/>
+                                <Category beforeText="Other products from category " category={prod.category}/>
                                 <table>
                                     <tr>
                                         <td>
@@ -161,5 +161,4 @@ class Product extends Component {
     //     )
     // }
 }
-
 export default Product;
