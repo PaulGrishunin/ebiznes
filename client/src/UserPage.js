@@ -34,7 +34,7 @@ class UserPage extends Component {
                             <tr>
                                 <a href={lnkUserPage}>
                                     <div id="userAvatar">
-                                        <img id='circle' src={lnkImage} width='128px' height='128px'/>
+                                        <img id='circle' src={lnkImage} alt='' width='128px' height='128px'/>
                                     </div>
                                 </a>
                                 <td id="right" text-align='left'>

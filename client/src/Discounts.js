@@ -45,7 +45,6 @@ class Discounts extends Component {
                         if(dis != null) {
                             priceDisp = [<b>
                                 <del> {prod.price} usd </del>
-
                                   { (prod.price * (100 - dis.amount) / 100).toFixed(2)} usd
                                    <br/>
                                 Discount - {dis.amount} %</b>]
@@ -55,7 +54,7 @@ class Discounts extends Component {
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <img src={img} width="256" height="256"/>
+                                                    <img src={img} alt='' width="256" height="256"/>
 
                                                     <div id="productname">{prod.name}</div>
                                                     <div id="discountdescription">{dis.description}</div>

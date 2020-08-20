@@ -55,7 +55,7 @@ class Reviews extends Component {
                     <h3>
                         Ocena:
                         <input type="number" id="textbox" name="stars" min="0" max="5" defaultValue="5" onChange={this.updateStars}/>
-                        <img name="starsDisplayer" id="stars" src="/img/stars/5.png"/>
+                        <img name="starsDisplayer" alt='' id="stars" src="/img/stars/5.png"/>
                     </h3>
                     <h3>
                         Twoja opinia:
@@ -71,7 +71,7 @@ class Reviews extends Component {
     }
 
     componentDidMount() {
-        var url = "http://localhost:9000/comments"
+        var url = "http://localhost:9000/reviews"
 
         fetch(url, {
             mode: 'cors',
@@ -85,21 +85,21 @@ class Reviews extends Component {
             .then(results => {
                 return results.json();
             }).then(data => {
-            let opinions = data.map((op) => {
+            let opinions = data.map((rev) => {
                 this.setState({exists: true})
-                let starsDisp = "/img/stars/" + op.stars + ".png";
+                let starsDisp = "/img/stars/" + rev.rate + ".png";
                 return (
-                    <div key={op.id}>
-                        <table id="opinion">
+                    <div key={rev.id}>
+                        <table id="review">
                             <tr>
                                 {/*<td width="250px">*/}
-                                {/*    <UserAvatar user={op.user}/>*/}
+                                {/*    <UserAvatar user={rev.user}/>*/}
                                 {/*</td>*/}
                                 <td>
-                                    <div id="opinion">{op.text}</div>
+                                    <div id="review">{rev.text}</div>
                                 </td>
                                 <td id="right">
-                                    <img id="stars" src={starsDisp}/>
+                                    <img id="stars" alt='' src={starsDisp}/>
                                 </td>
                             </tr>
                         </table>
@@ -119,11 +119,11 @@ class Reviews extends Component {
                         <tr>
                             <td>
                                 <h3>
-                                    <t/><t/>OPINIE O SKLEPIE
+                                    <t/><t/>Reviews
                                 </h3>
                             </td>
                             <td id="right">
-                                <a id="button" href="#" onClick={this.showAdd}>Dodaj swoją opinię</a>
+                                <a id="button" href="#" onClick={this.showAdd}>Add your review</a>
                             </td>
                         </tr>
                     </table>

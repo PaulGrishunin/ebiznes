@@ -4,7 +4,7 @@ import './App.css';
 import BaseRouter from './routes';
 import Layout from './Common/Layout.js';
 import 'antd/dist/antd.css';
-import { DownOutlined, FacebookOutlined, TwitterOutlined, SkypeOutlined, InstagramOutlined } from '@ant-design/icons';
+import { FacebookOutlined, TwitterOutlined, SkypeOutlined, InstagramOutlined } from '@ant-design/icons';
 import QueueAnim from 'rc-queue-anim';
 import { OverPack } from 'rc-scroll-anim';
 
@@ -27,7 +27,7 @@ class App extends Component {
                         Contact us
                     </div>
                     <div key="b" style={{ paddingLeft: "10%", paddingRight: "10%", display: "flex" }}>
-                        <div style={{ float: "right", fontSize: "larger", textAlign: "left", width: "60vw", margin: "5%" }} >
+                        <div style={{ float: "right", fontSize: "larger", textAlign: "left", width: "60vw", margin: "1%" }} >
                             If you have any questions or problems with using our platform please contact us.
                             <br />
                             <br />

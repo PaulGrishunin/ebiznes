@@ -66,9 +66,9 @@ class BasketItem extends Component {
                                                 total: {(this.props.number * product.price * (100 - this.state.discount) / 100).toFixed(2)} usd
                                             </h3>
                                         </td>
-                                        <td id="right">
-                                            <a id="button" href="#" onClick={this.removeItem}>Delete from basket</a>
-                                        </td>
+                                        {/*<td id="right">*/}
+                                        {/*    <a id="button" href="#" onClick={this.removeItem}>Delete from basket</a>*/}
+                                        {/*</td>*/}
                                     </tr>
                                 </table>
                             </div>

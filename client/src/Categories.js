@@ -42,7 +42,7 @@ class Categories extends Component {
 
     render() {
         return (
-                <div style={{display: 'flex',  justifyContent:'center', alignItems:'top', height: '100vh', marginLeft: '10vh', marginTop: '20px', marginRight: '10vh', fontSize: 'x-large'}}>
+                <div style={{display: 'flex',  justifyContent:'center', alignItems:'top', marginLeft: '10vh', marginTop: '20px', marginRight: '10vh', fontSize: 'x-large'}}>
                     <Table>
                         <thead>
                         <tr>

@@ -11,7 +11,7 @@ class Product extends Component {
             id: 0,
             name: "",
             price: 0,
-            discount: 0,
+            amount: 0,
             // addToCartFrame: [],
         };
         this.updateNumber = this.updateNumber.bind(this);
@@ -97,8 +97,8 @@ class Product extends Component {
         }).then(response => response.json())
             .then(dis => {
                 if(dis != null)
-                    this.setState({ discount: dis.discount });
-                console.log("test1  " + this.state.discount)
+                    this.setState({ amount: dis.amount });
+                console.log("test1  " + this.state.amount)
 
                 var url = "http://localhost:9000/product/" + this.props.match.params.product
 
@@ -118,22 +118,24 @@ class Product extends Component {
                         this.setState({ name: prod.name });
                         this.setState({ price: prod.price });
                         let priceDisp = (prod.price).toFixed(2) + " zł"
-                        if(this.state.discount > 0)
-                            priceDisp = [<b><del>{prod.price} zł</del><t/>
-                                Discount - {this.state.discount}%<t/>
-                                {(prod.price * (100 - this.state.discount) / 100).toFixed(2)} usd <t/></b>]
+                        if(this.state.amount > 0)
+                            priceDisp = [<b><del>{prod.price} usd </del>
+                                { (prod.price * (100 - this.state.amount) / 100).toFixed(2)} usd
+                                <br/>
+                                Discount - {this.state.amount} %
+                                         </b>]
                         let products =
                             <div key={prod.id}>
                                 <Category beforeText="Other category products" category={prod.category}/>
                                 <table>
                                     <tr>
                                         <td>
-                                            <img src={img} width="256" height="256"/>
+                                            <img src={img} alt='' width="256" height="256"/>
                                         </td>
-                                        <td>
+                                        <td align='left'>
                                             <div id="productname">{prod.name}</div>
-                                            <div id="productcategory">{prod.category}</div>
-                                            {/*<div id="productdescription">Description: {prod.description}</div>*/}
+                                            <div id="productcategory">Category: {prod.category}</div>
+                                            <div id="productdescription">Description: {prod.description}</div>
                                             <div id="productprice">Price: {priceDisp}</div>
                                         </td>
                                     </tr>
@@ -142,7 +144,7 @@ class Product extends Component {
                                     {/*<a id="button" href="#" onClick={this.showAddToCartFrame}>Dodaj do koszyka</a>*/}
                                     <a id="button" href="#reviews">Product reviews</a>
                                 </div>
-                                <div>Description: {prod.description}</div>
+
                             </div>
                         this.setState({ products: products });
                     });
@@ -154,7 +156,7 @@ class Product extends Component {
         return (
             <div>
                 <div id="frame">
-                    {this.state.product}
+                    {this.state.products}
                     <a name="reviews"/>
                 </div>
                 <Reviews product={this.props.match.params.product}/>

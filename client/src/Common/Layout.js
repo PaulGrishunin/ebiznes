@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 // import logo from '../pictures/Common_logo.png';
-import { HomeOutlined, UserOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import { HomeOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 // import { authService } from "../Authorization/_auth-services/authentication";
 
 

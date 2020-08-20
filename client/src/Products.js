@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Products.css';
-import {Table} from "reactstrap";
+
 
 class Products extends Component {
 
@@ -50,7 +50,7 @@ class Products extends Component {
                         products.splice (prod.id,0,[
                             <a className="clearunderline" href={link} key={prod.id}>
                                 <div className="framebutton">
-                                                <img src={img} width="256" height="256"/>
+                                                <img src={img} alt='' width="256" height="256"/>
                                                 <div className="productname">{prod.name}</div>
                                                 <div className="productprice">Price: {priceDisp}</div>
                                 </div>
