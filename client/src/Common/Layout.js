@@ -40,6 +40,16 @@ class CustomLayout extends React.Component{
                 mode="horizontal"
                 style={{lineHeight: '64px'}} >
                 <Menu.Item
+                    key="home"
+                    style={{float: 'center', marginLeft: '10%'}}>
+                    <Link to="/"><HomeOutlined />Home</Link>
+                </Menu.Item>
+                <Menu.Item
+                    key="discounts"
+                    style={{float: 'center', marginLeft: '2%'}}>
+                    <Link to="/discounts"><PercentageOutlined />Discounts</Link>
+                </Menu.Item>
+                <Menu.Item
                     key="register"
                     style={{float: 'right'}}>
                     <Link to="/register">Sign up</Link>
@@ -47,7 +57,7 @@ class CustomLayout extends React.Component{
                 <Menu.Item
                     key="login"
                     style={{float: 'right'}}>
-                    <Link to="/products">Login</Link>
+                    <Link to="/login">Login</Link>
                 </Menu.Item>
 
             </Menu>
@@ -63,12 +73,12 @@ class CustomLayout extends React.Component{
                 <Menu.Item
                     key="home"
                     style={{float: 'center', marginLeft: '10%'}}>
-                    <Link to="/categories"><HomeOutlined />Home</Link>
+                    <Link to="/"><HomeOutlined />Home</Link>
                 </Menu.Item>
                 <Menu.Item
                     key="discounts"
                     style={{float: 'center', marginLeft: '2%'}}>
-                    <Link to="/"><PercentageOutlined />Discounts</Link>
+                    <Link to="/discounts"><PercentageOutlined />Discounts</Link>
                 </Menu.Item>
                 <Menu.Item
                     key="orders"
@@ -85,11 +95,17 @@ class CustomLayout extends React.Component{
                 {/*    style={{float: 'center', marginLeft: '2%'}}>*/}
                 {/*    <Link to="/favorites">< TeamOutlined />Favorites</Link>*/}
                 {/*</Menu.Item>*/}
+
                 <Menu.Item
                     key="signout"
                     // onClick={() => {authService.logout()}}
                     style={{float: 'right'}}>
-                    <Link to="/discounts">Sign out</Link>
+                    <Link to="/signout">Sign out</Link>
+                </Menu.Item>
+                <Menu.Item
+                    key="userpage"
+                    style={{float: 'right'}}>
+                    <Link to="/user/1">Profile</Link>
                 </Menu.Item>
             </Menu>
         );
@@ -98,7 +114,8 @@ class CustomLayout extends React.Component{
     renderMenu = () => {
         // if ( this.menuType === "authorized" )
             return <this.authorizedMenu/>;
-        // else return <this.nonAuthorizedMenu />;
+        // else
+        // return <this.nonAuthorizedMenu />;
     }
 
     render(){

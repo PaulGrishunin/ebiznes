@@ -183,7 +183,7 @@ class Basket extends Component {
             )
         else
             return(
-                <div className="basket">
+                <div className="basket" style={{display: 'flex',  justifyContent:'center', alignItems:'top', marginLeft: '10vh', marginTop: '20px', marginRight: '10vh', fontSize: 'large'}}>
                     <div id="frame">
                         <h3>
                             <t/><t/><t/>Empty Basket

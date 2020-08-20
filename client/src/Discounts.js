@@ -36,19 +36,19 @@ class Discounts extends Component {
                     },
                     method: 'GET',
                 }).then(response => response.json())
-                    .then(pro => {
-                        if(pro != null)
-                            this.setState({ discount: pro.discount });
+                    .then(dis => {
+                        if(dis != null)
+                            this.setState({ amount: dis.amount });
                         let link = "/product/" + prod.id;
                         let img = "/img/products/" + prod.id + ".png";
                         let priceDisp = (prod.price).toFixed(2) + " usd"
-                        if(pro != null) {
+                        if(dis != null) {
                             priceDisp = [<b>
-                                <del>{prod.price} usd</del>
-                                <t/>
-                                Discounts - {pro.discount}%
-                                <t/>
-                                {(prod.price * (100 - pro.discount) / 100).toFixed(2)} usd <t/></b>]
+                                <del> {prod.price} usd </del>
+
+                                  { (prod.price * (100 - dis.amount) / 100).toFixed(2)} usd
+                                   <br/>
+                                Discount - {dis.amount} %</b>]
                             products.push([
                                 <a id="clearunderline" href={link} key={prod.id}>
                                     <div id="framebutton">
@@ -56,9 +56,9 @@ class Discounts extends Component {
                                             <tr>
                                                 <td>
                                                     <img src={img} width="256" height="256"/>
-                                                </td>
-                                                <td>
+
                                                     <div id="productname">{prod.name}</div>
+                                                    <div id="discountdescription">{dis.description}</div>
                                                     <div id="productprice">Price: {priceDisp}</div>
                                                 </td>
                                             </tr>
@@ -68,6 +68,7 @@ class Discounts extends Component {
                             ])
                             this.setState({products: products})
                             console.log(prod.name)
+
                         }
                     })
             })
@@ -80,13 +81,14 @@ class Discounts extends Component {
 
     render() {
         return (
-            <div className="discounts">
+            <div className="discounts" style={{  alignItems:'top', marginLeft: '10vh', marginTop: '20px', marginRight: '10vh', fontSize: "large"}}>
                 <div id="frame">
                     <h3>
-                        <t/><t/>DISCOUNTS
+                        <t/><t/>DISCOUNTS:
                     </h3>
+                    {this.state.products}
                 </div>
-                {this.state.products}
+
             </div>
         )
     }

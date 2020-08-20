@@ -37,16 +37,15 @@ class Products extends Component {
                     },
                     method: 'GET',
                 }).then(response => response.json())
-                    .then(pro => {
-                        if(pro != null)
-                            this.setState({ discount: pro.discount });
+                    .then(dis => {
+                        if(dis != null)
+                            this.setState({ amount: dis.amount });
                         let link = "/product/" + prod.id;
                         let img = "/img/products/" + prod.id + ".png";
                         let priceDisp = (prod.price).toFixed(2) + " usd"
-                        if(pro != null)
-                            priceDisp = [<b><del>{prod.price} usd</del><t/>
-                                Discount - {pro.discount}%<t/>
-                                {(prod.price * (100 - pro.discount) / 100).toFixed(2)} usd <t/></b>]
+                        if(dis != null)
+                            priceDisp = [<b><del> {prod.price} </del> usd  {(prod.price * (100 - dis.amount) / 100).toFixed(2)} usd <br/>
+                                Discount - {dis.amount} % </b>]
 
                         products.splice (prod.id,0,[
                             <a className="clearunderline" href={link} key={prod.id}>

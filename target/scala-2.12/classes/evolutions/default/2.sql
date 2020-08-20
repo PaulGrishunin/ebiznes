@@ -53,6 +53,7 @@ INSERT INTO "review"("product", "user", "rate", "text") VALUES(2,1,4,"Great bran
 
 INSERT INTO "discount"("product", "amount", "description") VALUES(1,5,"Only until the end of summer!");
 INSERT INTO "discount"("product", "amount", "description") VALUES(2,50,"Two for the price of one!");
+INSERT INTO "discount"("product", "amount", "description") VALUES(5,20,"Forever!");
 
 INSERT INTO "question"("product", "user", "content", "answer") VALUES(2,2,"Are there any cars in white?","Yes, there is a color white diamond. Waiting for you!");
 
