@@ -46,14 +46,14 @@
 .categoryList{
   position: fixed;
   left: 0;
-  width: 150px;
+  width: 200px;
   /*height: calc(100% - 250px);*/
-  border-radius: 5px;
+  border-radius: 0 0 30px 0;
   -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-  padding: 0 15px 0;
+  padding: 15px ;
   font-family: 'Poppins', sans-serif;
-  margin: 60px 30px ;
+  margin: 60px 0 0 0;
   background-color: #fff;
 }
 .BaseInfo {

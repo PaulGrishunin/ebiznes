@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 // import UserAvatar from "./UserAvatar";
+import Rater from 'react-rater';
+// import 'react-rater/lib/react-rater.css';
+import './Reviews.css';
+import UserFace from './UserFace';
 
 class Reviews extends Component {
 
     constructor() {
         super();
         this.state = {
-            opinions: [],
+            reviews: [],
             exists: false,
             addframe: "",
         };
@@ -14,11 +18,11 @@ class Reviews extends Component {
         this.hideAdd = this.hideAdd.bind(this);
     }
 
-    sentOpinion() {
+    sentReview() {
         fetch('http://localhost:9000/addreviewhandle', {
             method: 'POST',
             body: JSON.stringify({
-                "stars":parseInt(document.getElementsByName("stars")[0].value),
+                "rate":parseInt(document.getElementsByName("rate")[0].value),
                 "text":document.getElementsByName("text")[0].value
             }),
             headers: {
@@ -31,9 +35,9 @@ class Reviews extends Component {
         window.location.reload(false);
     }
 
-    // updateStars() {
+    // updateRate() {
     //     var rate = document.getElementsByName("rate")[0].value
-    //     document.getElementsByName('starsDisplayer')[0].setAttribute("src","/img/stars/" + stars + ".png")
+    //     document.getElementsByName('starsDisplayer')[0].setAttribute("src","/img/stars/" + rate + ".png")
     // }
 
     hideAdd() {
@@ -51,19 +55,19 @@ class Reviews extends Component {
             <div>
                 <div id="darken" className="darkbcg"/>
                 <div id="framefloating" className="addframe">
-                    <h1>Dodaj opinię o sklepie</h1>
+                    <h1>Add your review</h1>
                     <h3>
-                        Ocena:
-                        <input type="number" id="textbox" name="stars" min="0" max="5" defaultValue="5" onChange={this.updateStars}/>
-                        <img name="starsDisplayer" alt='' id="stars" src="/img/stars/5.png"/>
+                        Rate:
+                        <input type="number" id="textbox" name="rate" min="0" max="5" defaultValue="5" onChange={this.updateRate}/>
+                        {/*<img name="starsDisplayer" alt='' id="rate" src="/img/stars/5.png"/>*/}
                     </h3>
                     <h3>
-                        Twoja opinia:
+                        Your review:
                     </h3>
-                    <textarea id="fullWidth" name="text"/>
+                    <textarea className="fullWidth" name="text"/>
                     <div id="right">
-                        <a id="button" href="#" onClick={this.sentOpinion}>Dodaj opinię</a>
-                        <a id="button" href="#" onClick={this.hideAdd}>Anuluj</a>
+                        <a className="button" href="#" onClick={this.sentReview}>Add review</a>
+                        <a className="button" href="#" onClick={this.hideAdd}>Cancel</a>
                     </div>
                 </div>
             </div>
@@ -85,28 +89,32 @@ class Reviews extends Component {
             .then(results => {
                 return results.json();
             }).then(data => {
-            let opinions = data.map((rev) => {
+            let reviews = data.map((rev) => {
                 this.setState({exists: true})
-                let starsDisp = "/img/stars/" + rev.rate + ".png";
+                // let rateDisp = "/img/stars/" + rev.rate + ".png";
                 return (
-                    <div key={rev.id}>
-                        <table id="review">
+                    <div className="review" key={rev.id}>
+                        <table id="rev">
                             <tr>
-                                {/*<td width="250px">*/}
-                                {/*    <UserAvatar user={rev.user}/>*/}
-                                {/*</td>*/}
-                                <td>
-                                    <div id="review">{rev.text}</div>
+                                <td width="120px">
+                                    <UserFace user={rev.user}/>
                                 </td>
-                                <td id="right">
-                                    <img id="stars" alt='' src={starsDisp}/>
+                                <td>
+                                    <tr>
+                                    <div className="Rater">
+                                        <Rater total={5} rating={parseFloat(rev.rate)} interactive={false}/>
+                                    </div>
+                                    </tr>
+                                    <tr>
+                                    <div className="textReview">{rev.text}</div>
+                                    </tr>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 )
             })
-            this.setState({opinions: opinions})
+            this.setState({reviews: reviews})
         })
     }
 
@@ -115,15 +123,15 @@ class Reviews extends Component {
             <div>
                 {this.state.addframe}
                 <div id="frame">
-                    <table id="fullWidth">
+                    <table className="fullWidth">
                         <tr>
                             <td>
-                                <h3>
-                                    <t/><t/>Reviews
-                                </h3>
+                                <h2>
+                                    Reviews:
+                                </h2>
                             </td>
-                            <td id="right">
-                                <a id="button" href="#" onClick={this.showAdd}>Add your review</a>
+                            <td className="right">
+                                <a className="button" href="#" onClick={this.showAdd}>Add your review</a>
                             </td>
                         </tr>
                     </table>

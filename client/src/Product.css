@@ -1,0 +1,40 @@
+.productPage {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px 5px 5px;
+    font-family: 'Poppins', sans-serif;
+    margin: 30px 5px ;
+    background-color: #fff;
+}
+.productInfo {
+    padding: 40px;
+    text-align: left;
+    font-size: 16px;
+}
+.button {
+    position: relative;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    display: inline-block;
+    background-color: whitesmoke;
+    color: darkgreen;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.5s;
+}
+.productbuttons {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.button:hover {
+    background-color: white;
+    color: green;
+    box-shadow: 2px 2px;
+    transition: 0.2s;
+}

@@ -33,6 +33,7 @@ class Categories extends Component {
                 return (
                     <div key={cat.id}>
                         <div className="name"><a id={linkid} href={link}>{cat.name}</a></div>
+
                     </div>
                 )
 
@@ -43,7 +44,7 @@ class Categories extends Component {
 
     render() {
         return (
-                <div style={{display: 'flex',  justifyContent:'center', alignItems:'top', marginLeft: '10vh', marginTop: '5px', marginRight: '15vh', fontSize: 'large'}}>
+                <div style={{display: 'flex',  justifyContent:'center', alignItems:'top', marginLeft: '5vh', marginTop: '5px', marginRight: '5vh', fontSize: 'large'}}>
                     <Table>
                         <thead>
                         <tr>

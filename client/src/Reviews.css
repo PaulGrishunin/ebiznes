@@ -1,0 +1,62 @@
+.react-rater {
+    display: inline-block;
+    line-height: normal; }
+.react-rater > * {
+    display: inline-block; }
+
+.react-rater-star {
+    cursor: pointer;
+    color: #ccc;
+    border-color: black;
+    border: 1px;
+    position: relative; }
+.react-rater-star.will-be-active {
+    color: #666; }
+.react-rater-star.is-active {
+    color: rgba(255, 150, 50, 1); }
+.react-rater-star.is-active-half:before {
+    color: rgba(255, 150, 50, 1);
+    content: '\2605';
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden; }
+.react-rater-star.is-disabled {
+    cursor: default; }
+
+.fullWidth {
+    width: 100%;
+}
+.frame {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 1px 1px;
+    opacity:0;
+    animation:fadeIn ease-in 1;
+    animation-fill-mode:forwards;
+    animation-duration:0.3s;
+}
+.review {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 15px 5px 5px;
+    font-family: 'Poppins', sans-serif;
+    margin: 15px 8px ;
+    background-color: #fff;
+}
+.textReview {
+
+}
+.Rater{
+    float: left;
+    display: flex;
+
+}

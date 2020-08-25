@@ -13,12 +13,12 @@ class Product extends Component {
             name: "",
             price: 0,
             amount: 0,
-            // addToCartFrame: [],
+            addToBasketFrame: [],
         };
         this.updateNumber = this.updateNumber.bind(this);
-        // this.addToCart = this.addToCart.bind(this);
-        // this.hideAddToCartFrame = this.hideAddToCartFrame.bind(this);
-        // this.showAddToCartFrame = this.showAddToCartFrame.bind(this);
+        this.addToBasket = this.addToBasket.bind(this);
+        this.hideAddToBasketFrame = this.hideAddToBasketFrame.bind(this);
+        this.showAddToBasketFrame = this.showAddToBasketFrame.bind(this);
     }
 
     updateNumber() {
@@ -27,61 +27,61 @@ class Product extends Component {
         document.getElementById('AddCartPrice').innerHTML = "Price: " + finalPrice + " usd"
     }
 
-    // addToCart() {
-    //     fetch('http://localhost:9000/addtocarthandle', {
-    //         method: 'POST',
-    //         body: JSON.stringify({"product":this.state.id,"count":parseInt(document.getElementsByName("number")[0].value)
-    //         }),
-    //         headers: {
-    //             'Content-type': 'application/json; charset=UTF-8'
-    //         },
-    //         credentials:"include"
-    //     })
-    //         .then(res => res.json())
-    //         .then(console.log)
-    //     this.hideAddToCartFrame()
-    // }
+    addToBasket() {
+        fetch('http://localhost:9000/addtobaskethandle', {
+            method: 'POST',
+            body: JSON.stringify({"product":this.state.id,"count":parseInt(document.getElementsByName("number")[0].value)
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            },
+            credentials:"include"
+        })
+            .then(res => res.json())
+            .then(console.log)
+        this.hideAddToBasketFrame()
+    }
 
-    // hideAddToCartFrame() {
-    //     document.getElementsByClassName("addToCartFrame")[0].setAttribute("id","framefloating-fadeout");
-    //     document.getElementsByClassName("darkbcg")[0].setAttribute("id","darken-fadeout");
-    //
-    //     setTimeout(() => {
-    //         this.setState({addToCartFrame: ""});
-    //     }, 500)
-    // }
+    hideAddToBasketFrame() {
+        document.getElementsByClassName("addToBasketFrame")[0].setAttribute("id","framefloating-fadeout");
+        document.getElementsByClassName("darkbcg")[0].setAttribute("id","darken-fadeout");
 
-    // showAddToCartFrame() {
-    //     let frame =
-    //         <div>
-    //             <div id="darken" className="darkbcg"/>
-    //             <div id="framefloating" className="addToCartFrame">
-    //                 <h1>Dodaj do koszyka</h1>
-    //                 <h2>{this.state.name}</h2>
-    //                 <table id="fullWidth">
-    //                     <tr>
-    //                         <td id="left">
-    //                             <h2>
-    //                                 Podaj ilość:
-    //                                 <input type="number" id="textbox" name="number" min="1" max="100" defaultValue="1" onChange={this.updateNumber}/>
-    //                             </h2>
-    //                         </td>
-    //                         <td id="right">
-    //                             <h2 id="AddCartPrice">Cena: {this.state.price * (100 - this.state.discount) / 100} zł</h2>
-    //                         </td>
-    //                     </tr>
-    //                     <tr>
-    //                         <td/>
-    //                         <td id="right">
-    //                             <a id="button" href="#" onClick={this.addToCart}>Dodaj produkty</a>
-    //                             <a id="button" href="#" onClick={this.hideAddToCartFrame}>Anuluj</a>
-    //                         </td>
-    //                     </tr>
-    //                 </table>
-    //             </div>
-    //         </div>
-    //     this.setState({ addToCartFrame: frame });
-    // }
+        setTimeout(() => {
+            this.setState({addToBasketFrame: ""});
+        }, 500)
+    }
+
+    showAddToBasketFrame() {
+        let frame =
+            <div>
+                <div id="darken" className="darkbcg"/>
+                <div id="framefloating" className="addToBasketFrame">
+                    <h1>Add to Basket</h1>
+                    <h2>{this.state.name}</h2>
+                    <table id="fullWidth">
+                        <tr>
+                            <td id="left">
+                                <h2>
+                                    Quantity:
+                                    <input type="number" id="textbox" name="number" min="1" max="100" defaultValue="1" onChange={this.updateNumber}/>
+                                </h2>
+                            </td>
+                            <td id="right">
+                                <h2 id="AddBasketPrice">Price: {this.state.price * (100 - this.state.amount) / 100} usd</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td/>
+                            <td id="right">
+                                <a id="button" href="#" onClick={this.addToBasket}>Add products</a>
+                                <a id="button" href="#" onClick={this.hideAddToBasketFrame}>Cancel</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        this.setState({ addToBasketFrame: frame });
+    }
 
 
 
@@ -126,26 +126,21 @@ class Product extends Component {
                                 Discount - {this.state.amount} %
                                          </b>]
                         let products =
-                            <div key={prod.id} stle={{ margin: "20px"}}>
-                                <Category beforeText="Other category products" category={prod.category}/>
-                                <table>
-                                    <tr>
-                                        <td>
+                            <div className="productPage" key={prod.id}>
+                               <div className="Image">
                                             <img src={img} alt='' width="420" height="420"/>
-                                        </td>
-                                        <td align='left'>
-                                            <div className="productname">{prod.name}</div>
-                                            <div className="productcategory">Category: {prod.category}</div>
-                                            <div className="productdescription">Description: {prod.description}</div>
-                                            <div className="productprice">Price: {priceDisp}</div>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div className="productbuttons">
-                                    {/*<a id="button" href="#" onClick={this.showAddToCartFrame}>Dodaj do koszyka</a>*/}
-                                    <a id="button" href="#reviews">Product reviews</a>
-                                </div>
+                               </div>
+                                <div className="productInfo">
+                                            <div className="prodname"><b>{prod.name}</b></div>
+                                            <div className="prodcategory">Category: {prod.category}</div>
+                                            <div className="proddescription">Description: {prod.description}</div>
+                                            <div className="prodprice">Price: {priceDisp}</div>
 
+                                <div className="productbuttons">
+                                    <a className="button" href="#" onClick={this.showAddToBasketFrame}>Add to Basket</a>
+                                    <a className="button" href="#reviews">Product reviews</a>
+                                </div>
+                                        </div>
                             </div>
                         this.setState({ products: products });
                     });
@@ -161,7 +156,7 @@ class Product extends Component {
                     <a name="reviews"/>
                 </div>
                 <Reviews product={this.props.match.params.product}/>
-                {/*{this.state.addToCartFrame}*/}
+                {this.state.addToBasketFrame}
             </div>
         )
     }

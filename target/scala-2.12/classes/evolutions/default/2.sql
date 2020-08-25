@@ -49,7 +49,7 @@ INSERT INTO "user"("login", "password", "email", "admin") VALUES("paul_gri", "qw
 
 INSERT INTO "review"("product", "user", "rate", "text") VALUES(1,1,5,"Great product! This is the future!");
 INSERT INTO "review"("product", "user", "rate", "text") VALUES(2,1,4,"Great brand! Great product! But I would like more distance on one charge.");
-
+INSERT INTO "review"("product", "user", "rate", "text") VALUES(1,2,1,"Wasted money");
 
 INSERT INTO "discount"("product", "amount", "description") VALUES(1,5,"Only until the end of summer!");
 INSERT INTO "discount"("product", "amount", "description") VALUES(2,50,"Two for the price of one!");
