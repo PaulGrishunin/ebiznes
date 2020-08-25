@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Category from './Category';
 import Reviews from './Reviews'
+import './Product.css';
 
 class Product extends Component {
 
@@ -125,22 +126,22 @@ class Product extends Component {
                                 Discount - {this.state.amount} %
                                          </b>]
                         let products =
-                            <div key={prod.id}>
+                            <div key={prod.id} stle={{ margin: "20px"}}>
                                 <Category beforeText="Other category products" category={prod.category}/>
                                 <table>
                                     <tr>
                                         <td>
-                                            <img src={img} alt='' width="256" height="256"/>
+                                            <img src={img} alt='' width="420" height="420"/>
                                         </td>
                                         <td align='left'>
-                                            <div id="productname">{prod.name}</div>
-                                            <div id="productcategory">Category: {prod.category}</div>
-                                            <div id="productdescription">Description: {prod.description}</div>
-                                            <div id="productprice">Price: {priceDisp}</div>
+                                            <div className="productname">{prod.name}</div>
+                                            <div className="productcategory">Category: {prod.category}</div>
+                                            <div className="productdescription">Description: {prod.description}</div>
+                                            <div className="productprice">Price: {priceDisp}</div>
                                         </td>
                                     </tr>
                                 </table>
-                                <div id="productbuttons">
+                                <div className="productbuttons">
                                     {/*<a id="button" href="#" onClick={this.showAddToCartFrame}>Dodaj do koszyka</a>*/}
                                     <a id="button" href="#reviews">Product reviews</a>
                                 </div>

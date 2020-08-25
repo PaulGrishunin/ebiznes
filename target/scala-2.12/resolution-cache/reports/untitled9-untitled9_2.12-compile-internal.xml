@@ -7,7 +7,7 @@
 		revision="1.0"
 		conf="compile-internal"
 		confs="universal, universal-docs, universal-src, compile, runtime, test, provided, optional, windows, docker, linux, web-assets, web-assets-test, web-plugin, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20200703142551"/>
+		date="20200821203630"/>
 	<dependencies>
 		<module organisation="org.xerial" name="sqlite-jdbc">
 			<revision name="3.30.1" status="release" pubdate="20191223215123" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="82">

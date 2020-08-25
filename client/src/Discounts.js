@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Discounts.css';
 
 class Discounts extends Component {
 
@@ -49,24 +50,17 @@ class Discounts extends Component {
                                    <br/>
                                 Discount - {dis.amount} %</b>]
                             products.push([
-                                <a id="clearunderline" href={link} key={prod.id}>
-                                    <div id="framebutton">
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <img src={img} alt='' width="256" height="256"/>
-
-                                                    <div id="productname">{prod.name}</div>
-                                                    <div id="discountdescription">{dis.description}</div>
-                                                    <div id="productprice">Price: {priceDisp}</div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
+                                <a className="clearunderline" href={link} key={prod.id}>
+                                    <div className="framebutton">
+                                        <img src={img} alt='' width="256" height="256"/>
+                                        <div className="productname"><b>{prod.name}</b></div>
+                                                    <div className="discountdescription">{dis.description}</div>
+                                                    <div className="discountprice">Price: {priceDisp}</div>
+                                                                            </div>
                                 </a>
                             ])
                             this.setState({products: products})
-                            console.log(prod.name)
+                            console.log(products)
 
                         }
                     })
@@ -80,14 +74,8 @@ class Discounts extends Component {
 
     render() {
         return (
-            <div className="discounts" style={{  alignItems:'top', marginLeft: '10vh', marginTop: '20px', marginRight: '10vh', fontSize: "large"}}>
-                <div id="frame">
-                    <h3>
-                        <t/><t/>DISCOUNTS:
-                    </h3>
+            <div className="discounts" >
                     {this.state.products}
-                </div>
-
             </div>
         )
     }

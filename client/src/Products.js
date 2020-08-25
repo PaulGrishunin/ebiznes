@@ -51,12 +51,13 @@ class Products extends Component {
                             <a className="clearunderline" href={link} key={prod.id}>
                                 <div className="framebutton">
                                                 <img src={img} alt='' width="256" height="256"/>
-                                                <div className="productname">{prod.name}</div>
+                                                <div className="productname"><b>{prod.name}</b></div>
                                                 <div className="productprice">Price: {priceDisp}</div>
                                 </div>
                             </a>
                         ])
                         this.setState({products: products})
+                        console.log(prod.name)
                     })
             })
         })

@@ -1,5 +1,16 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Route
+} from 'react-router-dom';
+import Categories from './Categories'
+import Products from './Products'
+import Product from './Product'
+import Discounts from './Discounts'
+import Reviews from './Reviews'
+import UserPage from './UserPage'
+// import Orders from './Orders'
+
 import './App.css';
 import BaseRouter from './routes';
 import Layout from './Common/Layout.js';
@@ -23,18 +34,16 @@ class App extends Component {
         return (
             <OverPack style={{ overflow: 'hidden' }} playScale={0.1} >
                 <QueueAnim style={{ backgroundColor: "#ffffff" }}>
-                    <div key="a" style={{ padding: "2%", fontWeight: "bold", fontSize: "x-large" }}>
+                    <div key="a" style={{ marginTop: "80vh", align: "bottom", padding: "2%", fontWeight: "bold", fontSize: "large" }}>
                         Contact us
                     </div>
                     <div key="b" style={{ paddingLeft: "10%", paddingRight: "10%", display: "flex" }}>
                         <div style={{ float: "right", fontSize: "larger", textAlign: "left", width: "60vw", margin: "1%" }} >
-                            If you have any questions or problems with using our platform please contact us.
-                            <br />
+                            If you have any questions or problems with using our shop please contact us.
                             <br />
                             Phone: XXX-XXX-XXX
                             <br />
                             Email: xxx@email.com
-                            <br />
                             <br />
                             <this.socialmediaIcons />
                         </div>
@@ -44,20 +53,32 @@ class App extends Component {
         );
     }
 
-  render() {
+    categoriesMenu = () => {
+        return (
+            <div className="categoryList">
+                <Route component={Categories}/>
+            </div>
+        );
+    }
 
-    return (
-        <div className="App" style={{height: "100%"}}>
-          <Router>
-            <Layout {...this.props}>
-              <BaseRouter />
-                <this.contactUsDiv />
-            </Layout>
-          </Router>
+    render() {
 
-        </div>);
-  }
+        return (
+            <div className="App" style={{height: "100%"}}>
+                <Router>
+                    <Layout {...this.props}>
+                      <div className="Base" >
+                            <this.categoriesMenu />
+                              <div className="BaseInfo">
+                               <BaseRouter />
+                              </div>
+                      </div>
+                      <this.contactUsDiv />
+                    </Layout>
+                </Router>
+
+            </div>);
+    }
 
 }
 export default App;
-

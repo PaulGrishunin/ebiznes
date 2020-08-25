@@ -22,8 +22,8 @@ const BaseRouter = () => (
        {/*<Route path="/signedup" />*/}
        {/*<Route path="/resetPassword" component={PasswordResetView} />*/}
        {/*<Route path="/signedout" component={MainView} />*/}
-          <Route exact path="/" component={Categories}/>
-          <Route exact path="/" component={Reviews}/>
+          <Route exact path="/categories" component={Categories}/>
+          <Route exact path="/" component={Discounts}/>
        <Route path="/category/:cat" component={Products}/>
        <Route path="/products" component={Products}/>
        <Route path="/discounts" component={Discounts}/>

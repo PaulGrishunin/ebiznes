@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Layout, Menu } from 'antd';
+import Categories from '../Categories';
 import { Link, withRouter } from 'react-router-dom';
 // import logo from '../pictures/Common_logo.png';
 import { HomeOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import {Table} from "reactstrap";
+import BaseRouter from "../routes";
 // import { authService } from "../Authorization/_auth-services/authentication";
 
 
 const { Header, Content } = Layout;
 
-class CustomLayout extends React.Component{
+class CustomLayout extends Component{
 
     constructor (props) {
         super(props);
@@ -21,10 +24,10 @@ class CustomLayout extends React.Component{
     }
 
     setMenu() {
-        let authorizedMenuPaths = ['/categories'];
+        let authorizedMenuPaths = ['/signedin', '/orders', '/basket', '/userpage'];
         let type = authorizedMenuPaths.includes(window.location.pathname)
-            || window.location.pathname.startsWith("/products")
-            || window.location.pathname.startsWith("/categories")
+            || window.location.pathname.startsWith("/user")
+            || window.location.pathname.startsWith("/reviews")
             ? "authorized": "non-authorized";
 
         if (type === "authorized") this.iconPath = '/';
@@ -54,11 +57,6 @@ class CustomLayout extends React.Component{
                     style={{float: 'right'}}>
                     <Link to="/register">Sign up</Link>
                 </Menu.Item>
-                <Menu.Item
-                    key="login"
-                    style={{float: 'right'}}>
-                    <Link to="/login">Login</Link>
-                </Menu.Item>
 
             </Menu>
         );
@@ -75,6 +73,14 @@ class CustomLayout extends React.Component{
                     style={{float: 'center', marginLeft: '10%'}}>
                     <Link to="/"><HomeOutlined />Home</Link>
                 </Menu.Item>
+                {/*<Menu.Item*/}
+                {/*    key="categories"*/}
+                {/*    style={{float: 'center', marginLeft: '10%'}}>*/}
+                {/*    <div className="catMenu"  style={{height: '20vh', width: '20vh'}}>*/}
+
+                {/*    <Link to="/categories"><HomeOutlined />Categories</Link>*/}
+                {/*    </div>*/}
+                {/*</Menu.Item>*/}
                 <Menu.Item
                     key="discounts"
                     style={{float: 'center', marginLeft: '2%'}}>
@@ -83,7 +89,7 @@ class CustomLayout extends React.Component{
                 <Menu.Item
                     key="orders"
                     style={{float: 'center', marginLeft: '2%'}}>
-                    <Link to="/categories"><CheckCircleOutlined />Orders</Link>
+                    <Link to="/orders"><CheckCircleOutlined />Orders</Link>
                 </Menu.Item>
                 <Menu.Item
                     key="basket"
@@ -125,14 +131,16 @@ class CustomLayout extends React.Component{
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%', background: '#ffffff' }}>
                 <div style={{color: "black", float: "left", width: "200px"}}>
                     {/*<img src={logo} alt='logo'/>*/}
-                    <Link style={{paddingLeft: '50px', color: "green", float: 'left', fontWeight: "bold", fontSize: "large"}} to={this.iconPath}> <b><i>SUPER SHOP</i></b> </Link>
+                    <Link style={{paddingLeft: '50px', color: "green", float: 'left', fontWeight: "bold", fontSize: "large"}} to={this.iconPath}> <b><i>SHOP LOGO</i></b> </Link>
                 </div>
                 <this.renderMenu />
             </Header>
-            <Content style={{ padding: '0px', backgroundColor: 'white', paddingTop: '64px', height: "100%" }}>
-                <div>
-                {this.props.children}
-                </div>
+            <Content >
+
+                                <div>
+                                    {this.props.children}
+                                </div>
+
             </Content>
         </Layout>
     );
@@ -140,3 +148,5 @@ class CustomLayout extends React.Component{
 }
 
 export default withRouter(CustomLayout);
+
+

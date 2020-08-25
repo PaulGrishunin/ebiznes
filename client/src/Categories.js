@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Table} from "reactstrap";
 
+
 class Categories extends Component {
 
     constructor() {
@@ -42,7 +43,7 @@ class Categories extends Component {
 
     render() {
         return (
-                <div style={{display: 'flex',  justifyContent:'center', alignItems:'top', marginLeft: '10vh', marginTop: '20px', marginRight: '10vh', fontSize: 'x-large'}}>
+                <div style={{display: 'flex',  justifyContent:'center', alignItems:'top', marginLeft: '10vh', marginTop: '5px', marginRight: '15vh', fontSize: 'large'}}>
                     <Table>
                         <thead>
                         <tr>
@@ -56,8 +57,6 @@ class Categories extends Component {
                             </div>
                             </th>
                         </tr>
-
-
                         </tbody>
                     </Table>
                 </div>

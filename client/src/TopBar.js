@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {Menu} from "antd";
+import {Link} from "react-router-dom";
+import { HomeOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 
 class TopBar extends Component {
 
@@ -27,9 +30,53 @@ class TopBar extends Component {
                 (result) => {
                     var userLink = "/user/" + result.id
                     this.setState({loggedIn:[
-                            <a href="/cart"><img id="circlebutton" src="/img/buttons/cart.png" width='38px' height='38px'/></a>,
-                            <a href={userLink}><img id="circlebutton" src="/img/buttons/user.png" width='40px' height='38px'/></a>,
-                            <a id="button" href="#" onClick={this.logOut}>Log Out</a>]})
+                            // <a href="/cart"><img id="circlebutton" src="/img/buttons/cart.png" width='38px' height='38px'/></a>,
+                            // <a href={userLink}><img id="circlebutton" src="/img/buttons/user.png" width='40px' height='38px'/></a>,
+                            // <a id="button" href="#" onClick={this.logOut}>Log Out</a>]})
+
+                                <Menu
+                                    theme="light"
+                                    mode="horizontal"
+                                    style={{lineHeight: '64px'}} >
+                                    <Menu.Item
+                                        key="home"
+                                        style={{float: 'center', marginLeft: '10%'}}>
+                                        <Link to="/"><HomeOutlined />Home</Link>
+                                    </Menu.Item>
+                                    <Menu.Item
+                                        key="discounts"
+                                        style={{float: 'center', marginLeft: '2%'}}>
+                                        <Link to="/discounts"><PercentageOutlined />Discounts</Link>
+                                    </Menu.Item>
+                                    <Menu.Item
+                                        key="orders"
+                                        style={{float: 'center', marginLeft: '2%'}}>
+                                        <Link to="/orders"><CheckCircleOutlined />Orders</Link>
+                                    </Menu.Item>
+                                    <Menu.Item
+                                        key="basket"
+                                        style={{float: 'center', marginLeft: '2%'}}>
+                                        <Link to="/basket">< ShoppingCartOutlined />Basket</Link>
+                                    </Menu.Item>
+                                    {/*<Menu.Item*/}
+                                    {/*    key="favorites"*/}
+                                    {/*    style={{float: 'center', marginLeft: '2%'}}>*/}
+                                    {/*    <Link to="/favorites">< TeamOutlined />Favorites</Link>*/}
+                                    {/*</Menu.Item>*/}
+
+                                    <Menu.Item
+                                        key="signout"
+                                        // onClick={() => {authService.logout()}}
+                                        style={{float: 'right'}}>
+                                        <Link to="/signout">Sign out</Link>
+                                    </Menu.Item>
+                                    <Menu.Item
+                                        key="userpage"
+                                        style={{float: 'right'}}>
+                                        <Link to="/user/1">Profile</Link>
+                                    </Menu.Item>
+                                </Menu>
+                        ]})
 
                 },
                 (error) => {

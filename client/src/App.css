@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.Base {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.categoryList{
+  position: fixed;
+  left: 0;
+  width: 150px;
+  /*height: calc(100% - 250px);*/
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 0 15px 0;
+  font-family: 'Poppins', sans-serif;
+  margin: 60px 30px ;
+  background-color: #fff;
+}
+.BaseInfo {
+  margin-top: 40px;
+  margin-left: 250px;
+  width: calc(100% - 150px);
+}
