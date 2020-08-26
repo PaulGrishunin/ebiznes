@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Mon Aug 17 23:07:44 MSK 2020
+// @DATE:Wed Aug 26 17:38:38 MSK 2020
 
 import play.api.mvc.Call
 
@@ -332,28 +332,22 @@ package controllers {
     }
 
   
+    // @LINE:138
+    def review(productid:Long): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "review/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("productid", productid)))
+    }
+  
     // @LINE:132
     def addReviewHandle(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "addreviewhandle")
     }
   
-    // @LINE:137
-    def getReviews(): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "reviews")
-    }
-  
     // @LINE:135
     def updateReviewHandle(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "updatereviewhandle")
-    }
-  
-    // @LINE:138
-    def getReview(id:Int): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "review/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Int]].unbind("id", id)))
     }
   
     // @LINE:139

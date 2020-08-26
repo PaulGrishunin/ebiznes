@@ -134,8 +134,8 @@ GET     /updatereview/:id        controllers.ReviewController.updateReview(id: I
 +nocsrf
 POST    /updatereviewhandle      controllers.ReviewController.updateReviewHandle
 
-GET     /reviews                 controllers.ReviewController.getReviews
-GET     /review/:id              controllers.ReviewController.getReview(id: Int)
+#GET     /reviews                 controllers.ReviewController.getReviews
+GET     /review/:productid        controllers.ReviewController.review(productid: Long)
 GET     /deletereview/:id        controllers.ReviewController.deleteReview(id: Int)
 
 

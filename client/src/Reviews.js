@@ -75,7 +75,7 @@ class Reviews extends Component {
     }
 
     componentDidMount() {
-        var url = "http://localhost:9000/reviews"
+        var url = "http://localhost:9000/review/" + this.props.product
 
         fetch(url, {
             mode: 'cors',
@@ -126,9 +126,9 @@ class Reviews extends Component {
                     <table className="fullWidth">
                         <tr>
                             <td>
-                                <h2>
+                                <h1>
                                     Reviews:
-                                </h2>
+                                </h1>
                             </td>
                             <td className="right">
                                 <a className="button" href="#" onClick={this.showAdd}>Add your review</a>

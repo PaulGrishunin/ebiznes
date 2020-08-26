@@ -63,14 +63,14 @@ class ReviewController @Inject()(userRepo: UserRepository, reviewRepo: ReviewRep
     }
   }
 
-  def getReview(id: Int): Action[AnyContent] = Action.async { implicit request =>
-    val review = reviewRepo.getByIdOption(id)
-    review.map( review => Ok(Json.toJson(review)))
-  }
-  def getReviews: Action[AnyContent] = Action.async { implicit request =>
-    val rev = reviewRepo.list()
+  def review(productid: Long): Action[AnyContent] = Action.async { implicit request =>
+    val rev = reviewRepo.list(productid)
     rev.map( reviews => Ok(Json.toJson(reviews)))
   }
+//  def getReviews: Action[AnyContent] = Action.async { implicit request =>
+//    val rev = reviewRepo.list()
+//    rev.map( reviews => Ok(Json.toJson(reviews)))
+//  }
 
   def deleteReview(id: Int): Action[AnyContent] = Action {
     reviewRepo.delete(id)

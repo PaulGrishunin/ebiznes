@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Mon Aug 17 23:07:44 MSK 2020
+// @DATE:Wed Aug 26 17:38:38 MSK 2020
 
 package router
 
@@ -154,8 +154,7 @@ class Routes(
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """addreviewhandle""", """controllers.ReviewController.addReviewHandle"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """updatereview/""" + "$" + """id<[^/]+>""", """controllers.ReviewController.updateReview(id:Int)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """updatereviewhandle""", """controllers.ReviewController.updateReviewHandle"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """reviews""", """controllers.ReviewController.getReviews"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """review/""" + "$" + """id<[^/]+>""", """controllers.ReviewController.getReview(id:Int)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """review/""" + "$" + """productid<[^/]+>""", """controllers.ReviewController.review(productid:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """deletereview/""" + "$" + """id<[^/]+>""", """controllers.ReviewController.deleteReview(id:Int)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """count""", """controllers.CountController.count"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """message""", """controllers.AsyncController.message"""),
@@ -1447,47 +1446,29 @@ discount""",
     )
   )
 
-  // @LINE:137
-  private[this] lazy val controllers_ReviewController_getReviews71_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("reviews")))
-  )
-  private[this] lazy val controllers_ReviewController_getReviews71_invoker = createInvoker(
-    ReviewController_3.getReviews,
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.ReviewController",
-      "getReviews",
-      Nil,
-      "GET",
-      this.prefix + """reviews""",
-      """""",
-      Seq()
-    )
-  )
-
   // @LINE:138
-  private[this] lazy val controllers_ReviewController_getReview72_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("review/"), DynamicPart("id", """[^/]+""",true)))
+  private[this] lazy val controllers_ReviewController_review71_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("review/"), DynamicPart("productid", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_ReviewController_getReview72_invoker = createInvoker(
-    ReviewController_3.getReview(fakeValue[Int]),
+  private[this] lazy val controllers_ReviewController_review71_invoker = createInvoker(
+    ReviewController_3.review(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.ReviewController",
-      "getReview",
-      Seq(classOf[Int]),
+      "review",
+      Seq(classOf[Long]),
       "GET",
-      this.prefix + """review/""" + "$" + """id<[^/]+>""",
-      """""",
+      this.prefix + """review/""" + "$" + """productid<[^/]+>""",
+      """GET     /reviews                 controllers.ReviewController.getReviews""",
       Seq()
     )
   )
 
   // @LINE:139
-  private[this] lazy val controllers_ReviewController_deleteReview73_route = Route("GET",
+  private[this] lazy val controllers_ReviewController_deleteReview72_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("deletereview/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_ReviewController_deleteReview73_invoker = createInvoker(
+  private[this] lazy val controllers_ReviewController_deleteReview72_invoker = createInvoker(
     ReviewController_3.deleteReview(fakeValue[Int]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -1502,10 +1483,10 @@ discount""",
   )
 
   // @LINE:143
-  private[this] lazy val controllers_CountController_count74_route = Route("GET",
+  private[this] lazy val controllers_CountController_count73_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("count")))
   )
-  private[this] lazy val controllers_CountController_count74_invoker = createInvoker(
+  private[this] lazy val controllers_CountController_count73_invoker = createInvoker(
     CountController_6.count,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -1520,10 +1501,10 @@ discount""",
   )
 
   // @LINE:145
-  private[this] lazy val controllers_AsyncController_message75_route = Route("GET",
+  private[this] lazy val controllers_AsyncController_message74_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("message")))
   )
-  private[this] lazy val controllers_AsyncController_message75_invoker = createInvoker(
+  private[this] lazy val controllers_AsyncController_message74_invoker = createInvoker(
     AsyncController_11.message,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -1538,10 +1519,10 @@ discount""",
   )
 
   // @LINE:148
-  private[this] lazy val controllers_Assets_versioned76_route = Route("GET",
+  private[this] lazy val controllers_Assets_versioned75_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
-  private[this] lazy val controllers_Assets_versioned76_invoker = createInvoker(
+  private[this] lazy val controllers_Assets_versioned75_invoker = createInvoker(
     Assets_10.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -1984,40 +1965,34 @@ discount""",
         controllers_ReviewController_updateReviewHandle70_invoker.call(ReviewController_3.updateReviewHandle)
       }
   
-    // @LINE:137
-    case controllers_ReviewController_getReviews71_route(params@_) =>
-      call { 
-        controllers_ReviewController_getReviews71_invoker.call(ReviewController_3.getReviews)
-      }
-  
     // @LINE:138
-    case controllers_ReviewController_getReview72_route(params@_) =>
-      call(params.fromPath[Int]("id", None)) { (id) =>
-        controllers_ReviewController_getReview72_invoker.call(ReviewController_3.getReview(id))
+    case controllers_ReviewController_review71_route(params@_) =>
+      call(params.fromPath[Long]("productid", None)) { (productid) =>
+        controllers_ReviewController_review71_invoker.call(ReviewController_3.review(productid))
       }
   
     // @LINE:139
-    case controllers_ReviewController_deleteReview73_route(params@_) =>
+    case controllers_ReviewController_deleteReview72_route(params@_) =>
       call(params.fromPath[Int]("id", None)) { (id) =>
-        controllers_ReviewController_deleteReview73_invoker.call(ReviewController_3.deleteReview(id))
+        controllers_ReviewController_deleteReview72_invoker.call(ReviewController_3.deleteReview(id))
       }
   
     // @LINE:143
-    case controllers_CountController_count74_route(params@_) =>
+    case controllers_CountController_count73_route(params@_) =>
       call { 
-        controllers_CountController_count74_invoker.call(CountController_6.count)
+        controllers_CountController_count73_invoker.call(CountController_6.count)
       }
   
     // @LINE:145
-    case controllers_AsyncController_message75_route(params@_) =>
+    case controllers_AsyncController_message74_route(params@_) =>
       call { 
-        controllers_AsyncController_message75_invoker.call(AsyncController_11.message)
+        controllers_AsyncController_message74_invoker.call(AsyncController_11.message)
       }
   
     // @LINE:148
-    case controllers_Assets_versioned76_route(params@_) =>
+    case controllers_Assets_versioned75_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned76_invoker.call(Assets_10.versioned(path, file))
+        controllers_Assets_versioned75_invoker.call(Assets_10.versioned(path, file))
       }
   }
 }

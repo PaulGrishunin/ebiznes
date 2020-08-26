@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Mon Aug 17 23:07:44 MSK 2020
+// @DATE:Wed Aug 26 17:38:38 MSK 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -508,6 +508,16 @@ package controllers.javascript {
     }
 
   
+    // @LINE:138
+    def review: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ReviewController.review",
+      """
+        function(productid0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "review/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("productid", productid0))})
+        }
+      """
+    )
+  
     // @LINE:132
     def addReviewHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.ReviewController.addReviewHandle",
@@ -518,32 +528,12 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:137
-    def getReviews: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.ReviewController.getReviews",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "reviews"})
-        }
-      """
-    )
-  
     // @LINE:135
     def updateReviewHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.ReviewController.updateReviewHandle",
       """
         function() {
           return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "updatereviewhandle"})
-        }
-      """
-    )
-  
-    // @LINE:138
-    def getReview: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.ReviewController.getReview",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "review/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Int]].javascriptUnbind + """)("id", id0))})
         }
       """
     )
