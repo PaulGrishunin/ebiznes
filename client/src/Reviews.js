@@ -59,15 +59,15 @@ class Reviews extends Component {
                     <h3>
                         Rate:
                         <input type="number" id="textbox" name="rate" min="0" max="5" defaultValue="5" onChange={this.updateRate}/>
-                        {/*<img name="starsDisplayer" alt='' id="rate" src="/img/stars/5.png"/>*/}
                     </h3>
                     <h3>
-                        Your review:
+                        Text review:
                     </h3>
                     <textarea className="fullWidth" name="text"/>
-                    <div id="right">
-                        <a className="button" href="#" onClick={this.sentReview}>Add review</a>
-                        <a className="button" href="#" onClick={this.hideAdd}>Cancel</a>
+                    <div className="productbuttons" >
+                        <a className="button blue" href="#" onClick={this.sentReview}>Add review</a>
+
+                        <a className="button red" href="#" onClick={this.hideAdd}>Cancel</a>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,6 @@ class Reviews extends Component {
             }).then(data => {
             let reviews = data.map((rev) => {
                 this.setState({exists: true})
-                // let rateDisp = "/img/stars/" + rev.rate + ".png";
                 return (
                     <div className="review" key={rev.id}>
                         <table id="rev">
@@ -106,7 +105,7 @@ class Reviews extends Component {
                                     </div>
                                     </tr>
                                     <tr>
-                                    <div className="textReview">{rev.text}</div>
+                                        <div className="textReview"><i>{rev.text}</i></div>
                                     </tr>
                                 </td>
                             </tr>
@@ -125,13 +124,13 @@ class Reviews extends Component {
                 <div id="frame">
                     <table className="fullWidth">
                         <tr>
-                            <td>
+                            <td className="left">
                                 <h1>
                                     Reviews:
                                 </h1>
                             </td>
                             <td className="right">
-                                <a className="button" href="#" onClick={this.showAdd}>Add your review</a>
+                                <a className="button blue" href="#" onClick={this.showAdd}>Add your review</a>
                             </td>
                         </tr>
                     </table>

@@ -22,9 +22,9 @@ class Product extends Component {
     }
 
     updateNumber() {
-        var finalPrice = document.getElementsByName("number")[0].value * (this.state.price * (100 - this.state.discount) / 100)
+        var finalPrice = document.getElementsByName("number")[0].value * (this.state.price * (100 - this.state.amount) / 100)
         finalPrice = finalPrice.toFixed(2)
-        document.getElementById('AddCartPrice').innerHTML = "Price: " + finalPrice + " usd"
+        document.getElementById('AddBasketPrice').innerHTML = "Price: " + finalPrice + " usd"
     }
 
     addToBasket() {
@@ -58,23 +58,23 @@ class Product extends Component {
                 <div id="framefloating" className="addToBasketFrame">
                     <h1>Add to Basket</h1>
                     <h2>{this.state.name}</h2>
-                    <table id="fullWidth">
+                    <table className="fullWidth">
                         <tr>
-                            <td id="left">
+                            <td >
                                 <h2>
                                     Quantity:
-                                    <input type="number" id="textbox" name="number" min="1" max="100" defaultValue="1" onChange={this.updateNumber}/>
+                                    <input className="right" type="number" id="textbox" name="number" min="1" max="100" defaultValue="1" onChange={this.updateNumber}/>
                                 </h2>
                             </td>
-                            <td id="right">
-                                <h2 id="AddBasketPrice">Price: {this.state.price * (100 - this.state.amount) / 100} usd</h2>
+                            <td >
+                                <h2 className="left" id="AddBasketPrice">Price: {this.state.price * (100 - this.state.amount) / 100} usd</h2>
                             </td>
                         </tr>
                         <tr>
                             <td/>
-                            <td id="right">
-                                <a id="button" href="#" onClick={this.addToBasket}>Add products</a>
-                                <a id="button" href="#" onClick={this.hideAddToBasketFrame}>Cancel</a>
+                            <td className="productbuttons">
+                                <a className="button blue" href="#" onClick={this.addToBasket}>Add products</a>
+                                <a className="button red" href="#" onClick={this.hideAddToBasketFrame}>Cancel</a>
                             </td>
                         </tr>
                     </table>
@@ -113,12 +113,11 @@ class Product extends Component {
                     method: 'GET',
                 }).then(response => response.json())
                     .then(prod => {
-                        let lnkBackToCategory = "/category/" + prod.category;
                         let img = "/img/products/" + prod.id + ".png";
                         this.setState({ id: prod.id });
                         this.setState({ name: prod.name });
                         this.setState({ price: prod.price });
-                        let priceDisp = (prod.price).toFixed(2) + " zł"
+                        let priceDisp = (prod.price).toFixed(2) + " usd"
                         if(this.state.amount > 0)
                             priceDisp = [<b><del>{prod.price} usd </del>
                                 { (prod.price * (100 - this.state.amount) / 100).toFixed(2)} usd
@@ -137,8 +136,8 @@ class Product extends Component {
                                             <div className="prodprice">Price: {priceDisp}</div>
 
                                 <div className="productbuttons">
-                                    <a className="button" href="#" onClick={this.showAddToBasketFrame}>Add to Basket</a>
-                                    <a className="button" href="#reviews">Product reviews</a>
+                                    <a className="button blue" href="#" onClick={this.showAddToBasketFrame}>Add to Basket</a>
+                                    {/*<a className="button" href="#reviews">Product reviews</a>*/}
                                 </div>
                                         </div>
                             </div>
@@ -155,8 +154,9 @@ class Product extends Component {
                     {this.state.products}
                     <a name="reviews"/>
                 </div>
-                <Reviews product={this.props.match.params.product}/>
                 {this.state.addToBasketFrame}
+                <Reviews product={this.props.match.params.product}/>
+
             </div>
         )
     }

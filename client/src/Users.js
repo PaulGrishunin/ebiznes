@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Table} from "reactstrap";
+import "./User.css"
 
 class Users extends Component {
 
@@ -27,8 +28,8 @@ class Users extends Component {
             }).then(data => {
             let users = data.map((usr) => {
                 return (
-                    <div key={usr.id} >
-                        <div className="name">{usr.id}. <b>{usr.login}</b></div>
+                    <div className="userPage" key={usr.id} >
+                        <div className="fullWidth">{usr.id}. <b>{usr.login}</b></div>
                         <div><i>{usr.email}</i></div>
                         <div>{usr.admin}</div>
                     </div>

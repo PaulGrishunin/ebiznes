@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './User.css';
 
 class UserPage extends Component {
 
@@ -33,14 +34,15 @@ class UserPage extends Component {
                         <table id="fullWidth">
                             <tr>
                                 <a href={lnkUserPage}>
-                                    <div id="userAvatar">
-                                        <img id='circle' src={lnkImage} alt='' width='128px' height='128px'/>
+                                    <div className="userFace">
+                                        <img  src={lnkImage} alt='' width='128px' height='128px'/>
                                     </div>
                                 </a>
-                                <td id="right" text-align='left'>
+                                <td className="left" >
                                     <h2>
-                                        <p >{adminBadge} Login: {usr.login}</p>
-                                       Email: {usr.email}
+                                        <p ><b> Login:</b> {usr.login}</p>
+                                        <b>Email:</b> {usr.email}
+                                        <p>{adminBadge}</p>
                                     </h2>
                                 </td>
                             </tr>
@@ -52,7 +54,7 @@ class UserPage extends Component {
 
     render() {
         return (
-            <div id="frame">
+            <div className="userPage">
                 {this.state.user}
             </div>
         )

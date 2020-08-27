@@ -54,7 +54,7 @@ POST    /updateorderhandle        controllers.OrderController.updateOrderHandle
 
 GET     /orders                   controllers.OrderController.getOrders
 GET     /order/:id                controllers.OrderController.getOrder(id: Long)
-GET     /orderusr/:id             controllers.OrderController.getOrdersUsr(id: Long)
+GET     /ordersusr/:id             controllers.OrderController.getOrdersUsr(id: Long)
 GET     /deleteorder/:id          controllers.OrderController.deleteOrder(id: Long)
 
 

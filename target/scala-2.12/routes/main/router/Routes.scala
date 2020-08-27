@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Wed Aug 26 17:38:38 MSK 2020
+// @DATE:Thu Aug 27 18:31:00 MSK 2020
 
 package router
 
@@ -112,7 +112,7 @@ class Routes(
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """updateorderhandle""", """controllers.OrderController.updateOrderHandle"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """orders""", """controllers.OrderController.getOrders"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """order/""" + "$" + """id<[^/]+>""", """controllers.OrderController.getOrder(id:Long)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """orderusr/""" + "$" + """id<[^/]+>""", """controllers.OrderController.getOrdersUsr(id:Long)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """ordersusr/""" + "$" + """id<[^/]+>""", """controllers.OrderController.getOrdersUsr(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """deleteorder/""" + "$" + """id<[^/]+>""", """controllers.OrderController.deleteOrder(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """addtobasket/""" + "$" + """id<[^/]+>""", """controllers.BasketController.addToBasket(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """updatebasket/""" + "$" + """id<[^/]+>""", """controllers.BasketController.updateBasket(id:Long)"""),
@@ -690,7 +690,7 @@ class Routes(
 
   // @LINE:57
   private[this] lazy val controllers_OrderController_getOrdersUsr29_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("orderusr/"), DynamicPart("id", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("ordersusr/"), DynamicPart("id", """[^/]+""",true)))
   )
   private[this] lazy val controllers_OrderController_getOrdersUsr29_invoker = createInvoker(
     OrderController_0.getOrdersUsr(fakeValue[Long]),
@@ -700,7 +700,7 @@ class Routes(
       "getOrdersUsr",
       Seq(classOf[Long]),
       "GET",
-      this.prefix + """orderusr/""" + "$" + """id<[^/]+>""",
+      this.prefix + """ordersusr/""" + "$" + """id<[^/]+>""",
       """""",
       Seq()
     )

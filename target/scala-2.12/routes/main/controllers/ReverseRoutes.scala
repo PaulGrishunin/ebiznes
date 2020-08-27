@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Wed Aug 26 17:38:38 MSK 2020
+// @DATE:Thu Aug 27 18:31:00 MSK 2020
 
 import play.api.mvc.Call
 
@@ -545,7 +545,7 @@ package controllers {
     // @LINE:57
     def getOrdersUsr(id:Long): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "orderusr/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
+      Call("GET", _prefix + { _defaultPrefix } + "ordersusr/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
     }
   
   }
