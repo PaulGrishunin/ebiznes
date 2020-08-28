@@ -13,7 +13,7 @@ class Basket extends Component {
         };
         this.displayConfirmation = this.displayConfirmation.bind(this);
         this.clearBasket = this.clearBasket.bind(this);
-        // this.buyBasket = this.buyBasket.bind(this);
+        this.buyBasket = this.buyBasket.bind(this);
     }
 
     displayConfirmation() {
@@ -44,7 +44,7 @@ class Basket extends Component {
         window.location.reload(false);
     }
 
-    buyCart() {
+    buyBasket() {
         this.displayConfirmation()
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
@@ -74,7 +74,7 @@ class Basket extends Component {
                 fetch('http://localhost:9000/addpaymenthandle', {
                     method: 'POST',
                     body: JSON.stringify({
-                        "transaction": data.id,
+                        "order": data.id,
                         "date": today
                     }),
                     headers: {
@@ -83,7 +83,7 @@ class Basket extends Component {
                 })
             })
 
-            //remove item from cart
+            //remove item from basket
             var url = "http://localhost:9000/deletefrombasket/" + this.state.basketObject[i].id
             fetch(url, {
                 mode: 'cors',
@@ -134,8 +134,8 @@ class Basket extends Component {
                         .then(pro => {
                             var basketObject = basket
                             if (pro != null) {
-                                this.setState({basketPrice: this.state.basketPrice + product.price * (100 - pro.discount) / 100 * basket.quantity})
-                                basketObject.price = product.price * (100 - pro.discount) / 100 * basket.quantity
+                                this.setState({basketPrice: this.state.basketPrice + product.price * (100 - pro.amount) / 100 * basket.quantity})
+                                basketObject.price = product.price * (100 - pro.amount) / 100 * basket.quantity
                             } else {
                                 this.setState({basketPrice: this.state.basketPrice + product.price * basket.quantity})
                                 basketObject.price = product.price
@@ -162,15 +162,15 @@ class Basket extends Component {
             return (
                 <div className="basket">
                     {this.state.confirmFrame}
-                    <div id="frame">
-                        <table id="fullWidth">
+                    <div className="frame">
+                        <table className="fullWidth">
                             <tr>
-                                <td id="left">
+                                <td className="left">
                                     <h3>
                                         <t/><t/><t/>Total price: {(this.state.basketPrice).toFixed(2)} usd
                                     </h3>
                                 </td>
-                                <td id="right">
+                                <td className="right">
                                     <a id="button" href="#" onClick={this.clearBasket}>Erase basket</a>
                                     <t/><t/><t/>
                                     <a id="button" href="#" onClick={this.buyBasket}>Buy</a>
@@ -184,7 +184,7 @@ class Basket extends Component {
         else
             return(
                 <div className="basket" style={{display: 'flex',  justifyContent:'center', alignItems:'top', marginLeft: '10vh', marginTop: '20px', marginRight: '10vh', fontSize: 'large'}}>
-                    <div id="frame">
+                    <div className="frame">
                         <h3>
                             <t/><t/><t/>Empty Basket
                         </h3>

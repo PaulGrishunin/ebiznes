@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ProductName from './ProductName'
-// import Payment from './Payment'
+import Payment from './Payment'
 // import Delivery from './Delivery'
 
 class Orders extends Component {
@@ -133,7 +133,6 @@ class Orders extends Component {
                             <th><t/><t/><t/>ID</th>
                             <th>Product</th>
                             <th>Quantity</th>
-                            <th>Kwota</th>
                             <th>Order data</th>
                             <th>Payment data</th>
                             <th>Delivery data</th>

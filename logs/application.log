@@ -21,3 +21,6 @@
     play.filters.cors.CORSFilter
 
 2020-08-27 18:31:14,852 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-37 - Application started (Dev) (no global state)
+2020-08-28 01:19:49,819 [WARN] from play.filters.CSRF in application-akka.actor.default-dispatcher-22 - [CSRF] Check failed because no token found in headers for /addtobaskethandle
+2020-08-28 03:01:51,940 [WARN] from play.filters.CSRF in application-akka.actor.default-dispatcher-9 - [CSRF] Check failed because no token found in headers for /addtobaskethandle
+2020-08-28 03:04:01,910 [WARN] from play.filters.CSRF in application-akka.actor.default-dispatcher-25 - [CSRF] Check failed because no token found in headers for /addtobaskethandle

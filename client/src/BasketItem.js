@@ -6,7 +6,7 @@ class BasketItem extends Component {
         super();
         this.state = {
             basketItem: [],
-            discount: [],
+            amount: [],
         };
         this.removeItem = this.removeItem.bind(this);
     }
@@ -38,7 +38,7 @@ class BasketItem extends Component {
         }).then(response => response.json())
             .then(pro => {
                 if(pro != null)
-                    this.setState({ discount: pro.discount });
+                    this.setState({ amount: pro.amount });
                 //console.log("test1  " + this.state.discount)
 
                 var url = "http://localhost:9000/product/" + this.props.product
@@ -56,19 +56,19 @@ class BasketItem extends Component {
                         let lnkBackToProduct = "/product/" + product.id
                         let basketItem =
                             <div>
-                                <table id="fullWidth">
+                                <table className="fullWidth">
                                     <tr>
                                         <td>
                                             <h3>
                                                 <a id="linkh2" href={lnkBackToProduct}>{product.name}</a>
-                                                {(product.price * (100 - this.state.discount) / 100).toFixed(2)} usd, <t/>
+                                                {(product.price * (100 - this.state.amount) / 100).toFixed(2)} usd, <t/>
                                                 pcs: {this.props.number}, <t/>
-                                                total: {(this.props.number * product.price * (100 - this.state.discount) / 100).toFixed(2)} usd
+                                                total: {(this.props.number * product.price * (100 - this.state.amount) / 100).toFixed(2)} usd
                                             </h3>
                                         </td>
-                                        {/*<td id="right">*/}
-                                        {/*    <a id="button" href="#" onClick={this.removeItem}>Delete from basket</a>*/}
-                                        {/*</td>*/}
+                                        <td className="right">
+                                            <a className="button red" href="#" onClick={this.removeItem}>Delete from basket</a>
+                                        </td>
                                     </tr>
                                 </table>
                             </div>
