@@ -39,7 +39,7 @@ class ProductController @Inject()(productsRepo: ProductRepository, categoryRepo:
   }
 
   def index = Action {
-    Ok(views.html.index("Your new application is ready."))
+    Ok("Your new application is ready.")
   }
 
   def getProducts: Action[AnyContent] = Action.async { implicit request =>
@@ -82,29 +82,18 @@ class ProductController @Inject()(productsRepo: ProductRepository, categoryRepo:
 
   def addProduct: Action[AnyContent] = Action.async { implicit request: MessagesRequest[AnyContent] =>
     val categories = categoryRepo.list()
-    categories.map (cat => Ok(views.html.productadd(productForm, cat)))
+    categories.map (cat => Ok("productAdd"))
   }
 
   def addProductHandle = Action.async { implicit request =>
-    var categ:Seq[Category] = Seq[Category]()
-    val categories = categoryRepo.list().onComplete{
-      case Success(cat) => categ = cat
-      case Failure(_) => print("fail")
+    val name = request.body.asJson.get("name").as[String]
+    val description = request.body.asJson.get("description").as[String]
+    val category = request.body.asJson.get("category").as[Int]
+    val price = request.body.asJson.get("price").as[Double]
+
+    productsRepo.create(name,description,category,price).map { product =>
+      Ok(Json.toJson(product))
     }
-
-    productForm.bindFromRequest.fold(
-      errorForm => {
-        Future.successful(
-          BadRequest(views.html.productadd(errorForm, categ))
-        )
-      },
-      product => {
-        productsRepo.create(product.name, product.description, product.category, product.price).map { _ =>
-          Redirect(routes.ProductController.addProduct()).flashing("success" -> "product.created")
-        }
-      }
-    )
-
   }
   /*
     def addProduct = Action { implicit request: MessagesRequest[AnyContent] =>

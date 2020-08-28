@@ -1,0 +1,11 @@
+[info] Formatting 74 Scala sources ProjectRef(uri("file:/home/paul/ebiznes/"), "root")(compile) ...
+[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/BasketController.scala: illegal start of simple expression: Token(RPAREN,),895,))
+[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/DiscountController.scala: illegal start of simple expression: Token(RPAREN,),696,))
+[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/UserController.scala: illegal start of simple expression: Token(RPAREN,),797,))
+[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/OrderController.scala: illegal start of simple expression: Token(RPAREN,),921,))
+[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/ReviewController.scala: illegal start of simple expression: Token(RPAREN,),777,))
+[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/DeliveryController.scala: illegal start of simple expression: Token(RPAREN,),762,))
+[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/PaymentController.scala: illegal start of simple expression: Token(RPAREN,),742,))
+[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/CategoryController.scala: illegal start of simple expression: Token(RPAREN,),749,))
+[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/FavoritesController.scala: illegal start of simple expression: Token(RPAREN,),730,))
+[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/ProductController.scala: illegal start of simple expression: Token(RPAREN,),908,))

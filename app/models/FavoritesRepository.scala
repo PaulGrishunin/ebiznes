@@ -1,13 +1,13 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
-class FavoritesRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
+class FavoritesRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
@@ -20,13 +20,13 @@ class FavoritesRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(im
     def * = (id, user, product) <> ((Favorites.apply _).tupled, Favorites.unapply)
   }
 
-  val favorites= TableQuery[FavoritesTable]
+  val favorites = TableQuery[FavoritesTable]
 
   def create(user: Long, product: Long): Future[Favorites] = db.run {
     (favorites.map(f => (f.user, f.product))
       returning favorites.map(_.id)
-      into {case ((user, product), id) => Favorites(id, user, product)}
-      ) += ( user, product)
+      into { case ((user, product), id) => Favorites(id, user, product) }
+    ) += (user, product)
   }
 
   def list(): Future[Seq[Favorites]] = db.run {

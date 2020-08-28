@@ -1,10 +1,10 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
 class BasketRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
@@ -26,8 +26,8 @@ class BasketRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
   def create(user: Long, product: Long, quantity: Int): Future[Basket] = db.run {
     (basket.map(b => (b.user, b.product, b.quantity))
       returning basket.map(_.id)
-      into {case ((user, product, quantity), id) => Basket(id, user, product, quantity)}
-      ) += (user, product, quantity)
+      into { case ((user, product, quantity), id) => Basket(id, user, product, quantity) }
+    ) += (user, product, quantity)
   }
 
   def list(): Future[Seq[Basket]] = db.run {

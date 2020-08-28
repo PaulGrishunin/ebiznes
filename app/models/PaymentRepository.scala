@@ -12,7 +12,6 @@ class PaymentRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
   import dbConfig._
   import profile.api._
 
-
   class PaymentTable(tag: Tag) extends Table[Payment](tag, "payment") {
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
     def order = column[Long]("order")
@@ -26,8 +25,8 @@ class PaymentRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
   def create(order: Long, date: String): Future[Payment] = db.run {
     (payment.map(p => (p.order, p.date))
       returning payment.map(_.id)
-      into {case ((order, date), id) => Payment(id, order, date)}
-    ) += ( order, date)
+      into { case ((order, date), id) => Payment(id, order, date) }
+    ) += (order, date)
   }
 
   def list(): Future[Seq[Payment]] = db.run {

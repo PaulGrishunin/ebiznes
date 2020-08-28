@@ -1,10 +1,10 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
 class OrderRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
@@ -29,8 +29,8 @@ class OrderRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impli
   def create(user: Long, product: Long, quantity: Int, price: Double, date: String, completed: Boolean): Future[Order] = db.run {
     (order.map(o => (o.user, o.product, o.quantity, o.price, o.date, o.completed))
       returning order.map(_.id)
-      into {case ((user, product, quantity, price, date, completed), id) => Order(id, user, product, quantity, price, date, completed)}
-      ) += (user, product, quantity, price, date, completed)
+      into { case ((user, product, quantity, price, date, completed), id) => Order(id, user, product, quantity, price, date, completed) }
+    ) += (user, product, quantity, price, date, completed)
   }
 
   def list(): Future[Seq[Order]] = db.run {

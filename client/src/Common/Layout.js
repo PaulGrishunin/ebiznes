@@ -3,7 +3,7 @@ import { Layout, Menu } from 'antd';
 import Categories from '../Categories';
 import { Link, withRouter } from 'react-router-dom';
 // import logo from '../pictures/Common_logo.png';
-import { HomeOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import { HomeOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons';
 import {Table} from "reactstrap";
 import BaseRouter from "../routes";
 // import { authService } from "../Authorization/_auth-services/authentication";
@@ -96,11 +96,11 @@ class CustomLayout extends Component{
                     style={{float: 'center', marginLeft: '2%'}}>
                     <Link to="/basket">< ShoppingCartOutlined />Basket</Link>
                 </Menu.Item>
-                {/*<Menu.Item*/}
-                {/*    key="favorites"*/}
-                {/*    style={{float: 'center', marginLeft: '2%'}}>*/}
-                {/*    <Link to="/favorites">< TeamOutlined />Favorites</Link>*/}
-                {/*</Menu.Item>*/}
+                <Menu.Item
+                    key="favorites"
+                    style={{float: 'center', marginLeft: '2%'}}>
+                    <Link to="/favorites">< HeartOutlined />Favorites</Link>
+                </Menu.Item>
 
                 <Menu.Item
                     key="signout"

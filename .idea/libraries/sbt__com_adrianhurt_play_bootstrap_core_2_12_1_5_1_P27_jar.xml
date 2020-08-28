@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sbt: com.adrianhurt:play-bootstrap-core_2.12:1.5.1-P27:jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.cache/coursier/v1/https/repo1.maven.org/maven2/com/adrianhurt/play-bootstrap-core_2.12/1.5.1-P27/play-bootstrap-core_2.12-1.5.1-P27.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../.cache/coursier/v1/https/repo1.maven.org/maven2/com/adrianhurt/play-bootstrap-core_2.12/1.5.1-P27/play-bootstrap-core_2.12-1.5.1-P27-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.cache/coursier/v1/https/repo1.maven.org/maven2/com/adrianhurt/play-bootstrap-core_2.12/1.5.1-P27/play-bootstrap-core_2.12-1.5.1-P27-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

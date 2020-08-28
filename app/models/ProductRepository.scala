@@ -22,7 +22,7 @@ class ProductRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
     def description = column[String]("description")
     def category = column[Int]("category")
     def price = column[Double]("price")
-//    def category_fk = foreignKey("cat_fk",category, cat)(_.id)
+    //    def category_fk = foreignKey("cat_fk",category, cat)(_.id)
     /**
      * This is the tables default "projection".
      *
@@ -39,12 +39,11 @@ class ProductRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
    * The starting point for all queries on the people table.
    */
 
-//  import categoryRepository.CategoryTable
+  //  import categoryRepository.CategoryTable
 
   private val product = TableQuery[ProductTable]
 
-//  private val cat = TableQuery[CategoryTable]
-
+  //  private val cat = TableQuery[CategoryTable]
 
   /**
    * Create a person with the given name and age.
@@ -59,9 +58,9 @@ class ProductRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
       returning product.map(_.id)
       // And we define a transformation for the returned value, which combines our original parameters with the
       // returned id
-      into { case ((name, description, category, price),id) => Product(id, name, description, category, price)}
-      // And finally, insert the product into the database
-      ) += (name, description, category, price)
+      into { case ((name, description, category, price), id) => Product(id, name, description, category, price) }
+    // And finally, insert the product into the database
+    ) += (name, description, category, price)
   }
 
   /**

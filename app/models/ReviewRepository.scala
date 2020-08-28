@@ -7,7 +7,7 @@ import slick.jdbc.JdbcProfile
 import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
-class ReviewRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
+class ReviewRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
   private val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
@@ -28,7 +28,7 @@ class ReviewRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(impli
     (review.map(r => (r.product, r.user, r.rate, r.text))
       returning review.map(_.id)
       into { case ((product, user, rate, text), id) => Review(id, product, user, rate, text) }
-      ) += (product, user, rate, text)
+    ) += (product, user, rate, text)
   }
 
   def list(product_id: Long): Future[Seq[Review]] = db.run {

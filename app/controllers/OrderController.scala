@@ -3,7 +3,7 @@ package controllers
 import java.util.UUID
 
 import javax.inject._
-import models.{User, UserRepository, Product, ProductRepository, Order, OrderRepository}
+import models.{UserClass, UserClassRepository, Product, ProductRepository, Order, OrderRepository}
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.libs.json.Json
@@ -16,7 +16,7 @@ import play.api.libs.json.Json
 
 
 @Singleton
-class OrderController @Inject()(userRepo: UserRepository, productRepo: ProductRepository, orderRepo: OrderRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
+class OrderController @Inject()(userRepo: UserClassRepository, productRepo: ProductRepository, orderRepo: OrderRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
   val orderForm: Form[CreateOrderForm] = Form {
     mapping(

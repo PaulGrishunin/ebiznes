@@ -1,0 +1,8 @@
+[debug] Copy resource mappings: 
+[debug] 	(/home/paul/ebiznes/conf/application.conf,/home/paul/ebiznes/target/scala-2.12/classes/application.conf)
+[debug] 	(/home/paul/ebiznes/conf/routes,/home/paul/ebiznes/target/scala-2.12/classes/routes)
+[debug] 	(/home/paul/ebiznes/conf/application.prod.conf,/home/paul/ebiznes/target/scala-2.12/classes/application.prod.conf)
+[debug] 	(/home/paul/ebiznes/conf/silhouette.conf,/home/paul/ebiznes/target/scala-2.12/classes/silhouette.conf)
+[debug] 	(/home/paul/ebiznes/conf/messages,/home/paul/ebiznes/target/scala-2.12/classes/messages)
+[debug] 	(/home/paul/ebiznes/conf/evolutions/default/1.sql,/home/paul/ebiznes/target/scala-2.12/classes/evolutions/default/1.sql)
+[debug] 	(/home/paul/ebiznes/conf/evolutions/default/2.sql,/home/paul/ebiznes/target/scala-2.12/classes/evolutions/default/2.sql)

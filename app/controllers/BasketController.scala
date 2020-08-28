@@ -1,7 +1,7 @@
 package controllers
 
 import javax.inject._
-import models.{Basket, BasketRepository, ProductRepository, UserRepository}
+import models.{Basket, BasketRepository, ProductRepository, UserClassRepository}
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.libs.json.Json
@@ -17,7 +17,7 @@ import play.api.libs.json.Json
  * application's home page.
  */
 @Singleton
-class BasketController @Inject()(basketRepo: BasketRepository, productRepo: ProductRepository, userRepo: UserRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
+class BasketController @Inject()(basketRepo: BasketRepository, productRepo: ProductRepository, userRepo: UserClassRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
   val basketForm: Form[CreateBasketForm] = Form {
     mapping(

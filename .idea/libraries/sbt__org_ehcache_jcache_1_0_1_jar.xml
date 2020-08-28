@@ -1,11 +1,13 @@
 <component name="libraryTable">
   <library name="sbt: org.ehcache:jcache:1.0.1:jar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/org.ehcache/jcache/jars/jcache-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../.cache/coursier/v1/https/repo1.maven.org/maven2/org/ehcache/jcache/1.0.1/jcache-1.0.1.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../.cache/coursier/v1/https/repo1.maven.org/maven2/org/ehcache/jcache/1.0.1/jcache-1.0.1-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/org.ehcache/jcache/srcs/jcache-1.0.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../.cache/coursier/v1/https/repo1.maven.org/maven2/org/ehcache/jcache/1.0.1/jcache-1.0.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

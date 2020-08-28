@@ -1,10 +1,10 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
 class DeliveryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
@@ -28,7 +28,7 @@ class DeliveryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   def create(order: Long, address: String): Future[Delivery] = db.run {
     (delivery.map(d => (d.order, d.address))
       returning delivery.map(_.id)
-      into {case ((order, address), id) => Delivery(id, order, address)}
+      into { case ((order, address), id) => Delivery(id, order, address) }
     ) += (order, address)
   }
 
@@ -46,7 +46,6 @@ class DeliveryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   def getByOrderIdOption(order: Long): Future[Option[Delivery]] = db.run {
     delivery.filter(_.order === order).result.headOption
   }
-
 
   def delete(id: Long): Future[Unit] = db.run(delivery.filter(_.id === id).delete).map(_ => ())
 

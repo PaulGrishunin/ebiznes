@@ -1,11 +1,13 @@
 <component name="libraryTable">
   <library name="sbt: com.google.guava:guava:28.1-jre:jar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/com.google.guava/guava/bundles/guava-28.1-jre.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/28.1-jre/guava-28.1-jre.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/28.1-jre/guava-28.1-jre-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/com.google.guava/guava/srcs/guava-28.1-jre-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/28.1-jre/guava-28.1-jre-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -1,9 +1,9 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
 class CategoryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
@@ -23,8 +23,8 @@ class CategoryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   def create(name: String): Future[Category] = db.run {
     (category.map(c => c.name)
       returning category.map(_.id)
-      into {case (name, id) => Category(id, name)}
-      ) += name
+      into { case (name, id) => Category(id, name) }
+    ) += name
   }
 
   def list(): Future[Seq[Category]] = db.run {

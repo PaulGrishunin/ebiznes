@@ -1,10 +1,10 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
 class DiscountRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
@@ -29,7 +29,7 @@ class DiscountRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   def create(product: Long, amount: Int, description: String): Future[Discount] = db.run {
     (discount.map(d => (d.product, d.amount, d.description))
       returning discount.map(_.id)
-      into {case ((product, amount, description), id) => Discount(id, product, amount, description)}
+      into { case ((product, amount, description), id) => Discount(id, product, amount, description) }
     ) += (product, amount, description)
   }
 
@@ -45,7 +45,7 @@ class DiscountRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
     discount.filter(_.id === id).result.headOption
   }
 
-  def getByProductId(id: Long): Future[Option[Discount]] =db.run {
+  def getByProductId(id: Long): Future[Option[Discount]] = db.run {
     discount.filter(_.product === id).result.headOption
   }
 

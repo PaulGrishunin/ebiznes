@@ -1,7 +1,7 @@
 package controllers
 
 import javax.inject._
-import models.{User, UserRepository, Product, ProductRepository, Favorites, FavoritesRepository}
+import models.{UserClass, UserClassRepository, Product, ProductRepository, Favorites, FavoritesRepository}
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.libs.json.Json
@@ -11,7 +11,7 @@ import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
 
 @Singleton
-class FavoritesController @Inject()(userRepo: UserRepository, productRepo: ProductRepository, favsRepo: FavoritesRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
+class FavoritesController @Inject()(userRepo: UserClassRepository, productRepo: ProductRepository, favsRepo: FavoritesRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
   
   val favoritesForm: Form[CreateFavoritesForm] = Form {
     mapping(

@@ -1,7 +1,7 @@
 package controllers
 
 import javax.inject._
-import models.{User, UserRepository}
+import models.{UserClass, UserClassRepository}
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.mvc._
@@ -16,7 +16,7 @@ import play.api.libs.json.Json
  * application's home page.
  */
 @Singleton
-class UserController @Inject()(userRepo: UserRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
+class UserController @Inject()(userRepo: UserClassRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
   val userForm: Form[CreateUserForm] = Form {
     mapping(
@@ -64,8 +64,8 @@ class UserController @Inject()(userRepo: UserRepository, cc: MessagesControllerC
     val email = request.body.asJson.get("email").as[String]
     val admin = request.body.asJson.get("admin").as[Boolean]
 
-    userRepo.update(id, User(id, login, password, email, admin)).map { user =>
-      Ok(Json.toJson(User(id, login, password, email, admin)))
+    userRepo.update(id, UserClass(id, login, password, email, admin)).map { user =>
+      Ok(Json.toJson(UserClass(id, login, password, email, admin)))
     }
   }
 
