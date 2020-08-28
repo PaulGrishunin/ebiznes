@@ -75,12 +75,10 @@ CREATE TABLE "delivery" (
  FOREIGN KEY("order") references "order"(id)
 );
 
-CREATE TABLE "question" (
+CREATE TABLE "favorites" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
- "product" INTEGER NOT NULL,
  "user" INTEGER NOT NULL,
- "content" TEXT NOT NULL,
- "answer" TEXT NULL,
+ "product" INTEGER NOT NULL,
  FOREIGN KEY(user) references user(id),
  FOREIGN KEY(product) references product(id)
 );
@@ -96,4 +94,4 @@ DROP TABLE "payment"
 DROP TABLE "review"
 DROP TABLE "discount"
 DROP TABLE "delivery"
-DROP TABLE "question"
+DROP TABLE "favorites"

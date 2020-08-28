@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Thu Aug 27 18:31:00 MSK 2020
+// @DATE:Fri Aug 28 15:11:59 MSK 2020
 
 import play.api.mvc.Call
 
@@ -201,63 +201,6 @@ package controllers {
     def deleteCategory(id:Int): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "deletecategory/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Int]].unbind("id", id)))
-    }
-  
-  }
-
-  // @LINE:88
-  class ReverseQuestionController(_prefix: => String) {
-    def _defaultPrefix: String = {
-      if (_prefix.endsWith("/")) "" else "/"
-    }
-
-  
-    // @LINE:95
-    def getQuestions(): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "questions")
-    }
-  
-    // @LINE:96
-    def getQuestion(id:Int): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "question/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Int]].unbind("id", id)))
-    }
-  
-    // @LINE:90
-    def addQuestionHandle(): Call = {
-      
-      Call("POST", _prefix + { _defaultPrefix } + "addquestionhandle")
-    }
-  
-    // @LINE:93
-    def updateQuestionHandle(): Call = {
-      
-      Call("POST", _prefix + { _defaultPrefix } + "updatequestionhandle")
-    }
-  
-    // @LINE:91
-    def updateQuestion(id:Int): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "updatequestion/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Int]].unbind("id", id)))
-    }
-  
-    // @LINE:98
-    def deleteQuestion(id:Int): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "deletequestion/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Int]].unbind("id", id)))
-    }
-  
-    // @LINE:88
-    def addQuestion(): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "addquestion")
-    }
-  
-    // @LINE:97
-    def getQuestionProd(id:Long): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "questionprod/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
     }
   
   }
@@ -489,6 +432,63 @@ package controllers {
     def message(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "message")
+    }
+  
+  }
+
+  // @LINE:88
+  class ReverseFavoritesController(_prefix: => String) {
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:88
+    def addFavorites(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "addfavorites")
+    }
+  
+    // @LINE:90
+    def addFavoritesHandle(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "addfavoriteshandle")
+    }
+  
+    // @LINE:98
+    def deleteFavorites(id:Int): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "deletefavorites/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Int]].unbind("id", id)))
+    }
+  
+    // @LINE:96
+    def getFavorit(id:Int): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "favorit/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Int]].unbind("id", id)))
+    }
+  
+    // @LINE:93
+    def updateFavoritesHandle(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "updatefavoriteshandle")
+    }
+  
+    // @LINE:97
+    def getFavoritesUsr(id:Long): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "favoritesusr/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
+    }
+  
+    // @LINE:91
+    def updateFavorites(id:Int): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "updatefavorites/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Int]].unbind("id", id)))
+    }
+  
+    // @LINE:95
+    def getFavorites(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "favorites")
     }
   
   }

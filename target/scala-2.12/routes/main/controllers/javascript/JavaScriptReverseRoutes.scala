@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Thu Aug 27 18:31:00 MSK 2020
+// @DATE:Fri Aug 28 15:11:59 MSK 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -304,96 +304,6 @@ package controllers.javascript {
       """
         function(id0) {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "deletecategory/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Int]].javascriptUnbind + """)("id", id0))})
-        }
-      """
-    )
-  
-  }
-
-  // @LINE:88
-  class ReverseQuestionController(_prefix: => String) {
-
-    def _defaultPrefix: String = {
-      if (_prefix.endsWith("/")) "" else "/"
-    }
-
-  
-    // @LINE:95
-    def getQuestions: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.QuestionController.getQuestions",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "questions"})
-        }
-      """
-    )
-  
-    // @LINE:96
-    def getQuestion: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.QuestionController.getQuestion",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "question/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Int]].javascriptUnbind + """)("id", id0))})
-        }
-      """
-    )
-  
-    // @LINE:90
-    def addQuestionHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.QuestionController.addQuestionHandle",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "addquestionhandle"})
-        }
-      """
-    )
-  
-    // @LINE:93
-    def updateQuestionHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.QuestionController.updateQuestionHandle",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "updatequestionhandle"})
-        }
-      """
-    )
-  
-    // @LINE:91
-    def updateQuestion: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.QuestionController.updateQuestion",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "updatequestion/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Int]].javascriptUnbind + """)("id", id0))})
-        }
-      """
-    )
-  
-    // @LINE:98
-    def deleteQuestion: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.QuestionController.deleteQuestion",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "deletequestion/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Int]].javascriptUnbind + """)("id", id0))})
-        }
-      """
-    )
-  
-    // @LINE:88
-    def addQuestion: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.QuestionController.addQuestion",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "addquestion"})
-        }
-      """
-    )
-  
-    // @LINE:97
-    def getQuestionProd: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.QuestionController.getQuestionProd",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "questionprod/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("id", id0))})
         }
       """
     )
@@ -754,6 +664,96 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "message"})
+        }
+      """
+    )
+  
+  }
+
+  // @LINE:88
+  class ReverseFavoritesController(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:88
+    def addFavorites: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.FavoritesController.addFavorites",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "addfavorites"})
+        }
+      """
+    )
+  
+    // @LINE:90
+    def addFavoritesHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.FavoritesController.addFavoritesHandle",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "addfavoriteshandle"})
+        }
+      """
+    )
+  
+    // @LINE:98
+    def deleteFavorites: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.FavoritesController.deleteFavorites",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "deletefavorites/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Int]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:96
+    def getFavorit: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.FavoritesController.getFavorit",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "favorit/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Int]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:93
+    def updateFavoritesHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.FavoritesController.updateFavoritesHandle",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "updatefavoriteshandle"})
+        }
+      """
+    )
+  
+    // @LINE:97
+    def getFavoritesUsr: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.FavoritesController.getFavoritesUsr",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "favoritesusr/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:91
+    def updateFavorites: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.FavoritesController.updateFavorites",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "updatefavorites/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Int]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:95
+    def getFavorites: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.FavoritesController.getFavorites",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "favorites"})
         }
       """
     )

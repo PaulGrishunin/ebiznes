@@ -85,17 +85,17 @@ GET     /deletepayment/:id         controllers.PaymentController.deletePayment(i
 
 
 #product Questions
-GET     /addquestion                controllers.QuestionController.addQuestion
+GET     /addfavorites                controllers.FavoritesController.addFavorites
 +nocsrf
-POST    /addquestionhandle           controllers.QuestionController.addQuestionHandle
-GET     /updatequestion/:id          controllers.QuestionController.updateQuestion(id: Int)
+POST    /addfavoriteshandle           controllers.FavoritesController.addFavoritesHandle
+GET     /updatefavorites/:id          controllers.FavoritesController.updateFavorites(id: Int)
 +nocsrf
-POST    /updatequestionhandle        controllers.QuestionController.updateQuestionHandle
+POST    /updatefavoriteshandle        controllers.FavoritesController.updateFavoritesHandle
 
-GET     /questions                   controllers.QuestionController.getQuestions
-GET     /question/:id                controllers.QuestionController.getQuestion(id: Int)
-GET     /questionprod/:id            controllers.QuestionController.getQuestionProd(id: Long)
-GET     /deletequestion/:id          controllers.QuestionController.deleteQuestion(id: Int)
+GET     /favorites                  controllers.FavoritesController.getFavorites
+GET     /favorit/:id                controllers.FavoritesController.getFavorit(id: Int)
+GET     /favoritesusr/:id            controllers.FavoritesController.getFavoritesUsr(id: Long)
+GET     /deletefavorites/:id          controllers.FavoritesController.deleteFavorites(id: Int)
 
 #
 #discount

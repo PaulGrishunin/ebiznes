@@ -55,7 +55,11 @@ INSERT INTO "discount"("product", "amount", "description") VALUES(1,5,"Only unti
 INSERT INTO "discount"("product", "amount", "description") VALUES(2,50,"Two for the price of one!");
 INSERT INTO "discount"("product", "amount", "description") VALUES(5,20,"Forever!");
 
-INSERT INTO "question"("product", "user", "content", "answer") VALUES(2,2,"Are there any cars in white?","Yes, there is a color white diamond. Waiting for you!");
+INSERT INTO "favorites"("user", "product") VALUES(2,2);
+INSERT INTO "favorites"("user", "product") VALUES(1,2);
+INSERT INTO "favorites"("user", "product") VALUES(2,5);
+INSERT INTO "favorites"("user", "product") VALUES(2,7);
+INSERT INTO "favorites"("user", "product") VALUES(2,10);
 
 -- INSERT INTO "delivery"("order_id", "address") VALUES("1",  "Krakow, Bydgoska, 19");
 -- INSERT INTO "delivery"("order_id", "address") VALUES("2",  "Krakow, Profesora Lojasiewicza, 11");
@@ -82,7 +86,8 @@ DELETE FROM "review";
 delete from sqlite_sequence where name='review';
 DELETE FROM "discount";
 delete from sqlite_sequence where name='discount';
-
+DELETE FROM "favorites";
+delete from sqlite_sequence where name='favorites';
 
 -- DELETE FROM "category" WHERE name="Tesla";
 -- DELETE FROM "category" WHERE name="Porshe";
