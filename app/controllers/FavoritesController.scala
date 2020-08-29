@@ -32,14 +32,6 @@ class FavoritesController @Inject()(userRepo: UserClassRepository, productRepo: 
     Ok("Your new application is ready.")
   }
 
-  def addFavoritesHandle = Action.async { implicit request =>
-    val user = request.body.asJson.get("user").as[Long]
-    val product = request.body.asJson.get("product").as[Long]
-
-    favsRepo.create(user, product).map { favorites =>
-      Ok(Json.toJson(favorites))
-    }
-  }
 
   def updateFavorites(id: Long): Action[AnyContent] = Action.async { implicit request =>
     val favorites = favsRepo.getByIdOption(id)

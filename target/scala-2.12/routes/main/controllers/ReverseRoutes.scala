@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Fri Aug 28 21:55:45 MSK 2020
+// @DATE:Sat Aug 29 23:27:52 MSK 2020
 
 import play.api.mvc.Call
 
@@ -207,10 +207,40 @@ package controllers {
     }
 
   
+    // @LINE:122
+    def addFavoritesHandle(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "addfavoriteshandle")
+    }
+  
     // @LINE:7
     def signOut(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "signOut")
+    }
+  
+    // @LINE:96
+    def addToBasketHandle(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "addtobaskethandle")
+    }
+  
+    // @LINE:164
+    def addReviewHandle(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "addreviewhandle")
+    }
+  
+    // @LINE:35
+    def registred(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "registred")
+    }
+  
+    // @LINE:101
+    def basketContent(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "basket")
     }
   
     // @LINE:6
@@ -420,12 +450,6 @@ package controllers {
       Call("GET", _prefix + { _defaultPrefix } + "review/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("productid", productid)))
     }
   
-    // @LINE:164
-    def addReviewHandle(): Call = {
-      
-      Call("POST", _prefix + { _defaultPrefix } + "addreviewhandle")
-    }
-  
     // @LINE:167
     def updateReviewHandle(): Call = {
       
@@ -613,12 +637,6 @@ package controllers {
     def addFavorites(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "addfavorites")
-    }
-  
-    // @LINE:122
-    def addFavoritesHandle(): Call = {
-      
-      Call("POST", _prefix + { _defaultPrefix } + "addfavoriteshandle")
     }
   
     // @LINE:130

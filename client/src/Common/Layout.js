@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import { Layout, Menu } from 'antd';
 import Categories from '../Categories';
 import { Link, withRouter } from 'react-router-dom';
-// import logo from '../pictures/Common_logo.png';
-import { HomeOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons';
+import { HomeOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined, HeartOutlined, UserOutlined } from '@ant-design/icons';
 import {Table} from "reactstrap";
-import BaseRouter from "../routes";
 // import { authService } from "../Authorization/_auth-services/authentication";
 
 
@@ -84,12 +82,12 @@ class CustomLayout extends Component{
                 <Menu.Item
                     key="discounts"
                     style={{float: 'center', marginLeft: '2%'}}>
-                    <Link to="/discounts"><PercentageOutlined />Discounts</Link>
+                    <Link to="/discounts">< PercentageOutlined />Discounts</Link>
                 </Menu.Item>
                 <Menu.Item
                     key="orders"
                     style={{float: 'center', marginLeft: '2%'}}>
-                    <Link to="/orders"><CheckCircleOutlined />Orders</Link>
+                    <Link to="/orders">< CheckCircleOutlined />Orders</Link>
                 </Menu.Item>
                 <Menu.Item
                     key="basket"
@@ -111,7 +109,7 @@ class CustomLayout extends Component{
                 <Menu.Item
                     key="userpage"
                     style={{float: 'right'}}>
-                    <Link to="/user/1">Profile</Link>
+                    <Link to="/user/1">< UserOutlined />Profile</Link>
                 </Menu.Item>
             </Menu>
         );
@@ -136,11 +134,9 @@ class CustomLayout extends Component{
                 <this.renderMenu />
             </Header>
             <Content >
-
                                 <div>
                                     {this.props.children}
                                 </div>
-
             </Content>
         </Layout>
     );

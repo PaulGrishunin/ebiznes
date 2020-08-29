@@ -43,8 +43,8 @@ INSERT INTO "product"("name", "description", "category", "price") VALUES("Produc
 INSERT INTO "product"("name", "description", "category", "price") VALUES("Product 17",
                                                                          "Description 17", 1, 55.50);
 
-INSERT INTO "user"("login", "password", "email", "admin") VALUES("admin", "admin", "admin@admin.com", 1);
-INSERT INTO "user"("login", "password", "email", "admin") VALUES("paul_gri", "qwerty12345", "paul_gri@mail.ru", 0);
+INSERT INTO "user"("provId", "uKey", "login", "email", "admin") VALUES("providerID", "0", "admin", "admin@admin.com", 1);
+INSERT INTO "user"("provId", "uKey", "login", "email", "admin") VALUES("providerID", "1", "paul_gri", "paul_gri@mail.ru", 0);
 
 
 INSERT INTO "review"("product", "user", "rate", "text") VALUES(1,1,5,"Great product! This is the future!");

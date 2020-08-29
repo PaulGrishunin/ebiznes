@@ -32,7 +32,7 @@ POST        /password/change                 controllers.ChangePasswordControlle
 GET         /account/email/:email            controllers.ActivateAccountController.send(email: String)
 GET         /account/activate/:token         controllers.ActivateAccountController.activate(token: java.util.UUID)
 
-#GET         /isLogged                        controllers.ApplicationController.isLogged
+GET         /registred                        controllers.ApplicationController.registred
 
 # End of authentication
 
@@ -92,13 +92,13 @@ GET     /deleteorder/:id          controllers.OrderController.deleteOrder(id: Lo
 
 #basket
 GET     /addtobasket/:id         controllers.BasketController.addToBasket(id: Long)
-#+nocsrf
-#POST   /addtobaskethandle         controllers.BasketController.addToBasketHandle
++nocsrf
+POST   /addtobaskethandle         controllers.ApplicationController.addToBasketHandle
 GET     /updatebasket/:id          controllers.BasketController.updateBasket(id: Long)
 +nocsrf
 POST    /updatebaskethandle      controllers.BasketController.updateBasketHandle
 
-#GET    /basket                  controllers.BasketController.getBasket
+GET     /basket                  controllers.ApplicationController.basketContent
 GET     /deletefrombasket/:id    controllers.BasketController.deleteFromBasket(id: Long)
 
 
@@ -116,10 +116,10 @@ GET     /paymentord/:id            controllers.PaymentController.getPaymentOrd(i
 GET     /deletepayment/:id         controllers.PaymentController.deletePayment(id: Long)
 
 
-#product Questions
+#Favorites products
 GET     /addfavorites                controllers.FavoritesController.addFavorites
 +nocsrf
-POST    /addfavoriteshandle           controllers.FavoritesController.addFavoritesHandle
+POST    /addfavoriteshandle           controllers.ApplicationController.addFavoritesHandle
 GET     /updatefavorites/:id          controllers.FavoritesController.updateFavorites(id: Int)
 +nocsrf
 POST    /updatefavoriteshandle        controllers.FavoritesController.updateFavoritesHandle
@@ -161,7 +161,7 @@ GET     /deletedelivery/:id         controllers.DeliveryController.deleteDeliver
 #product Review
 GET     /addreview              controllers.ReviewController.addReview
 +nocsrf
-POST    /addreviewhandle         controllers.ReviewController.addReviewHandle
+POST    /addreviewhandle         controllers.ApplicationController.addReviewHandle
 GET     /updatereview/:id        controllers.ReviewController.updateReview(id: Int)
 +nocsrf
 POST    /updatereviewhandle      controllers.ReviewController.updateReviewHandle

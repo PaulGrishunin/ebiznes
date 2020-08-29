@@ -15,20 +15,21 @@ class UserClassRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(i
 
   class UserTable(tag: Tag) extends Table[UserClass](tag, "user") {
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
+    def provId = column[String]("provId")
+    def uKey = column[String]("uKey")
     def login = column[String]("login")
-    def password = column[String]("password")
     def email = column[String]("email")
     def admin = column[Boolean]("admin")
-    def * = (id, login, password, email, admin) <> ((UserClass.apply _).tupled, UserClass.unapply)
+    def * = (id, provId, uKey, login, email, admin) <> ((UserClass.apply _).tupled, UserClass.unapply)
   }
 
   val user = TableQuery[UserTable]
 
-  def create(login: String, password: String, email: String, admin: Boolean): Future[UserClass] = db.run {
-    (user.map(u => (u.login, u.password, u.email, u.admin))
+  def create(provId: String, uKey: String, login: String, email: String, admin: Boolean): Future[UserClass] = db.run {
+    (user.map(u => (u.provId, u.uKey, u.login, u.email, u.admin))
       returning user.map(_.id)
-      into { case ((login, password, email, admin), id) => UserClass(id, login, password, email, admin) }
-    ) += (login, password, email, admin)
+      into { case ((provId, uKey, login, email, admin), id) => UserClass(id, provId, uKey, login, email, admin) }
+    ) += (provId, uKey, login, email, admin)
   }
 
   def list(): Future[Seq[UserClass]] = db.run {
@@ -50,5 +51,8 @@ class UserClassRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(i
     db.run(user.filter(_.id === id).update(userToUpdate)).map(_ => ())
   }
 
+  def getByProvId(provId: String, uKey: String): Future[Option[UserClass]] = db.run {
+    user.filter(_.provId === provId).filter(_.uKey === uKey).result.headOption
+  }
 }
 

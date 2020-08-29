@@ -20,8 +20,9 @@ class UserController @Inject()(userRepo: UserClassRepository, cc: MessagesContro
 
   val userForm: Form[CreateUserForm] = Form {
     mapping(
+      "provId" -> nonEmptyText,
+      "uKey" -> nonEmptyText,
       "login" -> nonEmptyText,
-      "password" -> nonEmptyText,
       "email" -> nonEmptyText,
       "admin" -> boolean,
     )(CreateUserForm.apply)(CreateUserForm.unapply)
@@ -30,8 +31,9 @@ class UserController @Inject()(userRepo: UserClassRepository, cc: MessagesContro
   val updateUserForm: Form[UpdateUserForm] = Form {
     mapping(
       "id" -> longNumber,
+      "provId" -> nonEmptyText,
+      "uKey" -> nonEmptyText,
       "login" -> nonEmptyText,
-      "password" -> nonEmptyText,
       "email" -> nonEmptyText,
       "admin" -> boolean,
     )(UpdateUserForm.apply)(UpdateUserForm.unapply)
@@ -42,12 +44,13 @@ class UserController @Inject()(userRepo: UserClassRepository, cc: MessagesContro
   }
 
   def addUserHandle = Action.async { implicit request =>
+    val provId = request.body.asJson.get("provId").as[String]
+    val uKey = request.body.asJson.get("uKey").as[String]
     val login = request.body.asJson.get("login").as[String]
-    val password = request.body.asJson.get("password").as[String]
     val email = request.body.asJson.get("email").as[String]
     val admin = request.body.asJson.get("admin").as[Boolean]
 
-    userRepo.create( login, password, email, admin).map { user =>
+    userRepo.create( provId, uKey, login, email, admin).map { user =>
       Ok(Json.toJson(user))
     }
   }
@@ -59,13 +62,14 @@ class UserController @Inject()(userRepo: UserClassRepository, cc: MessagesContro
 
   def updateUserHandle = Action.async { implicit request =>
     val id = request.body.asJson.get("id").as[Long]
+    val provId = request.body.asJson.get("provId").as[String]
+    val uKey = request.body.asJson.get("uKey").as[String]
     val login = request.body.asJson.get("login").as[String]
-    val password = request.body.asJson.get("password").as[String]
     val email = request.body.asJson.get("email").as[String]
     val admin = request.body.asJson.get("admin").as[Boolean]
 
-    userRepo.update(id, UserClass(id, login, password, email, admin)).map { user =>
-      Ok(Json.toJson(UserClass(id, login, password, email, admin)))
+    userRepo.update(id, UserClass(id, provId, uKey, login, email, admin)).map { user =>
+      Ok(Json.toJson(UserClass(id, provId, uKey, login, email, admin)))
     }
   }
 
@@ -86,5 +90,5 @@ class UserController @Inject()(userRepo: UserClassRepository, cc: MessagesContro
   }
 }
 
-case class CreateUserForm(login: String, password: String, email: String, admin: Boolean)
-case class UpdateUserForm(id: Long, login: String, password: String, email: String, admin: Boolean)
+case class CreateUserForm(provId: String, uKey: String, login: String, email: String, admin: Boolean)
+case class UpdateUserForm(id: Long, provId: String, uKey: String, login: String, email: String, admin: Boolean)

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Fri Aug 28 21:55:45 MSK 2020
+// @DATE:Sat Aug 29 23:27:52 MSK 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -299,12 +299,62 @@ package controllers.javascript {
     }
 
   
+    // @LINE:122
+    def addFavoritesHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.addFavoritesHandle",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "addfavoriteshandle"})
+        }
+      """
+    )
+  
     // @LINE:7
     def signOut: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.ApplicationController.signOut",
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "signOut"})
+        }
+      """
+    )
+  
+    // @LINE:96
+    def addToBasketHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.addToBasketHandle",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "addtobaskethandle"})
+        }
+      """
+    )
+  
+    // @LINE:164
+    def addReviewHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.addReviewHandle",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "addreviewhandle"})
+        }
+      """
+    )
+  
+    // @LINE:35
+    def registred: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.registred",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "registred"})
+        }
+      """
+    )
+  
+    // @LINE:101
+    def basketContent: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.basketContent",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "basket"})
         }
       """
     )
@@ -629,16 +679,6 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:164
-    def addReviewHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.ReviewController.addReviewHandle",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "addreviewhandle"})
-        }
-      """
-    )
-  
     // @LINE:167
     def updateReviewHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.ReviewController.updateReviewHandle",
@@ -925,16 +965,6 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "addfavorites"})
-        }
-      """
-    )
-  
-    // @LINE:122
-    def addFavoritesHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.FavoritesController.addFavoritesHandle",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "addfavoriteshandle"})
         }
       """
     )

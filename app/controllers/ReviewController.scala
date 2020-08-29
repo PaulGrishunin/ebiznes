@@ -36,16 +36,16 @@ class ReviewController @Inject()(userRepo: UserClassRepository, reviewRepo: Revi
     Ok("Your new application is ready.")
   }
 
-  def addReviewHandle = Action.async { implicit request =>
-    val product = request.body.asJson.get("product").as[Long]
-    val user = request.body.asJson.get("user").as[Long]
-    val rate = request.body.asJson.get("rate").as[Byte]
-    val text = request.body.asJson.get("text").as[String]
-
-    reviewRepo.create(product, user, rate, text).map { review =>
-      Ok(Json.toJson(review))
-    }
-  }
+//  def addReviewHandle = Action.async { implicit request =>
+//    val product = request.body.asJson.get("product").as[Long]
+//    val user = request.body.asJson.get("user").as[Long]
+//    val rate = request.body.asJson.get("rate").as[Byte]
+//    val text = request.body.asJson.get("text").as[String]
+//
+//    reviewRepo.create(product, user, rate, text).map { review =>
+//      Ok(Json.toJson(review))
+//    }
+//  }
 
   def updateReview(id: Int): Action[AnyContent] = Action.async { implicit request =>
     val review = reviewRepo.getByIdOption(id)
