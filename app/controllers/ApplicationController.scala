@@ -91,7 +91,7 @@ class ApplicationController @Inject() (
 
   def addReviewHandle = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     val product = request.body.asJson.get("product").as[Long]
-    val rate = request.body.asJson.get("rate").as[Byte]
+    val rate = request.body.asJson.get("rate").as[Int]
     val text = request.body.asJson.get("text").as[String]
 
     val provider = request.identity.loginInfo.providerID

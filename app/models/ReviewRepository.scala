@@ -17,14 +17,14 @@ class ReviewRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
     def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
     def product = column[Long]("product")
     def user = column[Long]("user")
-    def rate: Rep[Byte] = column[Byte]("rate")
+    def rate: Rep[Int] = column[Int]("rate")
     def text: Rep[String] = column[String]("text")
     def * = (id, product, user, rate, text) <> ((Review.apply _).tupled, Review.unapply)
   }
 
   private val review = TableQuery[ReviewTable]
 
-  def create(product: Long, user: Long, rate: Byte, text: String): Future[Review] = db.run {
+  def create(product: Long, user: Long, rate: Int, text: String): Future[Review] = db.run {
     (review.map(r => (r.product, r.user, r.rate, r.text))
       returning review.map(_.id)
       into { case ((product, user, rate, text), id) => Review(id, product, user, rate, text) }

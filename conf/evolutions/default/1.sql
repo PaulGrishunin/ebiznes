@@ -55,7 +55,7 @@ CREATE TABLE "review" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
  "product" INTEGER NOT NULL,
  "user" INTEGER NOT NULL,
- "rate" TINYINT NOT NULL,
+ "rate" INTEGER NOT NULL,
  "text" TEXT NOT NULL,
  FOREIGN KEY(user) references user(id),
  FOREIGN KEY(product) references product(id)

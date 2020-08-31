@@ -22,7 +22,7 @@ class Reviews extends Component {
         fetch('http://localhost:9000/addreviewhandle', {
             method: 'POST',
             body: JSON.stringify({
-                "product":this.props.product,
+                "product":parseInt(this.props.product),
                 "rate":parseInt(document.getElementsByName("rate")[0].value),
                 "text":document.getElementsByName("text")[0].value
             }),
@@ -34,12 +34,10 @@ class Reviews extends Component {
             .then(res => res.json())
             .then(console.log)
         window.location.reload(false);
-        console.log(this.props.product)
     }
 
     updateRate() {
         var rate = document.getElementsByName("rate")[0].value
-    //     document.getElementsByName('starsDisplayer')[0].setAttribute("src","/img/stars/" + rate + ".png")
     }
 
     hideAdd() {
@@ -102,9 +100,9 @@ class Reviews extends Component {
                                 </td>
                                 <td>
                                     <tr>
-                                    <div className="Rater">
-                                        <Rater total={5} rating={parseFloat(rev.rate)} interactive={false}/>
-                                    </div>
+                                        <div className="Rater">
+                                            <Rater total={5} rating={parseFloat(rev.rate)} interactive={false}/>
+                                        </div>
                                     </tr>
                                     <tr>
                                         <div className="textReview"><i>{rev.text}</i></div>
@@ -139,7 +137,7 @@ class Reviews extends Component {
 
                 </div>
                 <div id="frame">
-                    {this.props.reviews}
+                    {this.state.reviews}
                 </div>
             </div>
         )

@@ -17,17 +17,17 @@ class ReviewController @Inject()(userRepo: UserClassRepository, reviewRepo: Revi
     mapping(
       "product" -> longNumber,
       "user" -> longNumber,
-           "rate" -> byteNumber,
+           "rate" -> number,
       "text" -> nonEmptyText,
     )(CreateReviewForm.apply)(CreateReviewForm.unapply)
   }
 
   val updateReviewForm: Form[UpdateReviewForm] = Form {
     mapping(
-      "id" -> longNumber,
+      "id" -> number,
       "product" -> longNumber,
       "user" -> longNumber,
-      "rate" -> byteNumber,
+      "rate" -> number,
       "text" -> nonEmptyText,
     )(UpdateReviewForm.apply)(UpdateReviewForm.unapply)
   }
@@ -55,7 +55,7 @@ class ReviewController @Inject()(userRepo: UserClassRepository, reviewRepo: Revi
     val id = request.body.asJson.get("id").as[Int]
     val product = request.body.asJson.get("product").as[Long]
     val user = request.body.asJson.get("user").as[Long]
-    val rate = request.body.asJson.get("rate").as[Byte]
+    val rate = request.body.asJson.get("rate").as[Int]
     val text = request.body.asJson.get("text").as[String]
 
     reviewRepo.update(id, Review(id, product, user, rate, text)).map { review =>
@@ -79,5 +79,5 @@ class ReviewController @Inject()(userRepo: UserClassRepository, reviewRepo: Revi
 
 }
 
-case class CreateReviewForm( product: Long, user: Long, rate: Byte, text: String)
-case class UpdateReviewForm(id: Long, product: Long,  user: Long, rate: Byte, text: String)
+case class CreateReviewForm( product: Long, user: Long, rate: Int, text: String)
+case class UpdateReviewForm(id: Int, product: Long,  user: Long, rate: Int, text: String)
