@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Category from './Category'
-import Reviews from './Rewiews'
+// import Category from './Category'
+// import Reviews from './Rewiews'
 
 class Payment extends Component {
 

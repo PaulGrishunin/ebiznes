@@ -1,5 +1,1 @@
-[info] Formatting 5 Scala sources ProjectRef(uri("file:/home/paul/ebiznes/"), "root")(compile) ...
-[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/BasketController.scala: illegal start of simple expression: Token(RPAREN,),895,))
-[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/ReviewController.scala: illegal start of simple expression: Token(RPAREN,),777,))
-[warn] Scalariform parser error for /home/paul/ebiznes/app/controllers/FavoritesController.scala: illegal start of simple expression: Token(RPAREN,),730,))
-[info] Reformatted 1 Scala source ProjectRef(uri("file:/home/paul/ebiznes/"), "root")(compile).
+[info] Formatting 1 Scala source ProjectRef(uri("file:/home/paul/ebiznes/"), "root")(compile) ...

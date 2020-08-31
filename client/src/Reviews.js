@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import UserAvatar from "./UserAvatar";
 import Rater from 'react-rater';
 // import 'react-rater/lib/react-rater.css';
 import './Reviews.css';
@@ -14,6 +13,7 @@ class Reviews extends Component {
             exists: false,
             addframe: "",
         };
+        this.sentReview = this.sentReview.bind(this);
         this.showAdd = this.showAdd.bind(this);
         this.hideAdd = this.hideAdd.bind(this);
     }
@@ -22,6 +22,7 @@ class Reviews extends Component {
         fetch('http://localhost:9000/addreviewhandle', {
             method: 'POST',
             body: JSON.stringify({
+                "product":this.props.product,
                 "rate":parseInt(document.getElementsByName("rate")[0].value),
                 "text":document.getElementsByName("text")[0].value
             }),
@@ -33,12 +34,13 @@ class Reviews extends Component {
             .then(res => res.json())
             .then(console.log)
         window.location.reload(false);
+        console.log(this.props.product)
     }
 
-    // updateRate() {
-    //     var rate = document.getElementsByName("rate")[0].value
+    updateRate() {
+        var rate = document.getElementsByName("rate")[0].value
     //     document.getElementsByName('starsDisplayer')[0].setAttribute("src","/img/stars/" + rate + ".png")
-    // }
+    }
 
     hideAdd() {
         document.getElementsByClassName("addframe")[0].setAttribute("id","framefloating-fadeout");
@@ -137,7 +139,7 @@ class Reviews extends Component {
 
                 </div>
                 <div id="frame">
-                    {this.state.reviews}
+                    {this.props.reviews}
                 </div>
             </div>
         )

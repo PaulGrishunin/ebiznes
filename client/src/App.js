@@ -3,13 +3,13 @@ import {
     BrowserRouter as Router,
     Route
 } from 'react-router-dom';
-import Categories from './Categories'
-import Products from './Products'
-import Product from './Product'
-import Discounts from './Discounts'
-import Reviews from './Reviews'
-import UserPage from './UserPage'
-// import Orders from './Orders'
+import Categories from './Categories';
+import Products from './Products';
+import Product from './Product';
+import Discounts from './Discounts';
+import Reviews from './Reviews';
+import UserPage from './UserPage';
+import Orders from './Orders';
 
 import './App.css';
 import BaseRouter from './routes';

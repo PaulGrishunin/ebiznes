@@ -30,7 +30,7 @@ class Product extends Component {
     addToBasket() {
         fetch('http://localhost:9000/addtobaskethandle', {
             method: 'POST',
-            body: JSON.stringify({"product":this.state.id,"count":parseInt(document.getElementsByName("number")[0].value)
+            body: JSON.stringify({"product":this.state.id,"quantity":parseInt(document.getElementsByName("number")[0].value)
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8'
@@ -99,7 +99,6 @@ class Product extends Component {
             .then(dis => {
                 if(dis != null)
                     this.setState({ amount: dis.amount });
-                console.log("test1  " + this.state.amount)
 
                 var url = "http://localhost:9000/product/" + this.props.match.params.product
 
