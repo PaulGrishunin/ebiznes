@@ -61,3 +61,28 @@
   margin-left: 250px;
   width: calc(100% - 150px);
 }
+.frame {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  opacity:0;
+  animation:fadeIn ease-in 1;
+  animation-fill-mode:forwards;
+  animation-duration:0.3s;
+}
+
+.darken {
+  position: fixed;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  z-index: 2;
+  opacity:0;
+  animation:fadeIn ease-in 0.5;
+  animation-fill-mode:forwards;
+  animation-duration:0.6s;
+}

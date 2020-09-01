@@ -25,9 +25,11 @@ class Products extends Component {
         })
             .then(results => {
                 return results.json();
-            }).then(data => {
+            })
+            .then(data => {
             let products = data.map((prod) => {
                 var url1 = "http://localhost:9000/discountpr/" + prod.id
+
                 fetch(url1, {
                     mode: 'cors',
                     headers:{
@@ -43,6 +45,7 @@ class Products extends Component {
                         let link = "/product/" + prod.id;
                         let img = "/img/products/" + prod.id + ".png";
                         let priceDisp = (prod.price).toFixed(2) + " usd"
+
                         if(dis != null)
                             priceDisp = [<b><del> {prod.price} </del> usd  {(prod.price * (100 - dis.amount) / 100).toFixed(2)} usd <br/>
                                 Discount - {dis.amount} % </b>]

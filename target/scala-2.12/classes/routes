@@ -124,9 +124,9 @@ GET     /updatefavorites/:id          controllers.FavoritesController.updateFavo
 +nocsrf
 POST    /updatefavoriteshandle        controllers.FavoritesController.updateFavoritesHandle
 
-GET     /favorites                  controllers.FavoritesController.getFavorites
+GET     /favorites                  controllers.ApplicationController.favoritesContent
 GET     /favorit/:id                controllers.FavoritesController.getFavorit(id: Int)
-GET     /favoritesusr/:id            controllers.FavoritesController.getFavoritesUsr(id: Long)
+GET     /favoritesusr/:userid            controllers.FavoritesController.getFavoritesUsr(userid: Long)
 GET     /deletefavorites/:id          controllers.FavoritesController.deleteFavorites(id: Int)
 
 #

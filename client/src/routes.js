@@ -7,9 +7,8 @@ import Users from './Users'
 import UserPage from './UserPage'
 // import Category from './Category'
 import Discounts from './Discounts'
-import Reviews from './Reviews'
-// import Orders from './Orders'
-// import TopBar from './TopBar'
+import Orders from './Orders'
+import Favorites from './Favorites'
 import Basket from './Basket'
 import './App.css';
 
@@ -31,9 +30,11 @@ const BaseRouter = () => (
        <Route path="/discountpr/:prod" component={Discounts}/>
        <Route path="/users" component={Users}/>
           <Route path="/user/:user" component={UserPage}/>
-          {/*<Route path="/user/:user" component={Orders}/>*/}
+          <Route path="/user/:user" component={Orders}/>
           <Route path="/product/:product" component={Product}/>
+       <Route path="/favorites" component={Favorites}/>
           <Route path="/basket" component={Basket}/>
+       <Route path="/orders" component={Orders}/>
 
 
    </Switch>

@@ -29,8 +29,8 @@ class FavoritesRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(i
     ) += (user, product)
   }
 
-  def list(): Future[Seq[Favorites]] = db.run {
-    favorites.result
+  def list(user_id: Long): Future[Seq[Favorites]] = db.run {
+    favorites.filter(_.user === user_id).result
   }
 
   def getById(id: Long): Future[Favorites] = db.run {
@@ -41,7 +41,7 @@ class FavoritesRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(i
     favorites.filter(_.id === id).result.headOption
   }
 
-  def getByUser_Id(user: Long): Future[Favorites] = db.run {
+  def getByUserId(user: Long): Future[Favorites] = db.run {
     favorites.filter(_.user === user).result.head
   }
 

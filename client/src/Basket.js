@@ -121,7 +121,7 @@ class Basket extends Component {
                     .then(results => {
                         return results.json();
                     }).then(product => {
-                    var url1 = "http://localhost:9000/promotionpr/" + basket.product
+                    var url1 = "http://localhost:9000/discountpr/" + basket.product
                     fetch(url1, {
                         mode: 'cors',
                         headers:{
@@ -131,11 +131,11 @@ class Basket extends Component {
                         },
                         method: 'GET',
                     }).then(response => response.json())
-                        .then(pro => {
+                        .then(dis => {
                             var basketObject = basket
-                            if (pro != null) {
-                                this.setState({basketPrice: this.state.basketPrice + product.price * (100 - pro.amount) / 100 * basket.quantity})
-                                basketObject.price = product.price * (100 - pro.amount) / 100 * basket.quantity
+                            if (dis != null) {
+                                this.setState({basketPrice: this.state.basketPrice + product.price * (100 - dis.amount) / 100 * basket.quantity})
+                                basketObject.price = product.price * (100 - dis.amount) / 100 * basket.quantity
                             } else {
                                 this.setState({basketPrice: this.state.basketPrice + product.price * basket.quantity})
                                 basketObject.price = product.price
@@ -171,9 +171,9 @@ class Basket extends Component {
                                     </h3>
                                 </td>
                                 <td className="right">
-                                    <a id="button" href="#" onClick={this.clearBasket}>Erase basket</a>
+                                    <a classname="button red" href="#" onClick={this.clearBasket}>Erase basket</a>
                                     <t/><t/><t/>
-                                    <a id="button" href="#" onClick={this.buyBasket}>Buy</a>
+                                    <a className="button blue" href="#" onClick={this.buyBasket}>Buy</a>
                                 </td>
                             </tr>
                         </table>
@@ -183,10 +183,10 @@ class Basket extends Component {
             )
         else
             return(
-                <div className="basket" style={{display: 'flex',  justifyContent:'center', alignItems:'top', marginLeft: '10vh', marginTop: '20px', marginRight: '10vh', fontSize: 'large'}}>
+                <div className="basket" style={{display: 'flex',  justifyContent:'center', alignItems:'top', marginLeft: '10vh', marginTop: '50px', marginRight: '10vh', fontSize: 'large'}}>
                     <div className="frame">
                         <h3>
-                            <t/><t/><t/>Empty Basket
+                            Empty Basket
                         </h3>
                     </div>
                 </div>

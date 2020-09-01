@@ -58,7 +58,7 @@ class Orders extends Component {
                     </h2>
                     <h3>
                         Rate:
-                        <input type="number" id="textbox" name="stars" min="0" max="5" defaultValue="5" onChange={this.updateRate}/>
+                        <input type="number" id="textbox" name="rate" min="0" max="5" defaultValue="5" onChange={this.updateRate}/>
                     </h3>
                     <h3>
                         Text review:

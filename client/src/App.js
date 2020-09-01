@@ -10,6 +10,7 @@ import Discounts from './Discounts';
 import Reviews from './Reviews';
 import UserPage from './UserPage';
 import Orders from './Orders';
+import Favorites from './Favorites';
 
 import './App.css';
 import BaseRouter from './routes';

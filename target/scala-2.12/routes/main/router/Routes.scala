@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Sat Aug 29 23:27:52 MSK 2020
+// @DATE:Tue Sep 01 18:47:06 MSK 2020
 
 package router
 
@@ -187,9 +187,9 @@ class Routes(
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """addfavoriteshandle""", """controllers.ApplicationController.addFavoritesHandle"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """updatefavorites/""" + "$" + """id<[^/]+>""", """controllers.FavoritesController.updateFavorites(id:Int)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """updatefavoriteshandle""", """controllers.FavoritesController.updateFavoritesHandle"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """favorites""", """controllers.FavoritesController.getFavorites"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """favorites""", """controllers.ApplicationController.favoritesContent"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """favorit/""" + "$" + """id<[^/]+>""", """controllers.FavoritesController.getFavorit(id:Int)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """favoritesusr/""" + "$" + """id<[^/]+>""", """controllers.FavoritesController.getFavoritesUsr(id:Long)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """favoritesusr/""" + "$" + """userid<[^/]+>""", """controllers.FavoritesController.getFavoritesUsr(userid:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """deletefavorites/""" + "$" + """id<[^/]+>""", """controllers.FavoritesController.deleteFavorites(id:Int)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """adddiscount/""" + "$" + """product_id<[^/]+>""", """controllers.DiscountController.addDiscount(product_id:Long)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """adddiscounthandle""", """controllers.DiscountController.addDiscountHandle"""),
@@ -1500,15 +1500,15 @@ class Routes(
   )
 
   // @LINE:127
-  private[this] lazy val controllers_FavoritesController_getFavorites71_route = Route("GET",
+  private[this] lazy val controllers_ApplicationController_favoritesContent71_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("favorites")))
   )
-  private[this] lazy val controllers_FavoritesController_getFavorites71_invoker = createInvoker(
-    FavoritesController_11.getFavorites,
+  private[this] lazy val controllers_ApplicationController_favoritesContent71_invoker = createInvoker(
+    ApplicationController_12.favoritesContent,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.FavoritesController",
-      "getFavorites",
+      "controllers.ApplicationController",
+      "favoritesContent",
       Nil,
       "GET",
       this.prefix + """favorites""",
@@ -1537,7 +1537,7 @@ class Routes(
 
   // @LINE:129
   private[this] lazy val controllers_FavoritesController_getFavoritesUsr73_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("favoritesusr/"), DynamicPart("id", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("favoritesusr/"), DynamicPart("userid", """[^/]+""",true)))
   )
   private[this] lazy val controllers_FavoritesController_getFavoritesUsr73_invoker = createInvoker(
     FavoritesController_11.getFavoritesUsr(fakeValue[Long]),
@@ -1547,7 +1547,7 @@ class Routes(
       "getFavoritesUsr",
       Seq(classOf[Long]),
       "GET",
-      this.prefix + """favoritesusr/""" + "$" + """id<[^/]+>""",
+      this.prefix + """favoritesusr/""" + "$" + """userid<[^/]+>""",
       """""",
       Seq()
     )
@@ -2416,9 +2416,9 @@ discount""",
       }
   
     // @LINE:127
-    case controllers_FavoritesController_getFavorites71_route(params@_) =>
+    case controllers_ApplicationController_favoritesContent71_route(params@_) =>
       call { 
-        controllers_FavoritesController_getFavorites71_invoker.call(FavoritesController_11.getFavorites)
+        controllers_ApplicationController_favoritesContent71_invoker.call(ApplicationController_12.favoritesContent)
       }
   
     // @LINE:128
@@ -2429,8 +2429,8 @@ discount""",
   
     // @LINE:129
     case controllers_FavoritesController_getFavoritesUsr73_route(params@_) =>
-      call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_FavoritesController_getFavoritesUsr73_invoker.call(FavoritesController_11.getFavoritesUsr(id))
+      call(params.fromPath[Long]("userid", None)) { (userid) =>
+        controllers_FavoritesController_getFavoritesUsr73_invoker.call(FavoritesController_11.getFavoritesUsr(userid))
       }
   
     // @LINE:130

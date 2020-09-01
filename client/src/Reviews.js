@@ -76,7 +76,7 @@ class Reviews extends Component {
 
     componentDidMount() {
         var url = "http://localhost:9000/review/" + this.props.product
-
+console.log(this.props.product)
         fetch(url, {
             mode: 'cors',
             headers:{

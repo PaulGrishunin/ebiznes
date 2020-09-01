@@ -4,7 +4,7 @@ import Categories from '../Categories';
 import { Link, withRouter } from 'react-router-dom';
 import { HomeOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined, HeartOutlined, UserOutlined } from '@ant-design/icons';
 import {Table} from "reactstrap";
-// import { authService } from "../Authorization/_auth-services/authentication";
+
 
 
 const { Header, Content } = Layout;
@@ -71,14 +71,6 @@ class CustomLayout extends Component{
                     style={{float: 'center', marginLeft: '10%'}}>
                     <Link to="/"><HomeOutlined />Home</Link>
                 </Menu.Item>
-                {/*<Menu.Item*/}
-                {/*    key="categories"*/}
-                {/*    style={{float: 'center', marginLeft: '10%'}}>*/}
-                {/*    <div className="catMenu"  style={{height: '20vh', width: '20vh'}}>*/}
-
-                {/*    <Link to="/categories"><HomeOutlined />Categories</Link>*/}
-                {/*    </div>*/}
-                {/*</Menu.Item>*/}
                 <Menu.Item
                     key="discounts"
                     style={{float: 'center', marginLeft: '2%'}}>
@@ -109,7 +101,7 @@ class CustomLayout extends Component{
                 <Menu.Item
                     key="userpage"
                     style={{float: 'right'}}>
-                    <Link to="/user/1">< UserOutlined />Profile</Link>
+                    <Link to="/user/" >< UserOutlined />Profile</Link>
                 </Menu.Item>
             </Menu>
         );
@@ -128,7 +120,6 @@ class CustomLayout extends Component{
         <Layout className="layout">
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%', background: '#ffffff' }}>
                 <div style={{color: "black", float: "left", width: "200px"}}>
-                    {/*<img src={logo} alt='logo'/>*/}
                     <Link style={{paddingLeft: '50px', color: "green", float: 'left', fontWeight: "bold", fontSize: "large"}} to={this.iconPath}> <b><i>SHOP LOGO</i></b> </Link>
                 </div>
                 <this.renderMenu />

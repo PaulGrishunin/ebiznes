@@ -39,7 +39,6 @@ class BasketItem extends Component {
             .then(pro => {
                 if(pro != null)
                     this.setState({ amount: pro.amount });
-                //console.log("test1  " + this.state.discount)
 
                 var url = "http://localhost:9000/product/" + this.props.product
 
@@ -59,11 +58,11 @@ class BasketItem extends Component {
                                 <table className="fullWidth">
                                     <tr>
                                         <td>
-                                            <h3>
-                                                <a id="linkh2" href={lnkBackToProduct}>{product.name}</a>
-                                                {(product.price * (100 - this.state.amount) / 100).toFixed(2)} usd, <t/>
-                                                pcs: {this.props.number}, <t/>
-                                                total: {(this.props.number * product.price * (100 - this.state.amount) / 100).toFixed(2)} usd
+                                                <h3>
+                                                <a id="linkh2" href={lnkBackToProduct}>{product.name} </a>
+                                                {(product.price * (100 - this.state.amount) / 100).toFixed(2)} usd, <t/><br/>
+                                                pcs: {this.props.number},
+                                                total:<b> {(this.props.number * product.price * (100 - this.state.amount) / 100).toFixed(2)} usd</b><t/>
                                             </h3>
                                         </td>
                                         <td className="right">

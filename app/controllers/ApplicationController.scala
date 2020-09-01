@@ -124,4 +124,18 @@ class ApplicationController @Inject() (
       }
     })
   }
+  def favoritesContent = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
+    val provider = request.identity.loginInfo.providerID
+    val key = request.identity.loginInfo.providerKey
+    userRepo.getByProvId(provider, key).flatMap(elem => {
+      elem match {
+        case Some(user) => {
+          val favorites = favsRepo.list(user.id)
+          favorites.map(favorites => Ok(Json.toJson(favorites)))
+        }
+        case None => Future.successful(Ok(Json.toJson("{status: \"success\"}")))
+      }
+    })
+  }
+
 }

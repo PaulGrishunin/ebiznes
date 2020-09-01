@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Sat Aug 29 23:27:52 MSK 2020
+// @DATE:Tue Sep 01 18:47:06 MSK 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -365,6 +365,16 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + """"})
+        }
+      """
+    )
+  
+    // @LINE:127
+    def favoritesContent: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.favoritesContent",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "favorites"})
         }
       """
     )
@@ -1003,8 +1013,8 @@ package controllers.javascript {
     def getFavoritesUsr: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.FavoritesController.getFavoritesUsr",
       """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "favoritesusr/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("id", id0))})
+        function(userid0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "favoritesusr/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("userid", userid0))})
         }
       """
     )
@@ -1015,16 +1025,6 @@ package controllers.javascript {
       """
         function(id0) {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "updatefavorites/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Int]].javascriptUnbind + """)("id", id0))})
-        }
-      """
-    )
-  
-    // @LINE:127
-    def getFavorites: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.FavoritesController.getFavorites",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "favorites"})
         }
       """
     )

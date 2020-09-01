@@ -53,13 +53,13 @@ class FavoritesController @Inject()(userRepo: UserClassRepository, productRepo: 
     favorites.map( favorites => Ok(Json.toJson(favorites)))
   }
 
-  def getFavorites: Action[AnyContent] = Action.async { implicit request =>
-    val favs = favsRepo.list()
-    favs.map( favorites => Ok(Json.toJson(favorites)))
-  }
+//  def getFavorites: Action[AnyContent] = Action.async { implicit request =>
+//    val favs = favsRepo.list(user_id)
+//    favs.map( favorites => Ok(Json.toJson(favorites)))
+//  }
 
-  def getFavoritesUsr(user: Long): Action[AnyContent] = Action.async { implicit request =>
-    val favsuser = favsRepo.getByUser_Id(user)
+  def getFavoritesUsr(user_id: Long): Action[AnyContent] = Action.async { implicit request =>
+    val favsuser = favsRepo.list(user_id)
     favsuser.map( favorites => Ok(Json.toJson(favorites)))
   }
 
