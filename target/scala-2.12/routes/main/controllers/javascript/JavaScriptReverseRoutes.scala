@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Wed Sep 02 20:11:47 MSK 2020
+// @DATE:Thu Sep 03 01:38:28 MSK 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -355,6 +355,16 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "basket"})
+        }
+      """
+    )
+  
+    // @LINE:74
+    def getUser: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.getUser",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "user"})
         }
       """
     )
@@ -879,32 +889,12 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:74
-    def getUser: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.UserController.getUser",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "user/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("id", id0))})
-        }
-      """
-    )
-  
     // @LINE:70
     def updateUser: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.UserController.updateUser",
       """
         function(id0) {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "updateuser/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("id", id0))})
-        }
-      """
-    )
-  
-    // @LINE:75
-    def getUsers: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.UserController.getUsers",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "users"})
         }
       """
     )
@@ -1015,16 +1005,6 @@ package controllers.javascript {
       """
         function(userid0) {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "favoritesusr/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("userid", userid0))})
-        }
-      """
-    )
-  
-    // @LINE:119
-    def updateFavorites: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.FavoritesController.updateFavorites",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "updatefavorites/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Int]].javascriptUnbind + """)("id", id0))})
         }
       """
     )

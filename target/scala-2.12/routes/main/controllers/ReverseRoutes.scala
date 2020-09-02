@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Wed Sep 02 20:11:47 MSK 2020
+// @DATE:Thu Sep 03 01:38:28 MSK 2020
 
 import play.api.mvc.Call
 
@@ -241,6 +241,12 @@ package controllers {
     def basketContent(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "basket")
+    }
+  
+    // @LINE:74
+    def getUser(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "user")
     }
   
     // @LINE:6
@@ -579,22 +585,10 @@ package controllers {
       Call("GET", _prefix + { _defaultPrefix } + "adduser")
     }
   
-    // @LINE:74
-    def getUser(id:Long): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "user/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
-    }
-  
     // @LINE:70
     def updateUser(id:Long): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "updateuser/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
-    }
-  
-    // @LINE:75
-    def getUsers(): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "users")
     }
   
     // @LINE:76
@@ -667,12 +661,6 @@ package controllers {
     def getFavoritesUsr(userid:Long): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "favoritesusr/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("userid", userid)))
-    }
-  
-    // @LINE:119
-    def updateFavorites(id:Int): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "updatefavorites/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Int]].unbind("id", id)))
     }
   
   }

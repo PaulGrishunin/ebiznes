@@ -83,11 +83,10 @@ class UserController @Inject()(userRepo: UserClassRepository, cc: MessagesContro
     user.map(user => Ok(Json.toJson(user)))
   }
 
-  def getUsers = Action.async { implicit request =>
-    val usr = userRepo.list()
-    usr.map( users => Ok(Json.toJson(users)))
-    //Ok(views.html.index("Your new application is ready."))
-  }
+//  def getUsers = Action.async { implicit request =>
+//    val usr = userRepo.list()
+//    usr.map( users => Ok(Json.toJson(users)))
+//  }
 }
 
 case class CreateUserForm(provId: String, uKey: String, login: String, email: String, admin: Boolean)

@@ -10,11 +10,11 @@ class Favorites extends Component {
             products: [],
             id: 0,
         };
-        this.deleteFromFavorites = this.deleteFromFavorites.bind(this);
+        // this.deleteFromFavorites = this.deleteFromFavorites.bind(this);
     }
 
     deleteFromFavorites() {
-        var url = "http://localhost:9000/deletefavorites/" + this.props.id   //тут  product_id  который находится в Favorits
+        var url = "http://localhost:9000/deletefavorites/" + this.state.id //тут  product_id  который находится в Favorits
         fetch(url, {
             mode: 'cors',
             headers:{

@@ -138,4 +138,17 @@ class ApplicationController @Inject() (
     })
   }
 
+  def getUser = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
+    val provider = request.identity.loginInfo.providerID
+    val key = request.identity.loginInfo.providerKey
+    userRepo.getByProvId(provider, key).flatMap(elem => {
+      elem match {
+        case Some(user) => {
+          val us = userRepo.list(user.id)
+          us.map(user => Ok(Json.toJson(user)))
+        }
+        case None => Future.successful(Ok(Json.toJson("{status: \"success\"}")))
+      }
+    })
+  }
 }

@@ -63,8 +63,8 @@ class FavoritesController @Inject()(userRepo: UserClassRepository, productRepo: 
     favsuser.map( favorites => Ok(Json.toJson(favorites)))
   }
 
-  def deleteFavorites(product_id: Long): Action[AnyContent] = Action {
-    favsRepo.delete(product_id)
+  def deleteFavorites(productid: Long): Action[AnyContent] = Action {
+    favsRepo.delete(productid)
     Redirect("/favorites")
   }
 

@@ -45,7 +45,7 @@ class FavoritesRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(i
     favorites.filter(_.user === user).result.head
   }
 
-  def delete(product_id: Long): Future[Unit] = db.run(favorites.filter(_.product === product_id).delete).map(_ => ())
+  def delete(productid: Long): Future[Unit] = db.run(favorites.filter(_.product === productid).delete).map(_ => ())
 
   def update(id: Long, new_question: Favorites): Future[Unit] = {
     val favoritesToUpdate: Favorites = new_question.copy(id)

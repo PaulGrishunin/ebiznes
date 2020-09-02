@@ -71,8 +71,8 @@ GET     /updateuser/:id           controllers.UserController.updateUser(id: Long
 +nocsrf
 POST    /updateuserhandle         controllers.UserController.updateUserHandle
 
-GET     /user/:id                 controllers.UserController.getUser(id: Long)
-GET     /users                    controllers.UserController.getUsers
+GET     /user                controllers.ApplicationController.getUser
+#GET     /users                    controllers.UserController.getUsers
 GET     /deleteuser/:id           controllers.UserController.deleteUser(id: Long)
 
 #order
@@ -116,7 +116,7 @@ GET     /deletepayment/:id         controllers.PaymentController.deletePayment(i
 GET     /addfavorites                controllers.FavoritesController.addFavorites
 +nocsrf
 POST    /addfavoriteshandle           controllers.ApplicationController.addFavoritesHandle
-GET     /updatefavorites/:id          controllers.FavoritesController.updateFavorites(id: Int)
+#GET     /updatefavorites/:id          controllers.FavoritesController.updateFavorites(id: Int)
 +nocsrf
 POST    /updatefavoriteshandle        controllers.FavoritesController.updateFavoritesHandle
 

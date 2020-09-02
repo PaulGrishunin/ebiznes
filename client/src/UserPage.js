@@ -11,17 +11,8 @@ class UserPage extends Component {
     }
 
     componentDidMount() {
-        var url = "http://localhost:9000/user/" + this.props.match.params.user
-
-        fetch(url, {
-            mode: 'cors',
-            headers:{
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin':'http://localhost:3000',
-            },
-            method: 'GET',
-        }).then(response => response.json())
+        var url = "http://localhost:9000/registred"
+        fetch(url, {credentials: "include"}).then(response => response.json())
             .then(usr => {
                 console.log(usr);
                 let lnkUserPage = "/user/" + usr.id;
@@ -39,11 +30,13 @@ class UserPage extends Component {
                                     </div>
                                 </a>
                                 <td className="left" >
-                                    <h2>
+                                    <h3>
                                         <p ><b> Login:</b> {usr.login}</p>
                                         <b>Email:</b> {usr.email}
                                         <p>{adminBadge}</p>
-                                    </h2>
+                                        <p><b> id:</b> {usr.id}</p>
+                                        <p><b> Registred from:</b> {usr.provid}</p>
+                                    </h3>
                                 </td>
                             </tr>
                         </table>

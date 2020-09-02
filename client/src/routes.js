@@ -29,7 +29,7 @@ const BaseRouter = () => (
        <Route path="/discount/:id" component={Discounts}/>
        <Route path="/discountpr/:prod" component={Discounts}/>
        <Route path="/users" component={Users}/>
-          <Route path="/user/:user" component={UserPage}/>
+          <Route path="/user" component={UserPage}/>
           <Route path="/user/:user" component={Orders}/>
           <Route path="/product/:product" component={Product}/>
        <Route path="/favorites" component={Favorites}/>

@@ -32,8 +32,12 @@ class UserClassRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(i
     ) += (provId, uKey, login, email, admin)
   }
 
-  def list(): Future[Seq[UserClass]] = db.run {
-    user.result
+  //  def list(): Future[Seq[UserClass]] = db.run {
+  //    user.result
+  //  }
+
+  def list(user_id: Long): Future[Seq[UserClass]] = db.run {
+    user.filter(_.id === user_id).result
   }
 
   def getById(id: Long): Future[UserClass] = db.run {
