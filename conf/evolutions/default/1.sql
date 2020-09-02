@@ -30,7 +30,6 @@ CREATE TABLE "order" (
  "quantity" INT NOT NULL,
  "price" DOUBLE NOT NULL,
  "date" VARCHAR NOT NULL,
- "completed" BIT NOT NULL,
  FOREIGN KEY(user) references user(id),
  FOREIGN KEY(product) references product(id)
 );

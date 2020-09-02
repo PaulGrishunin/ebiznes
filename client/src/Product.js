@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Category from './Category';
 import Reviews from './Reviews'
 import './Product.css';
 
@@ -19,6 +18,7 @@ class Product extends Component {
         this.addToBasket = this.addToBasket.bind(this);
         this.hideAddToBasketFrame = this.hideAddToBasketFrame.bind(this);
         this.showAddToBasketFrame = this.showAddToBasketFrame.bind(this);
+        this.addToFavorites = this.addToFavorites.bind(this);
     }
 
     updateNumber() {
@@ -83,7 +83,19 @@ class Product extends Component {
         this.setState({ addToBasketFrame: frame });
     }
 
-
+    addToFavorites() {
+        fetch('http://localhost:9000/addfavoriteshandle', {
+            method: 'POST',
+            body: JSON.stringify({"product":this.state.id}),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            },
+            credentials:"include"
+        })
+            .then(res => res.json())
+            .then(console.log)
+        window.location.reload(false);
+    }
 
     componentDidMount() {
         var url1 = "http://localhost:9000/discountpr/" + this.props.match.params.product
@@ -136,6 +148,7 @@ class Product extends Component {
 
                                 <div className="productbuttons">
                                     <a className="button blue" href="#" onClick={this.showAddToBasketFrame}>Add to Basket</a>
+                                    <a className="button blue" href="#" onClick={this.addToFavorites}>addToFavorites</a>
                                     {/*<a className="button" href="#reviews">Product reviews</a>*/}
                                 </div>
                                         </div>
@@ -149,7 +162,7 @@ class Product extends Component {
     render() {
         return (
             <div>
-                <div id="frame">
+                <div >
                     {this.state.products}
                     <a name="reviews"/>
                 </div>

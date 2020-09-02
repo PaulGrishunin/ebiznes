@@ -1,0 +1,78 @@
+.framefloat {
+    /*position: fixed;*/
+    padding: 20px;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 50%;
+    border-radius: 20px;
+    background-color: antiquewhite;
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+    /*z-index: 3;*/
+
+    /*opacity:0;*/
+    /*animation:fadeIn ease-in 1;*/
+    /*animation-fill-mode:forwards;*/
+    /*animation-duration:0.3s;*/
+    /*transition: 0.5s;*/
+}
+
+.framefloat-fadeout {
+    /*position: fixed;*/
+    padding: 20px;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 50%;
+    border-radius: 20px;
+    background-color: floralwhite;
+    left: 50%;
+    top: 50%;
+    /*transform: translate(-50%, -50%);*/
+    /*z-index: 3;*/
+
+    /*animation:fadeOut ease-in 1;*/
+    /*animation-fill-mode:forwards;*/
+    /*animation-duration:0.3s;*/
+}
+.basket {
+    border-radius: 10px;
+    -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px 5px 5px;
+    font-family: 'Poppins', sans-serif;
+    margin: 15px 5px ;
+    background-color: whitesmoke;
+}
+.basketInfo {
+    border-radius: 10px;
+    -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px 5px 5px;
+    font-family: 'Poppins', sans-serif;
+    margin: 15px 5px ;
+    background-color: #fff;
+}
+.basketItem {
+    display: flex;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px 5px 5px;
+    font-family: 'Poppins', sans-serif;
+    margin: 15px 5px ;
+    background-color: #fff;
+}
+#linkh3{
+    margin: 40px;
+    text-decoration: none;
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+#linkh3:hover{
+    color: greenyellow;
+    transition: 0.2s;
+}

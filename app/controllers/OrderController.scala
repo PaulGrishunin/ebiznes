@@ -25,7 +25,6 @@ class OrderController @Inject()(userRepo: UserClassRepository, productRepo: Prod
       "quantity" -> number,
       "price" -> of(doubleFormat),
       "date" -> nonEmptyText,
-      "completed" -> boolean,
     )(CreateOrderForm.apply)(CreateOrderForm.unapply)
   }
 
@@ -37,7 +36,6 @@ class OrderController @Inject()(userRepo: UserClassRepository, productRepo: Prod
       "quantity" -> number,
       "price" -> of(doubleFormat),
       "date" -> nonEmptyText,
-      "completed" -> boolean,
     )(UpdateOrderForm.apply)(UpdateOrderForm.unapply)
   }
 
@@ -51,9 +49,8 @@ class OrderController @Inject()(userRepo: UserClassRepository, productRepo: Prod
     val quantity = request.body.asJson.get("quantity").as[Int]
     val price = request.body.asJson.get("price").as[Double]
     val date = request.body.asJson.get("date").as[String]
-    val completed = request.body.asJson.get("completed").as[Boolean]
 
-    orderRepo.create( user, product, quantity, price, date, completed).map { order =>
+    orderRepo.create( user, product, quantity, price, date).map { order =>
       Ok(Json.toJson(order))
     }
   }
@@ -70,10 +67,9 @@ class OrderController @Inject()(userRepo: UserClassRepository, productRepo: Prod
     val quantity = request.body.asJson.get("quantity").as[Int]
     val price = request.body.asJson.get("price").as[Double]
     val date = request.body.asJson.get("date").as[String]
-    val completed = request.body.asJson.get("completed").as[Boolean]
 
-    orderRepo.update(id,Order(id, user, product, quantity, price, date, completed)).map { order =>
-      Ok(Json.toJson(Order(id,user, product, quantity, price, date, completed)))
+    orderRepo.update(id,Order(id, user, product, quantity, price, date)).map { order =>
+      Ok(Json.toJson(Order(id,user, product, quantity, price, date)))
     }
   }
 
@@ -87,8 +83,8 @@ class OrderController @Inject()(userRepo: UserClassRepository, productRepo: Prod
     ords.map( orders => Ok(Json.toJson(orders)))
   }
 
-  def getOrdersUsr(user_id: Long): Action[AnyContent] = Action.async { implicit request =>
-    val ordUsr = orderRepo.getByUser(user_id)
+  def getOrdersUsr(id: Long): Action[AnyContent] = Action.async { implicit request =>
+    val ordUsr = orderRepo.getByUser(id)
     ordUsr.map( orders => Ok(Json.toJson(orders)))
   }
 
@@ -99,5 +95,5 @@ class OrderController @Inject()(userRepo: UserClassRepository, productRepo: Prod
 
 }
 
-case class CreateOrderForm( user: Long, product: Long, quantity: Int, price: Double, date: String, completed: Boolean)
-case class UpdateOrderForm( id: Long, user: Long, product: Long, quantity: Int, price: Double, date: String, completed: Boolean)
+case class CreateOrderForm( user: Long, product: Long, quantity: Int, price: Double, date: String)
+case class UpdateOrderForm( id: Long, user: Long, product: Long, quantity: Int, price: Double, date: String)

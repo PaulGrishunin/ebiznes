@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Layout, Menu } from 'antd';
 import Categories from '../Categories';
+import Orders from '../Orders';
 import { Link, withRouter } from 'react-router-dom';
 import { HomeOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined, HeartOutlined, UserOutlined } from '@ant-design/icons';
 import {Table} from "reactstrap";

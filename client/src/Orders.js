@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import ProductName from './ProductName'
+import Basket from './Basket'
 import Payment from './Payment'
-// import Delivery from './Delivery'
+import Delivery from './Delivery'
+import './Orders.css'
 
 class Orders extends Component {
 
@@ -13,29 +15,30 @@ class Orders extends Component {
         };
         this.showAdd = this.showAdd.bind(this);
         this.hideAdd = this.hideAdd.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
     }
 
-    sentReview(id) {
-        fetch('http://localhost:9000/addreviewhandle', {
-            method: 'POST',
-            body: JSON.stringify({
-                "product":id,
-                "rate":parseInt(document.getElementsByName("rate")[0].value),
-                "text":document.getElementsByName("text")[0].value
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8'
-            },
-            credentials:"include"
-        })
-            .then(res => res.json())
-            .then(console.log)
-        window.location.reload(false);
-    }
+    // sentReview(id) {
+    //     fetch('http://localhost:9000/addreviewhandle', {
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //             "product":id,
+    //             "rate":parseInt(document.getElementsByName("rate")[0].value),
+    //             "text":document.getElementsByName("text")[0].value
+    //         }),
+    //         headers: {
+    //             'Content-type': 'application/json; charset=UTF-8'
+    //         },
+    //         credentials:"include"
+    //     })
+    //         .then(res => res.json())
+    //         .then(console.log)
+    //     window.location.reload(false);
+    // }
 
-    updateRate() {
-        var rate = document.getElementsByName("rate")[0].value
-    }
+    // updateRate() {
+    //     var rate = document.getElementsByName("rate")[0].value
+    // }
 
     hideAdd() {
         document.getElementsByClassName("addframe")[0].setAttribute("id","framefloating-fadeout");
@@ -75,7 +78,7 @@ class Orders extends Component {
 
     componentDidMount() {
         var url = "http://localhost:9000/ordersusr/" + this.props.match.params.user
-
+        console.log("User:",  this.props.id)
         fetch(url, {
             mode: 'cors',
             headers:{
@@ -107,15 +110,15 @@ class Orders extends Component {
                         <td>
                             {ord.date}
                         </td>
-                        {/*<td>*/}
-                        {/*    <Payment order={ord.id}/>*/}
-                        {/*</td>*/}
-                        {/*<td>*/}
-                        {/*    <Delivery order={ord.id}/>*/}
-                        {/*</td>*/}
                         <td>
-                            <a className="button blue" href="#" onClick={() => this.showAdd(ord.product)}>Add review</a>
+                            <Payment order={ord.id}/>
                         </td>
+                        <td>
+                            <Delivery order={ord.id}/>
+                        </td>
+                        {/*<td>*/}
+                        {/*    <a className="button blue" href="#" onClick={() => this.showAdd(ord.product)}>Add review</a>*/}
+                        {/*</td>*/}
                     </tr>
                 )
             })

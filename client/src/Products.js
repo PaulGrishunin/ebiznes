@@ -11,6 +11,8 @@ class Products extends Component {
         };
     }
 
+
+
     componentDidMount() {
         var url = "http://localhost:9000/products/" + this.props.match.params.cat
 
@@ -61,6 +63,7 @@ class Products extends Component {
                         ])
                         this.setState({products: products})
                         console.log(prod.name)
+                        console.log(this.props.product)
                     })
             })
         })

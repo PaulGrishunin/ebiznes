@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import "./Basket.css"
 
 class BasketItem extends Component {
 
@@ -54,23 +55,23 @@ class BasketItem extends Component {
                     .then(product => {
                         let lnkBackToProduct = "/product/" + product.id
                         let basketItem =
-                            <div>
+
                                 <table className="fullWidth">
                                     <tr>
-                                        <td>
+                                        <td className="left">
                                                 <h3>
-                                                <a id="linkh2" href={lnkBackToProduct}>{product.name} </a>
-                                                {(product.price * (100 - this.state.amount) / 100).toFixed(2)} usd, <t/><br/>
-                                                pcs: {this.props.number},
-                                                total:<b> {(this.props.number * product.price * (100 - this.state.amount) / 100).toFixed(2)} usd</b><t/>
+                                                <a id="linkh3" href={lnkBackToProduct}>{product.name} </a>
+                                                {(product.price * (100 - this.state.amount) / 100).toFixed(2)} usd <br/>
+                                                pcs: {this.props.number}<td></td>
+                                                total:<b> {(this.props.number * product.price * (100 - this.state.amount) / 100).toFixed(2)} usd</b>
                                             </h3>
                                         </td>
                                         <td className="right">
-                                            <a className="button red" href="#" onClick={this.removeItem}>Delete from basket</a>
+                                            <t/><t/><t/><a className="button red" href="#" onClick={this.removeItem}>Delete from basket</a>
                                         </td>
                                     </tr>
                                 </table>
-                            </div>
+
                         this.setState({ basketItem: basketItem });
                     });
             });
@@ -78,7 +79,7 @@ class BasketItem extends Component {
 
     render() {
         return (
-            <div id="frame" className="basketItem">
+            <div className="basketItem">
                 {this.state.basketItem}
             </div>
         )

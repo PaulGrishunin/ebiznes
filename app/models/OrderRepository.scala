@@ -20,17 +20,16 @@ class OrderRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impli
     def quantity = column[Int]("quantity")
     def price = column[Double]("price")
     def date = column[String]("date")
-    def completed = column[Boolean]("completed")
-    def * = (id, user, product, quantity, price, date, completed) <> ((Order.apply _).tupled, Order.unapply)
+    def * = (id, user, product, quantity, price, date) <> ((Order.apply _).tupled, Order.unapply)
   }
 
   val order = TableQuery[OrderTable]
 
-  def create(user: Long, product: Long, quantity: Int, price: Double, date: String, completed: Boolean): Future[Order] = db.run {
-    (order.map(o => (o.user, o.product, o.quantity, o.price, o.date, o.completed))
+  def create(user: Long, product: Long, quantity: Int, price: Double, date: String): Future[Order] = db.run {
+    (order.map(o => (o.user, o.product, o.quantity, o.price, o.date))
       returning order.map(_.id)
-      into { case ((user, product, quantity, price, date, completed), id) => Order(id, user, product, quantity, price, date, completed) }
-    ) += (user, product, quantity, price, date, completed)
+      into { case ((user, product, quantity, price, date), id) => Order(id, user, product, quantity, price, date) }
+    ) += (user, product, quantity, price, date)
   }
 
   def list(): Future[Seq[Order]] = db.run {
@@ -45,8 +44,8 @@ class OrderRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impli
     order.filter(_.id === id).result.headOption
   }
 
-  def getByUser(user: Long): Future[Order] = db.run {
-    order.filter(_.user === user).result.head
+  def getByUser(id: Long): Future[Order] = db.run {
+    order.filter(_.user === id).result.head
   }
 
   def delete(id: Long): Future[Unit] = db.run(order.filter(_.id === id).delete).map(_ => ())

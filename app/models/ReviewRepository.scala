@@ -31,8 +31,8 @@ class ReviewRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
     ) += (product, user, rate, text)
   }
 
-  def list(product_id: Long): Future[Seq[Review]] = db.run {
-    review.filter(_.product === product_id).result
+  def list(productid: Long): Future[Seq[Review]] = db.run {
+    review.filter(_.product === productid).result
   }
 
   def delete(id: Int): Future[Unit] = db.run(review.filter(_.id === id).delete).map(_ => ())

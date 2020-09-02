@@ -75,7 +75,6 @@ GET     /user/:id                 controllers.UserController.getUser(id: Long)
 GET     /users                    controllers.UserController.getUsers
 GET     /deleteuser/:id           controllers.UserController.deleteUser(id: Long)
 
-
 #order
 GET     /addorder                 controllers.OrderController.addOrder
 +nocsrf
@@ -86,9 +85,8 @@ POST    /updateorderhandle        controllers.OrderController.updateOrderHandle
 
 GET     /orders                   controllers.OrderController.getOrders
 GET     /order/:id                controllers.OrderController.getOrder(id: Long)
-GET     /ordersusr/:id             controllers.OrderController.getOrdersUsr(id: Long)
+GET     /ordersusr/:userid             controllers.OrderController.getOrdersUsr(userid: Long)
 GET     /deleteorder/:id          controllers.OrderController.deleteOrder(id: Long)
-
 
 #basket
 GET     /addtobasket/:id         controllers.BasketController.addToBasket(id: Long)
@@ -100,7 +98,6 @@ POST    /updatebaskethandle      controllers.BasketController.updateBasketHandle
 
 GET     /basket                  controllers.ApplicationController.basketContent
 GET     /deletefrombasket/:id    controllers.BasketController.deleteFromBasket(id: Long)
-
 
 #payment
 GET     /addpayment                controllers.PaymentController.addPayment
@@ -115,7 +112,6 @@ GET     /payments                  controllers.PaymentController.getPayments
 GET     /paymentord/:id            controllers.PaymentController.getPaymentOrd(id: Long)
 GET     /deletepayment/:id         controllers.PaymentController.deletePayment(id: Long)
 
-
 #Favorites products
 GET     /addfavorites                controllers.FavoritesController.addFavorites
 +nocsrf
@@ -127,9 +123,8 @@ POST    /updatefavoriteshandle        controllers.FavoritesController.updateFavo
 GET     /favorites                  controllers.ApplicationController.favoritesContent
 GET     /favorit/:id                controllers.FavoritesController.getFavorit(id: Int)
 GET     /favoritesusr/:userid            controllers.FavoritesController.getFavoritesUsr(userid: Long)
-GET     /deletefavorites/:id          controllers.FavoritesController.deleteFavorites(id: Int)
+GET     /deletefavorites/:productid          controllers.FavoritesController.deleteFavorites(productid: Long)
 
-#
 #discount
 GET     /adddiscount/:product_id   controllers.DiscountController.addDiscount(product_id: Long)
 +nocsrf
@@ -142,7 +137,6 @@ GET     /discounts                 controllers.DiscountController.getDiscounts
 GET     /discountpr/:id            controllers.DiscountController.getDiscountpr(id: Long)
 GET     /discount/:id              controllers.DiscountController.getDiscount(id: Long)
 GET     /deletediscount/:id        controllers.DiscountController.deleteDiscount(id: Long)
-
 
 #delivery
 GET     /adddelivery                controllers.DeliveryController.addDelivery
@@ -157,7 +151,6 @@ GET     /delivery/:id               controllers.DeliveryController.getDelivery(i
 GET     /deliveryord/:id            controllers.DeliveryController.getDeliveryOrd(id: Long)
 GET     /deletedelivery/:id         controllers.DeliveryController.deleteDelivery(id: Long)
 
-
 #product Review
 GET     /addreview              controllers.ReviewController.addReview
 +nocsrf
@@ -169,7 +162,6 @@ POST    /updatereviewhandle      controllers.ReviewController.updateReviewHandle
 #GET     /reviews                 controllers.ReviewController.getReviews
 GET     /review/:productid        controllers.ReviewController.review(productid: Long)
 GET     /deletereview/:id        controllers.ReviewController.deleteReview(id: Int)
-
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                    controllers.Assets.versioned(file)

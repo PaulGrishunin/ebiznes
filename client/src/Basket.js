@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import BasketItem from './BasketItem'
+// import "./Basket.css"
 
 class Basket extends Component {
 
@@ -12,22 +13,22 @@ class Basket extends Component {
             confirmFrame: "",
         };
         this.displayConfirmation = this.displayConfirmation.bind(this);
-        this.clearBasket = this.clearBasket.bind(this);
-        this.buyBasket = this.buyBasket.bind(this);
+        this.eraseBasket = this.eraseBasket.bind(this);
+        this.payBasket = this.payBasket.bind(this);
     }
 
     displayConfirmation() {
         var frame =
             <div>
-                <div id="darken" className="darkbcg"/>
-                <div id="framefloating" className="loginFrame">
+                <div className="dark" />
+                <div className="framefloat" >
                     <h1>Order Processing</h1>
                 </div>
             </div>
         this.setState({ confirmFrame: frame });
     }
 
-    clearBasket() {
+    eraseBasket() {
         for (var i = 0; i < this.state.basketObject.length; i++) {
             var url = "http://localhost:9000/deletefrombasket/" + this.state.basketObject[i].id
             console.log(url)
@@ -44,7 +45,7 @@ class Basket extends Component {
         window.location.reload(false);
     }
 
-    buyBasket() {
+    payBasket() {
         this.displayConfirmation()
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
@@ -52,7 +53,7 @@ class Basket extends Component {
         var yyyy = today.getFullYear();
 
         var today = mm + '/' + dd + '/' + yyyy
-
+console.log(today)
         for(var i=0;i<this.state.basketObject.length;i++) {
             //create order from basket item
             fetch('http://localhost:9000/addorderhandle', {
@@ -146,9 +147,9 @@ class Basket extends Component {
                 })
 
                 this.setState({basketObject: basketObjectList})
-                console.log(this.state.basketObject)
+                console.log("basketObject:", this.state.basketObject)
                 return (
-                    <div key={basket.id}>
+                    <div  key={basket.id}>
                         <BasketItem id={basket.id} product={basket.product} number={basket.quantity}/>
                     </div>
                 )
@@ -162,29 +163,34 @@ class Basket extends Component {
             return (
                 <div className="basket">
                     {this.state.confirmFrame}
-                    <div className="frame">
+                    <div >
+                        {this.state.basket}
                         <table className="fullWidth">
                             <tr>
                                 <td className="left">
                                     <h3>
-                                        <t/><t/><t/>Total price: {(this.state.basketPrice).toFixed(2)} usd
+                                        <t/><t/><t/><b>Total price: {(this.state.basketPrice).toFixed(2)} usd</b>
                                     </h3>
                                 </td>
                                 <td className="right">
-                                    <a classname="button red" href="#" onClick={this.clearBasket}>Erase basket</a>
-                                    <t/><t/><t/>
-                                    <a className="button blue" href="#" onClick={this.buyBasket}>Buy</a>
+                                    <a className="button red" href="#" onClick={this.eraseBasket}>Erase basket</a>
+                                    <t/><t/>
+                                    </td>
+                                <td className="right">
+                                    <a className="button blue" href="#" onClick={this.payBasket}>Buy</a>
                                 </td>
                             </tr>
                         </table>
                     </div>
-                    {this.state.basket}
+
                 </div>
             )
         else
             return(
-                <div className="basket" style={{display: 'flex',  justifyContent:'center', alignItems:'top', marginLeft: '10vh', marginTop: '50px', marginRight: '10vh', fontSize: 'large'}}>
-                    <div className="frame">
+                <div className="basket" >
+                    <div >
+                    <br/>
+                     <br/>
                         <h3>
                             Empty Basket
                         </h3>

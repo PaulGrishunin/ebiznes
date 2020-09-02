@@ -11,6 +11,7 @@ import Reviews from './Reviews';
 import UserPage from './UserPage';
 import Orders from './Orders';
 import Favorites from './Favorites';
+import Basket from './Basket';
 
 import './App.css';
 import BaseRouter from './routes';

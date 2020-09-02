@@ -17,7 +17,7 @@ class ReviewController @Inject()(userRepo: UserClassRepository, reviewRepo: Revi
     mapping(
       "product" -> longNumber,
       "user" -> longNumber,
-           "rate" -> number,
+      "rate" -> number,
       "text" -> nonEmptyText,
     )(CreateReviewForm.apply)(CreateReviewForm.unapply)
   }

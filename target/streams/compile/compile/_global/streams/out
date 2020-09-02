@@ -1,9 +1,5 @@
-[warn] /home/paul/ebiznes/conf/routes:123:1: implicit numeric widening
+[warn] /home/paul/ebiznes/conf/routes:119:1: implicit numeric widening
 [warn] GET     /updatefavorites/:id          controllers.FavoritesController.updateFavorites(id: Int)
-[warn] /home/paul/ebiznes/conf/routes:130:1: implicit numeric widening
-[warn] GET     /deletefavorites/:id          controllers.FavoritesController.deleteFavorites(id: Int)
-[warn] /home/paul/ebiznes/conf/routes:123:1: implicit numeric widening
+[warn] /home/paul/ebiznes/conf/routes:119:1: implicit numeric widening
 [warn] GET     /updatefavorites/:id          controllers.FavoritesController.updateFavorites(id: Int)
-[warn] /home/paul/ebiznes/conf/routes:130:1: implicit numeric widening
-[warn] GET     /deletefavorites/:id          controllers.FavoritesController.deleteFavorites(id: Int)
-[warn] four warnings found
+[warn] two warnings found
