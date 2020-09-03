@@ -14,7 +14,7 @@ class Basket extends Component {
         };
         this.displayConfirmation = this.displayConfirmation.bind(this);
         this.eraseBasket = this.eraseBasket.bind(this);
-        this.payBasket = this.payBasket.bind(this);
+        this.buyBasket = this.buyBasket.bind(this);
     }
 
     displayConfirmation() {
@@ -45,7 +45,7 @@ class Basket extends Component {
         window.location.reload(false);
     }
 
-    payBasket() {
+    buyBasket() {
         this.displayConfirmation()
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
@@ -64,9 +64,11 @@ console.log(today)
                     "price":this.state.basketObject[i].price,
                     "date":today
                 }),
+                credentials: "include",
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8'
                 }
+
             }).then(results => {
                 return results.json();
             }).then(data => {
@@ -177,7 +179,7 @@ console.log(today)
                                     <t/><t/>
                                     </td>
                                 <td className="right">
-                                    <a className="button blue" href="#" onClick={this.payBasket}>Buy</a>
+                                    <a className="button blue" href="#" onClick={this.buyBasket}>Buy</a>
                                 </td>
                             </tr>
                         </table>

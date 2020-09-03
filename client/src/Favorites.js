@@ -13,8 +13,8 @@ class Favorites extends Component {
         // this.deleteFromFavorites = this.deleteFromFavorites.bind(this);
     }
 
-    deleteFromFavorites() {
-        var url = "http://localhost:9000/deletefavorites/" + this.state.id //тут  product_id  который находится в Favorits
+    deleteFromFavorites(id) {
+        var url = "http://localhost:9000/deletefavorites/" + id //тут  product_id  который находится в Favorits
         fetch(url, {
             mode: 'cors',
             headers:{
@@ -23,6 +23,7 @@ class Favorites extends Component {
                 'Access-Control-Allow-Origin':'http://localhost:3000',
             },
             method: 'GET',
+            credentials: 'include',
         })
         window.location.reload(false);
     }
@@ -59,14 +60,12 @@ class Favorites extends Component {
                                         <img src={img} alt='' width="256" height="256"/>
                                         <div className="productname"><b>{prod.name}</b></div>
                                         <div className="productprice">Price: {priceDisp}</div>
-                                        <a className="button red" href="#" onClick={this.deleteFromFavorites}>Delete from Favorites</a>
+                                        <a className="button red" href="#" onClick={() => this.deleteFromFavorites(prod.id)}>Delete from Favorites</a>
                                     </div>
                                 </a>
                             ])
                             this.setState({products: products});
                             console.log(this.props.product);
-
-
                         })
                 })
             })

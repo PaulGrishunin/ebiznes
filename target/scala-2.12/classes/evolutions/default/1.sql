@@ -85,13 +85,13 @@ CREATE TABLE "favorites" (
 
 # --- !Downs
 
-DROP TABLE "category"
-DROP TABLE "product"
-DROP TABLE "user"
-DROP TABLE "order"
-DROP TABLE "basket"
-DROP TABLE "payment"
-DROP TABLE "review"
-DROP TABLE "discount"
-DROP TABLE "delivery"
-DROP TABLE "favorites"
+DROP TABLE "category";
+DROP TABLE "product";
+DROP TABLE "user";
+DROP TABLE "order";
+DROP TABLE "basket";
+DROP TABLE "payment";
+DROP TABLE "review";
+DROP TABLE "discount";
+DROP TABLE "delivery";
+DROP TABLE "favorites";

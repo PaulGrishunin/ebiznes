@@ -54,7 +54,7 @@ class Discounts extends Component {
                                     <div className="framebutton">
                                         <img src={img} alt='' width="256" height="256"/>
                                         <div className="productname"><b>{prod.name}</b></div>
-                                                    <div className="discountdescription">{dis.description}</div>
+                                        <div className="discountdescription"><i><b>{dis.description}</b></i></div>
                                                     <div className="discountprice">Price: {priceDisp}</div>
                                                                             </div>
                                 </a>

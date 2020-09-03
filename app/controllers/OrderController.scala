@@ -83,8 +83,8 @@ class OrderController @Inject()(userRepo: UserClassRepository, productRepo: Prod
     ords.map( orders => Ok(Json.toJson(orders)))
   }
 
-  def getOrdersUsr(id: Long): Action[AnyContent] = Action.async { implicit request =>
-    val ordUsr = orderRepo.getByUser(id)
+  def getOrdersUsr(userid: Long): Action[AnyContent] = Action.async { implicit request =>
+    val ordUsr = orderRepo.getByUser(userid)
     ordUsr.map( orders => Ok(Json.toJson(orders)))
   }
 

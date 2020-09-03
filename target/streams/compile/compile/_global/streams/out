@@ -1,19 +1,7 @@
-[warn] /home/paul/ebiznes/app/models/UserClassRepository.scala:32:7: Adapting argument list by creating a 5-tuple: this may not be what you want.
+[warn] /home/paul/ebiznes/app/models/FavoritesRepository.scala:29:7: Adapting argument list by creating a 2-tuple: this may not be what you want.
 [warn]         signature: SimpleInsertActionComposer.+=(value: U): JdbcActionComponent.this.ProfileAction[SimpleInsertActionComposer.this.SingleInsertResult,slick.dbio.NoStream,slick.dbio.Effect.Write]
-[warn]   given arguments: provId, uKey, login, email, admin
-[warn]  after adaptation: SimpleInsertActionComposer.+=((provId, uKey, login, email, admin): (String, String, String, String, Boolean))
-[warn]     ) += (provId, uKey, login, email, admin)
+[warn]   given arguments: user, product
+[warn]  after adaptation: SimpleInsertActionComposer.+=((user, product): (Long, Long))
+[warn]     ) += (user, product)
 [warn]       ^
-[warn] /home/paul/ebiznes/conf/routes:119:1: implicit numeric widening
-[warn] GET     /updatefavorites/:id          controllers.FavoritesController.updateFavorites(id: Int)
-[warn] /home/paul/ebiznes/conf/routes:119:1: implicit numeric widening
-[warn] GET     /updatefavorites/:id          controllers.FavoritesController.updateFavorites(id: Int)
-[warn] three warnings found
-[warn] /home/paul/ebiznes/app/controllers/FavoritesController.scala:52:44: implicit numeric widening
-[warn]     val favorites = favsRepo.getByIdOption(id)
-[warn]                                            ^
-[warn] /home/paul/ebiznes/conf/routes:119:1: implicit numeric widening
-[warn] GET     /updatefavorites/:id          controllers.FavoritesController.updateFavorites(id: Int)
-[warn] /home/paul/ebiznes/conf/routes:119:1: implicit numeric widening
-[warn] GET     /updatefavorites/:id          controllers.FavoritesController.updateFavorites(id: Int)
-[warn] three warnings found
+[warn] one warning found
