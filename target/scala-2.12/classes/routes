@@ -79,12 +79,12 @@ GET     /deleteuser/:id           controllers.UserController.deleteUser(id: Long
 #order
 GET     /addorder                 controllers.OrderController.addOrder
 +nocsrf
-POST    /addorderhandle           controllers.OrderController.addOrderHandle
+POST    /addorderhandle           controllers.ApplicationController.addOrderHandle
 GET     /updateorder/:id          controllers.OrderController.updateOrder(id: Long)
 +nocsrf
 POST    /updateorderhandle        controllers.OrderController.updateOrderHandle
 
-GET     /orders                   controllers.OrderController.getOrders
+GET     /orders                   controllers.ApplicationController.ordersContent
 GET     /order/:id                controllers.OrderController.getOrder(id: Long)
 GET     /ordersusr/:userid             controllers.OrderController.getOrdersUsr(userid: Long)
 GET     /deleteorder/:id          controllers.OrderController.deleteOrder(id: Long)

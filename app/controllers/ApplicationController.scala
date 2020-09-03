@@ -13,6 +13,7 @@ import models.UserClassRepository
 import models.BasketRepository
 import models.ReviewRepository
 import models.FavoritesRepository
+import models.OrderRepository
 
 import scala.concurrent.{ ExecutionContext, Future }
 
@@ -24,6 +25,7 @@ class ApplicationController @Inject() (
   basketRepo: BasketRepository,
   reviewRepo: ReviewRepository,
   favsRepo: FavoritesRepository,
+  orderRepo: OrderRepository,
   scc: SilhouetteControllerComponents,
   home: views.html.home
 )(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
@@ -124,6 +126,7 @@ class ApplicationController @Inject() (
       }
     })
   }
+
   def favoritesContent = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     val provider = request.identity.loginInfo.providerID
     val key = request.identity.loginInfo.providerKey
@@ -151,4 +154,38 @@ class ApplicationController @Inject() (
       }
     })
   }
+
+  def addOrderHandle = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
+    val product = request.body.asJson.get("product").as[Long]
+    val quantity = request.body.asJson.get("quantity").as[Int]
+    val price = request.body.asJson.get("price").as[Double]
+    val date = request.body.asJson.get("date").as[String]
+
+    val provider = request.identity.loginInfo.providerID
+    val key = request.identity.loginInfo.providerKey
+    userRepo.getByProvId(provider, key).flatMap(elem => {
+      elem match {
+        case Some(user) => {
+          orderRepo.create(user.id, product, quantity, price, date).map { order =>
+            Ok(Json.toJson(order))
+          }
+        }
+        case None => Future.successful(Ok(Json.toJson("{status: \"success\"}")))
+      }
+    })
+  }
+  def ordersContent = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
+    val provider = request.identity.loginInfo.providerID
+    val key = request.identity.loginInfo.providerKey
+    userRepo.getByProvId(provider, key).flatMap(elem => {
+      elem match {
+        case Some(user) => {
+          val orders = orderRepo.list(user.id)
+          orders.map(orders => Ok(Json.toJson(orders)))
+        }
+        case None => Future.successful(Ok(Json.toJson("{status: \"success\"}")))
+      }
+    })
+  }
+
 }

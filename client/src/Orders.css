@@ -1,13 +1,30 @@
-/*#frame {*/
-/*    margin: 20px;*/
-/*    padding: 20px;*/
-/*    border-radius: 20px;*/
-/*    background-color: whitesmoke;*/
-/*    opacity:0;*/
-/*    animation:fadeIn ease-in 1;*/
-/*    animation-fill-mode:forwards;*/
-/*    animation-duration:0.3s;*/
-/*}*/
-/*#fontlarger{*/
-/*    font-size: 20px;*/
-/*}*/
+.orders {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
+}
+.fontlarger{
+    font-size: 16px;
+}
+.right {
+    text-align:right;
+}
+.left {
+    text-align:left;
+}
+.center {
+    text-align:center;
+}
+.linkh3{
+    text-decoration: none;
+    color: green;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.linkh3:hover{
+    color: greenyellow;
+    transition: 0.2s;
+}

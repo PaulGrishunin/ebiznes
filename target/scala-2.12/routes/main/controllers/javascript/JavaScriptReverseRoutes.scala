@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Thu Sep 03 13:49:25 MSK 2020
+// @DATE:Thu Sep 03 14:42:04 MSK 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -299,6 +299,16 @@ package controllers.javascript {
     }
 
   
+    // @LINE:82
+    def addOrderHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.addOrderHandle",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "addorderhandle"})
+        }
+      """
+    )
+  
     // @LINE:119
     def addFavoritesHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.ApplicationController.addFavoritesHandle",
@@ -355,6 +365,16 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "basket"})
+        }
+      """
+    )
+  
+    // @LINE:87
+    def ordersContent: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.ordersContent",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "orders"})
         }
       """
     )
@@ -1039,16 +1059,6 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:82
-    def addOrderHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.OrderController.addOrderHandle",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "addorderhandle"})
-        }
-      """
-    )
-  
     // @LINE:85
     def updateOrderHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.OrderController.updateOrderHandle",
@@ -1065,16 +1075,6 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "addorder"})
-        }
-      """
-    )
-  
-    // @LINE:87
-    def getOrders: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.OrderController.getOrders",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "orders"})
         }
       """
     )

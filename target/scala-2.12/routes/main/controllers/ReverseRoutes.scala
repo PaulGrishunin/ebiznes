@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Thu Sep 03 13:49:25 MSK 2020
+// @DATE:Thu Sep 03 14:42:04 MSK 2020
 
 import play.api.mvc.Call
 
@@ -207,6 +207,12 @@ package controllers {
     }
 
   
+    // @LINE:82
+    def addOrderHandle(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "addorderhandle")
+    }
+  
     // @LINE:119
     def addFavoritesHandle(): Call = {
       
@@ -241,6 +247,12 @@ package controllers {
     def basketContent(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "basket")
+    }
+  
+    // @LINE:87
+    def ordersContent(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "orders")
     }
   
     // @LINE:74
@@ -684,12 +696,6 @@ package controllers {
       Call("GET", _prefix + { _defaultPrefix } + "deleteorder/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
     }
   
-    // @LINE:82
-    def addOrderHandle(): Call = {
-      
-      Call("POST", _prefix + { _defaultPrefix } + "addorderhandle")
-    }
-  
     // @LINE:85
     def updateOrderHandle(): Call = {
       
@@ -700,12 +706,6 @@ package controllers {
     def addOrder(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "addorder")
-    }
-  
-    // @LINE:87
-    def getOrders(): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "orders")
     }
   
     // @LINE:88

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/paul/ebiznes/conf/routes
-// @DATE:Thu Sep 03 13:49:25 MSK 2020
+// @DATE:Thu Sep 03 14:42:04 MSK 2020
 
 package router
 
@@ -162,10 +162,10 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """user/""" + "$" + """id<[^/]+>""", """controllers.UserController.gUser(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """deleteuser/""" + "$" + """id<[^/]+>""", """controllers.UserController.deleteUser(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """addorder""", """controllers.OrderController.addOrder"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """addorderhandle""", """controllers.OrderController.addOrderHandle"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """addorderhandle""", """controllers.ApplicationController.addOrderHandle"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """updateorder/""" + "$" + """id<[^/]+>""", """controllers.OrderController.updateOrder(id:Long)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """updateorderhandle""", """controllers.OrderController.updateOrderHandle"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """orders""", """controllers.OrderController.getOrders"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """orders""", """controllers.ApplicationController.ordersContent"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """order/""" + "$" + """id<[^/]+>""", """controllers.OrderController.getOrder(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """ordersusr/""" + "$" + """userid<[^/]+>""", """controllers.OrderController.getOrdersUsr(userid:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """deleteorder/""" + "$" + """id<[^/]+>""", """controllers.OrderController.deleteOrder(id:Long)"""),
@@ -1049,14 +1049,14 @@ class Routes(
   )
 
   // @LINE:82
-  private[this] lazy val controllers_OrderController_addOrderHandle46_route = Route("POST",
+  private[this] lazy val controllers_ApplicationController_addOrderHandle46_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("addorderhandle")))
   )
-  private[this] lazy val controllers_OrderController_addOrderHandle46_invoker = createInvoker(
-    OrderController_4.addOrderHandle,
+  private[this] lazy val controllers_ApplicationController_addOrderHandle46_invoker = createInvoker(
+    ApplicationController_12.addOrderHandle,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.OrderController",
+      "controllers.ApplicationController",
       "addOrderHandle",
       Nil,
       "POST",
@@ -1103,15 +1103,15 @@ class Routes(
   )
 
   // @LINE:87
-  private[this] lazy val controllers_OrderController_getOrders49_route = Route("GET",
+  private[this] lazy val controllers_ApplicationController_ordersContent49_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("orders")))
   )
-  private[this] lazy val controllers_OrderController_getOrders49_invoker = createInvoker(
-    OrderController_4.getOrders,
+  private[this] lazy val controllers_ApplicationController_ordersContent49_invoker = createInvoker(
+    ApplicationController_12.ordersContent,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.OrderController",
-      "getOrders",
+      "controllers.ApplicationController",
+      "ordersContent",
       Nil,
       "GET",
       this.prefix + """orders""",
@@ -2246,9 +2246,9 @@ class Routes(
       }
   
     // @LINE:82
-    case controllers_OrderController_addOrderHandle46_route(params@_) =>
+    case controllers_ApplicationController_addOrderHandle46_route(params@_) =>
       call { 
-        controllers_OrderController_addOrderHandle46_invoker.call(OrderController_4.addOrderHandle)
+        controllers_ApplicationController_addOrderHandle46_invoker.call(ApplicationController_12.addOrderHandle)
       }
   
     // @LINE:83
@@ -2264,9 +2264,9 @@ class Routes(
       }
   
     // @LINE:87
-    case controllers_OrderController_getOrders49_route(params@_) =>
+    case controllers_ApplicationController_ordersContent49_route(params@_) =>
       call { 
-        controllers_OrderController_getOrders49_invoker.call(OrderController_4.getOrders)
+        controllers_ApplicationController_ordersContent49_invoker.call(ApplicationController_12.ordersContent)
       }
   
     // @LINE:88

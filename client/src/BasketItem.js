@@ -62,7 +62,7 @@ class BasketItem extends Component {
                                                 <h3>
                                                 <a id="linkh3" href={lnkBackToProduct}>{product.name} </a>
                                                 {(product.price * (100 - this.state.amount) / 100).toFixed(2)} usd <br/>
-                                                pcs: {this.props.number}<td></td>
+                                                quantity: {this.props.number}<td></td>
                                                 total:<b> {(this.props.number * product.price * (100 - this.state.amount) / 100).toFixed(2)} usd</b>
                                             </h3>
                                         </td>
