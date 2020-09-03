@@ -19,15 +19,15 @@ class DeliveryController @Inject()(deliveryRepo: DeliveryRepository, orderRepo: 
   val deliveryForm: Form[CreateDeliveryForm] = Form {
     mapping(
       "order" -> longNumber,
-      "adress" -> nonEmptyText,
+      "date" -> nonEmptyText,
     )(CreateDeliveryForm.apply)(CreateDeliveryForm.unapply)
   }
 
   val updateDeliveryForm: Form[UpdateDeliveryForm] = Form {
     mapping(
-           "id" -> longNumber,
+      "id" -> longNumber,
       "order" -> longNumber,
-      "address" -> nonEmptyText,
+      "date" -> nonEmptyText,
     )(UpdateDeliveryForm.apply)(UpdateDeliveryForm.unapply)
   }
 
@@ -37,13 +37,12 @@ class DeliveryController @Inject()(deliveryRepo: DeliveryRepository, orderRepo: 
 
   def addDeliveryHandle = Action.async { implicit request =>
     val order = request.body.asJson.get("order").as[Long]
-    val address = request.body.asJson.get("address").as[String]
+    val date = request.body.asJson.get("date").as[String]
 
-    deliveryRepo.create(order, address).map { delivery =>
+    deliveryRepo.create(order, date).map { delivery =>
       Ok(Json.toJson(delivery))
     }
   }
-
   def updateDelivery(id: Long): Action[AnyContent] = Action.async { implicit request =>
     val delivery = deliveryRepo.getByIdOption(id)
     delivery.map(delivery => Ok(Json.toJson(delivery)))
@@ -51,10 +50,10 @@ class DeliveryController @Inject()(deliveryRepo: DeliveryRepository, orderRepo: 
   def updateDeliveryHandle = Action.async { implicit request =>
     val id = request.body.asJson.get("id").as[Long]
     val order = request.body.asJson.get("order").as[Long]
-    val address = request.body.asJson.get("address").as[String]
+    val date = request.body.asJson.get("date").as[String]
 
-    deliveryRepo.update(id, Delivery(id, order, address)).map { delivery =>
-      Ok(Json.toJson(Delivery(id, order, address)))
+    deliveryRepo.update(id, Delivery(id, order, date)).map { delivery =>
+      Ok(Json.toJson(Delivery(id, order, date)))
     }
   }
 
@@ -74,11 +73,11 @@ class DeliveryController @Inject()(deliveryRepo: DeliveryRepository, orderRepo: 
   }
 
   def getDeliveryOrd(id: Long): Action[AnyContent] = Action.async { implicit request =>
-    val delivery = deliveryRepo.getByOrderIdOption(id)
+    val delivery = deliveryRepo.getByOrdOption(id)
     delivery.map(delivery => Ok(Json.toJson(delivery)))
   }
 
 }
 
-case class CreateDeliveryForm(order: Long, address: String)
-case class UpdateDeliveryForm(id: Long, order: Long, address: String)
+case class CreateDeliveryForm(order: Long, date: String)
+case class UpdateDeliveryForm(id: Long, order: Long, date: String)

@@ -17,19 +17,19 @@ class DeliveryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
 
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
     def order = column[Long]("order")
-    def address = column[String]("address")
+    def date = column[String]("date")
 
-    def * = (id, order, address) <> ((Delivery.apply _).tupled, Delivery.unapply)
+    def * = (id, order, date) <> ((Delivery.apply _).tupled, Delivery.unapply)
 
   }
 
   val delivery = TableQuery[DeliveryTable]
 
-  def create(order: Long, address: String): Future[Delivery] = db.run {
-    (delivery.map(d => (d.order, d.address))
+  def create(order: Long, date: String): Future[Delivery] = db.run {
+    (delivery.map(d => (d.order, d.date))
       returning delivery.map(_.id)
-      into { case ((order, address), id) => Delivery(id, order, address) }
-    ) += (order, address)
+      into { case ((order, date), id) => Delivery(id, order, date) }
+    ) += (order, date)
   }
 
   def list(): Future[Seq[Delivery]] = db.run {
@@ -43,8 +43,8 @@ class DeliveryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
   def getByIdOption(id: Long): Future[Option[Delivery]] = db.run {
     delivery.filter(_.id === id).result.headOption
   }
-  def getByOrderIdOption(order: Long): Future[Option[Delivery]] = db.run {
-    delivery.filter(_.order === order).result.headOption
+  def getByOrdOption(order: Long): Future[Delivery] = db.run {
+    delivery.filter(_.order === order).result.head
   }
 
   def delete(id: Long): Future[Unit] = db.run(delivery.filter(_.id === id).delete).map(_ => ())

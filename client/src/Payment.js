@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-// import Category from './Category'
-// import Reviews from './Rewiews'
+
 
 class Payment extends Component {
 
@@ -25,6 +24,7 @@ class Payment extends Component {
             .then(pay => {
                 if(pay != null)
                     this.setState({ payment: pay.date });
+
             });
     }
 

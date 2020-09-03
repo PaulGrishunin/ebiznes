@@ -19,12 +19,9 @@ class Basket extends Component {
 
     displayConfirmation() {
         var frame =
-            <div>
-                <div className="dark" />
                 <div className="framefloat" >
-                    <h1>Order Processing</h1>
+                    <h1>Thank you for your purchase! We will be glad to see you again!</h1>
                 </div>
-            </div>
         this.setState({ confirmFrame: frame });
     }
 
@@ -52,7 +49,7 @@ class Basket extends Component {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
 
-        var today = mm + '/' + dd + '/' + yyyy
+        var today = dd + '/' + mm  + '/' + yyyy
 console.log(today)
         for(var i=0;i<this.state.basketObject.length;i++) {
             //create order from basket item
@@ -73,8 +70,19 @@ console.log(today)
                 return results.json();
             }).then(data => {
                 console.log(data.id)
-                //create payment (should be when bank confirms payment is on shop's account
+               //Add payment fact
                 fetch('http://localhost:9000/addpaymenthandle', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        "order": data.id,
+                        "date": today
+                    }),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8'
+                    }
+                })
+                //Add delivery fact
+                fetch('http://localhost:9000/adddeliveryhandle', {
                     method: 'POST',
                     body: JSON.stringify({
                         "order": data.id,

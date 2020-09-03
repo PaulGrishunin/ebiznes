@@ -49,7 +49,7 @@ class Products extends Component {
                         let priceDisp = (prod.price).toFixed(2) + " usd"
 
                         if(dis != null)
-                            priceDisp = [<b><del> {prod.price} </del> usd  {(prod.price * (100 - dis.amount) / 100).toFixed(2)} usd <br/>
+                            priceDisp = [<b style={{color: 'red'}}><del> {prod.price} </del> usd  {(prod.price * (100 - dis.amount) / 100).toFixed(2)} usd <br/>
                                 Discount - {dis.amount} % </b>]
 
                         products.splice (prod.id,0,[

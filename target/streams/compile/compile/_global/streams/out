@@ -1,7 +1,7 @@
-[warn] /home/paul/ebiznes/app/models/OrderRepository.scala:32:7: Adapting argument list by creating a 5-tuple: this may not be what you want.
+[warn] /home/paul/ebiznes/app/models/DeliveryRepository.scala:32:7: Adapting argument list by creating a 2-tuple: this may not be what you want.
 [warn]         signature: SimpleInsertActionComposer.+=(value: U): JdbcActionComponent.this.ProfileAction[SimpleInsertActionComposer.this.SingleInsertResult,slick.dbio.NoStream,slick.dbio.Effect.Write]
-[warn]   given arguments: user, product, quantity, price, date
-[warn]  after adaptation: SimpleInsertActionComposer.+=((user, product, quantity, price, date): (Long, Long, Int, Double, String))
-[warn]     ) += (user, product, quantity, price, date)
+[warn]   given arguments: order, date
+[warn]  after adaptation: SimpleInsertActionComposer.+=((order, date): (Long, String))
+[warn]     ) += (order, date)
 [warn]       ^
 [warn] one warning found

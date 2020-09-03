@@ -45,7 +45,7 @@ CREATE TABLE "basket" (
 
 CREATE TABLE "payment" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
- "order" VARCHAR NOT NULL,
+ "order" INTEGER NOT NULL,
  "date" VARCHAR NOT NULL,
  FOREIGN KEY("order") references "order"(id)
 );
@@ -71,7 +71,7 @@ CREATE TABLE "discount" (
 CREATE TABLE "delivery" (
  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
  "order" INTEGER NOT NULL,
- "address" TEXT NOT NULL,
+ "date" VARCHAR NOT NULL,
  FOREIGN KEY("order") references "order"(id)
 );
 

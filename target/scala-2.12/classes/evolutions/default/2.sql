@@ -61,19 +61,6 @@ INSERT INTO "favorites"("user", "product") VALUES(2,5);
 INSERT INTO "favorites"("user", "product") VALUES(2,7);
 INSERT INTO "favorites"("user", "product") VALUES(2,10);
 
--- INSERT INTO "delivery"("order_id", "address") VALUES("1",  "Krakow, Bydgoska, 19");
--- INSERT INTO "delivery"("order_id", "address") VALUES("2",  "Krakow, Profesora Lojasiewicza, 11");
-
-
-INSERT INTO "order"("user", "product", "quantity", "price", "date") VALUES(3, 12, 10, 700.00, "05.05.2020");
-INSERT INTO "order"("user", "product", "quantity", "price", "date") VALUES(3, 6, 1, 50.00, "05.05.2020");
--- INSERT INTO "order"("user_id", "product_id", "quantity", "price", "date", "completed") VALUES(2, 2, 1, 50.00, "10.05.2020", 0);
---
--- INSERT INTO "basket"("user_id", "product_id", "quantity") VALUES(1,2,5);
--- INSERT INTO "basket"("user_id", "product_id", "quantity") VALUES(2,2,10);
---
--- INSERT INTO "payment"("order_id", "date") VALUES(1, "05.05.2020");
--- INSERT INTO "payment"("order_id", "date") VALUES(2, "10.05.2020");
 
 # --- !Downs
 
@@ -92,37 +79,5 @@ delete from sqlite_sequence where name='favorites';
 DELETE FROM "order";
 delete from sqlite_sequence where name='order';
 
--- DELETE FROM "category" WHERE name="Tesla";
--- DELETE FROM "category" WHERE name="Porshe";
---
--- DELETE FROM "product" WHERE name="Model S";
--- DELETE FROM "product" WHERE name="Taycan Turbo S";
---
--- DELETE FROM "user" WHERE login="admin";
--- DELETE FROM "user" WHERE login="paul_gri";
---
--- DELETE FROM "order" WHERE user_id="1";
--- DELETE FROM "order" WHERE user_id="2";
---
--- DELETE FROM "basket" WHERE user_id="1";
--- DELETE FROM "basket" WHERE user_id="2";
---
--- DELETE FROM "review" WHERE product_id="1";
--- INSERT INTO "order"("user_id", "product_id", "quantity", "price", "date", "completed") VALUES(1, 1, 1, 700.00, "05.05.2020", 1);
--- INSERT INTO "order"("user_id", "product_id", "quantity", "price", "date", "completed") VALUES(2, 2, 1, 50.00, "10.05.2020", 0);
---
--- INSERT INTO "basket"("user_id", "product_id", "quantity") VALUES(1,2,5);
--- INSERT INTO "basket"("user_id", "product_id", "quantity") VALUES(2,2,10);
---
--- INSERT INTO "payment"("order_id", "date") VALUES(1, "05.05.2020");
--- INSERT INTO "payment"("order_id", "date") VALUES(2, "10.05.2020");
--- DELETE FROM "review" WHERE product_id="2";
---
--- DELETE FROM "discount" WHERE product_id="1";
---
--- DELETE FROM "delivery" WHERE order_id="1";
--- DELETE FROM "delivery" WHERE order_id="2";
---
--- DELETE FROM "question" WHERE product_id="2";
 
 

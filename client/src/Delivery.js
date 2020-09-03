@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import Category from './Category'
-import Reviews from './Reviews'
+
 
 class Delivery extends Component {
 
@@ -12,7 +11,7 @@ class Delivery extends Component {
     }
     componentDidMount() {
         var url = "http://localhost:9000/deliveryord/" + this.props.order
-
+         console.log("deliverry:", this.props.order)
         fetch(url, {
             mode: 'cors',
             headers:{
@@ -22,9 +21,10 @@ class Delivery extends Component {
             },
             method: 'GET',
         }).then(response => response.json())
-            .then(del => {
-                if(del != null)
-                    this.setState({ delivery: del.date });
+            .then(deliv => {
+                if(deliv != null)
+                    this.setState({ delivery: deliv.date });
+                console.log( deliv.date)
             });
     }
 

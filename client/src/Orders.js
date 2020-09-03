@@ -86,11 +86,10 @@ class Orders extends Component {
                             <th><t/><t/><t/>ID</th>
                             <th>Product</th>
                             <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Order data</th>
-                            <th>Payment data</th>
-                            <th>Delivery data</th>
-                            {/*<th>Option</th>*/}
+                            <th>Total cost</th>
+                            <th>Order date</th>
+                            <th>Payment date</th>
+                            <th>Delivery date</th>
                         </tr>
                         {this.state.orders}
                     </table>
