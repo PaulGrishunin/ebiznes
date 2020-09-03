@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import BasketItem from './BasketItem'
-// import "./Basket.css"
+import "./Basket.css"
 
 class Basket extends Component {
 
@@ -61,7 +61,7 @@ console.log(today)
                 body: JSON.stringify({ "user":this.state.basketObject[i].user,
                     "product":this.state.basketObject[i].product,
                     "quantity":this.state.basketObject[i].quantity,
-                    "price":this.state.basketObject[i].price,
+                    "price":this.state.basketObject[i].price * this.state.basketObject[i].quantity,
                     "date":today
                 }),
                 credentials: "include",

@@ -43,6 +43,7 @@ class Orders extends Component {
                 return results.json();
             }).then(data => {
             let orders = data.map((ord) => {
+                console.log("ord:", ord)
                 return (
                     <tr className="left">
                         <td>

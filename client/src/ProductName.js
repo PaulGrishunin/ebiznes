@@ -11,7 +11,7 @@ class ProductName extends Component {
     }
     componentDidMount() {
         var url = "http://localhost:9000/product/" + this.props.product
-
+        console.log("ProdName:", this.props.product)
         fetch(url, {
             mode: 'cors',
             headers:{
