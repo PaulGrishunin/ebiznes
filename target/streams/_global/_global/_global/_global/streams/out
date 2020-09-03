@@ -83,3 +83,25 @@
 [debug] Received Update(/home/paul/ebiznes/conf/routes,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false),FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))
 [debug] root / Compile / run - Accepted event for /home/paul/ebiznes/conf/routes~
 [debug] Received Deletion(/home/paul/ebiznes/conf/routes~,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))
+[debug] root / Compile / run - Accepted event for /home/paul/ebiznes/conf/routes~
+[debug] Received Creation(/home/paul/ebiznes/conf/routes~,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))
+[debug] root / Compile / run - Accepted event for /home/paul/ebiznes/conf/routes~
+[debug] Received Deletion(/home/paul/ebiznes/conf/routes~,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))
+[debug] root / Compile / run - Accepted event for /home/paul/ebiznes/conf/routes
+[debug] Received Update(/home/paul/ebiznes/conf/routes,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false),FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))
+[debug] root / Compile / run - Accepted event for /home/paul/ebiznes/conf/routes
+[debug] Received Update(/home/paul/ebiznes/conf/routes,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false),FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))
+[debug] root / Compile / run - Accepted event for /home/paul/ebiznes/conf/routes~
+[debug] Received Update(/home/paul/ebiznes/conf/routes~,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false),FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))
+[debug] root / Compile / run - Accepted event for /home/paul/ebiznes/app/controllers/UserController.scala~
+[debug] Received Creation(/home/paul/ebiznes/app/controllers/UserController.scala~,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))
+[debug] root / Compile / run - Accepted event for /home/paul/ebiznes/app/controllers/UserController.scala~
+[debug] Received Update(/home/paul/ebiznes/app/controllers/UserController.scala~,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false),FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))
+[debug] root / Compile / run - Accepted event for /home/paul/ebiznes/app/controllers/UserController.scala
+[debug] Received Update(/home/paul/ebiznes/app/controllers/UserController.scala,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false),FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))
+[debug] root / Compile / run - Accepted event for /home/paul/ebiznes/app/controllers/UserController.scala
+[debug] Received Update(/home/paul/ebiznes/app/controllers/UserController.scala,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false),FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))
+[debug] root / Compile / run - Accepted event for /home/paul/ebiznes/conf/routes
+[debug] Received Update(/home/paul/ebiznes/conf/routes,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false),FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))
+[debug] root / Compile / run - Accepted event for /home/paul/ebiznes/app/controllers/UserController.scala~
+[debug] Received Deletion(/home/paul/ebiznes/app/controllers/UserController.scala~,FileAttributes(isDirectory = false, isOther = false,isRegularFile = true, isSymbolicLink = false))

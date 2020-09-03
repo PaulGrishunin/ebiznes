@@ -25,14 +25,21 @@ class CustomLayout extends Component{
     setMenu() {
         let authorizedMenuPaths = ['/signedin', '/orders', '/basket', '/userpage'];
         let type = authorizedMenuPaths.includes(window.location.pathname)
-            || window.location.pathname.startsWith("/user")
-            || window.location.pathname.startsWith("/reviews")
+            // || window.location.pathname.startsWith("/user")
+            // || window.location.pathname.startsWith("/reviews")
             ? "authorized": "non-authorized";
 
         if (type === "authorized") this.iconPath = '/';
         else this.iconPath = '/';
 
         this.menuType = type;
+    }
+
+    signOut() {
+        fetch("http://localhost:9000/signOut", {credentials:"include"})
+        setTimeout(() => {
+            window.location.reload(false);
+        }, 100)
     }
 
     nonAuthorizedMenu = () => {
@@ -97,12 +104,12 @@ class CustomLayout extends Component{
                     key="signout"
                     // onClick={() => {authService.logout()}}
                     style={{float: 'right'}}>
-                    <Link to="/signout">Sign out</Link>
+                    <a href="#"  onClick={this.signOut}>Sign out</a>
                 </Menu.Item>
                 <Menu.Item
                     key="userpage"
                     style={{float: 'right'}}>
-                    <Link to="/user/" >< UserOutlined />Profile</Link>
+                    <Link to="/user" >< UserOutlined />Profile</Link>
                 </Menu.Item>
             </Menu>
         );

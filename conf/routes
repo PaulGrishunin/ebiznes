@@ -72,6 +72,7 @@ GET     /updateuser/:id           controllers.UserController.updateUser(id: Long
 POST    /updateuserhandle         controllers.UserController.updateUserHandle
 
 GET     /user                controllers.ApplicationController.getUser
+GET     /user/:id                controllers.UserController.gUser(id: Long)
 #GET     /users                    controllers.UserController.getUsers
 GET     /deleteuser/:id           controllers.UserController.deleteUser(id: Long)
 

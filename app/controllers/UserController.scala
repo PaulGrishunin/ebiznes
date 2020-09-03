@@ -78,7 +78,7 @@ class UserController @Inject()(userRepo: UserClassRepository, cc: MessagesContro
     Redirect("/users")
   }
 
-  def getUser(id: Long): Action[AnyContent] = Action.async { implicit request =>
+  def gUser(id: Long): Action[AnyContent] = Action.async { implicit request =>
     val user = userRepo.getByIdOption(id)
     user.map(user => Ok(Json.toJson(user)))
   }
