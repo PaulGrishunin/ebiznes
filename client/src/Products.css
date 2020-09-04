@@ -4,6 +4,13 @@
     padding: 5px 10px ;
 
 }
+.productname{
+    color: green;
+    font-size: 16px;
+}
+.productprice{
+    font-size: 16px;
+}
 .clearunderline {
     width: 282px;
     height: 330px;

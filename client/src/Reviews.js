@@ -95,7 +95,7 @@ console.log(this.props.product)
                     <div className="review" key={rev.id}>
                         <table id="rev">
                             <tr>
-                                <td width="120px">
+                                <td width="180px">
                                     <UserFace user={rev.user}/>
                                 </td>
                                 <td>
@@ -130,7 +130,7 @@ console.log(this.props.product)
                                 </h1>
                             </td>
                             <td className="right">
-                                <a className="button blue" href="#" onClick={this.showAdd}>Add your review</a>
+                                <a className="button blue" href="#" onClick={this.showAdd}><b>Add your review</b></a>
                             </td>
                         </tr>
                     </table>

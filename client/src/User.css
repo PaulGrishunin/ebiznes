@@ -7,3 +7,9 @@
     margin: 30px 5px ;
     background-color: #fff;
 }
+.userFace {
+    margin: 5px;
+}
+.userFace p {
+    margin: 0;
+}

@@ -50,9 +50,9 @@ class Basket extends Component {
         var yyyy = today.getFullYear();
 
         var today = dd + '/' + mm  + '/' + yyyy
-console.log(today)
+
         for(var i=0;i<this.state.basketObject.length;i++) {
-            //create order from basket item
+
             fetch('http://localhost:9000/addorderhandle', {
                 method: 'POST',
                 body: JSON.stringify({ "user":this.state.basketObject[i].user,
@@ -183,11 +183,11 @@ console.log(today)
                                     </h3>
                                 </td>
                                 <td className="right">
-                                    <a className="button red" href="#" onClick={this.eraseBasket}>Erase basket</a>
+                                    <a className="button red" href="#" onClick={this.eraseBasket}><b>Erase basket</b></a>
                                     <t/><t/>
                                     </td>
                                 <td className="right">
-                                    <a className="button blue" href="#" onClick={this.buyBasket}>Buy</a>
+                                    <a className="button blue" href="#" onClick={this.buyBasket}><b>Buy</b></a>
                                 </td>
                             </tr>
                         </table>

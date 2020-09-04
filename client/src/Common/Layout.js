@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { Layout, Menu } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
-import { HomeOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined, HeartOutlined, UserOutlined } from '@ant-design/icons';
-import {Table} from "reactstrap";
+import { HomeOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined, HeartOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
+
 
 const { Header, Content } = Layout;
 
@@ -10,13 +10,10 @@ class CustomLayout extends Component{
 
     constructor () {
         super();
-        // menuType = authorized;
-        // this.menuType = "";
-        // this.iconPath = '/';
+        this.iconPath = '/';
         this.state = {
             registred: "",
         };
-
     }
 
     componentDidMount() {
@@ -24,7 +21,7 @@ class CustomLayout extends Component{
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log("start")
+                    console.log("registred")
                     this.setState({registred: "ok"})
                 },
                 (error) => {
@@ -33,7 +30,6 @@ class CustomLayout extends Component{
                 }
             )
     }
-
 
     signOut() {
         fetch("http://localhost:9000/signOut", {credentials:"include"})
@@ -59,14 +55,18 @@ class CustomLayout extends Component{
                     <Link to="/discounts"><PercentageOutlined />Discounts</Link>
                 </Menu.Item>
                 <Menu.Item
-                    key="register"
+                    key="registerG"
                     style={{float: 'right'}}>
-                    <a href="http://localhost:9000/authenticate/google">Google</a>
+                    <a href="http://localhost:9000/authenticate/google">
+                        <img alt='' src="/img/buttons/google.png" width='200px' />
+                    </a>
                 </Menu.Item>
                 <Menu.Item
-                    key="register"
+                    key="registerF"
                     style={{float: 'right'}}>
-                    <a href="http://localhost:9000/authenticate/facebook">Facebook</a>
+                    <a href="http://localhost:9000/authenticate/facebook">
+                        <img alt='' src="/img/buttons/facebook.png" width='200px'/>
+                    </a>
                 </Menu.Item>
 
             </Menu>
@@ -108,7 +108,7 @@ class CustomLayout extends Component{
                 <Menu.Item
                     key="signout"
                     style={{float: 'right'}}>
-                    <a href="#"  onClick={this.signOut}>Sign out</a>
+                    <a href="#"  onClick={this.signOut}>< LogoutOutlined />Sign out</a>
                 </Menu.Item>
                 <Menu.Item
                     key="userpage"
@@ -131,7 +131,7 @@ class CustomLayout extends Component{
         <Layout className="layout">
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%', background: '#ffffff' }}>
                 <div style={{color: "black", float: "left", width: "200px"}}>
-                    <Link style={{paddingLeft: '50px', color: "green", float: 'left', fontWeight: "bold", fontSize: "large"}} to={this.iconPath}> <b><i>SHOP LOGO</i></b> </Link>
+                    <Link style={{paddingLeft: '50px', color: "green", float: 'left', fontWeight: "bold", fontSize: "x-large"}} to={this.iconPath}> <b><i>SHOP LOGO</i></b> </Link>
                 </div>
                 <this.renderMenu />
             </Header>

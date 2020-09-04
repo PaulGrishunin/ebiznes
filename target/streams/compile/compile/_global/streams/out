@@ -1,7 +1,67 @@
+[warn] /home/paul/ebiznes/app/controllers/DiscountController.scala:59:22: implicit numeric widening
+[warn]     discoRepo.update(id, Discount(id, product, amount, description)).map { discount =>
+[warn]                      ^
+[warn] /home/paul/ebiznes/app/controllers/DiscountController.scala:59:35: implicit numeric widening
+[warn]     discoRepo.update(id, Discount(id, product, amount, description)).map { discount =>
+[warn]                                   ^
+[warn] /home/paul/ebiznes/app/controllers/DiscountController.scala:60:31: implicit numeric widening
+[warn]       Ok(Json.toJson(Discount(id, product, amount, description)))
+[warn]                               ^
+[warn] /home/paul/ebiznes/app/controllers/FavoritesController.scala:52:44: implicit numeric widening
+[warn]     val favorites = favsRepo.getByIdOption(id)
+[warn]                                            ^
+[warn] /home/paul/ebiznes/app/models/BasketRepository.scala:30:7: Adapting argument list by creating a 3-tuple: this may not be what you want.
+[warn]         signature: SimpleInsertActionComposer.+=(value: U): JdbcActionComponent.this.ProfileAction[SimpleInsertActionComposer.this.SingleInsertResult,slick.dbio.NoStream,slick.dbio.Effect.Write]
+[warn]   given arguments: user, product, quantity
+[warn]  after adaptation: SimpleInsertActionComposer.+=((user, product, quantity): (Long, Long, Int))
+[warn]     ) += (user, product, quantity)
+[warn]       ^
 [warn] /home/paul/ebiznes/app/models/DeliveryRepository.scala:32:7: Adapting argument list by creating a 2-tuple: this may not be what you want.
 [warn]         signature: SimpleInsertActionComposer.+=(value: U): JdbcActionComponent.this.ProfileAction[SimpleInsertActionComposer.this.SingleInsertResult,slick.dbio.NoStream,slick.dbio.Effect.Write]
 [warn]   given arguments: order, date
 [warn]  after adaptation: SimpleInsertActionComposer.+=((order, date): (Long, String))
 [warn]     ) += (order, date)
 [warn]       ^
-[warn] one warning found
+[warn] /home/paul/ebiznes/app/models/DiscountRepository.scala:33:7: Adapting argument list by creating a 3-tuple: this may not be what you want.
+[warn]         signature: SimpleInsertActionComposer.+=(value: U): JdbcActionComponent.this.ProfileAction[SimpleInsertActionComposer.this.SingleInsertResult,slick.dbio.NoStream,slick.dbio.Effect.Write]
+[warn]   given arguments: product, amount, description
+[warn]  after adaptation: SimpleInsertActionComposer.+=((product, amount, description): (Long, Int, String))
+[warn]     ) += (product, amount, description)
+[warn]       ^
+[warn] /home/paul/ebiznes/app/models/FavoritesRepository.scala:29:7: Adapting argument list by creating a 2-tuple: this may not be what you want.
+[warn]         signature: SimpleInsertActionComposer.+=(value: U): JdbcActionComponent.this.ProfileAction[SimpleInsertActionComposer.this.SingleInsertResult,slick.dbio.NoStream,slick.dbio.Effect.Write]
+[warn]   given arguments: user, product
+[warn]  after adaptation: SimpleInsertActionComposer.+=((user, product): (Long, Long))
+[warn]     ) += (user, product)
+[warn]       ^
+[warn] /home/paul/ebiznes/app/models/OrderRepository.scala:32:7: Adapting argument list by creating a 5-tuple: this may not be what you want.
+[warn]         signature: SimpleInsertActionComposer.+=(value: U): JdbcActionComponent.this.ProfileAction[SimpleInsertActionComposer.this.SingleInsertResult,slick.dbio.NoStream,slick.dbio.Effect.Write]
+[warn]   given arguments: user, product, quantity, price, date
+[warn]  after adaptation: SimpleInsertActionComposer.+=((user, product, quantity, price, date): (Long, Long, Int, Double, String))
+[warn]     ) += (user, product, quantity, price, date)
+[warn]       ^
+[warn] /home/paul/ebiznes/app/models/PaymentRepository.scala:29:7: Adapting argument list by creating a 2-tuple: this may not be what you want.
+[warn]         signature: SimpleInsertActionComposer.+=(value: U): JdbcActionComponent.this.ProfileAction[SimpleInsertActionComposer.this.SingleInsertResult,slick.dbio.NoStream,slick.dbio.Effect.Write]
+[warn]   given arguments: order, date
+[warn]  after adaptation: SimpleInsertActionComposer.+=((order, date): (Long, String))
+[warn]     ) += (order, date)
+[warn]       ^
+[warn] /home/paul/ebiznes/app/models/ProductRepository.scala:63:7: Adapting argument list by creating a 4-tuple: this may not be what you want.
+[warn]         signature: SimpleInsertActionComposer.+=(value: U): JdbcActionComponent.this.ProfileAction[SimpleInsertActionComposer.this.SingleInsertResult,slick.dbio.NoStream,slick.dbio.Effect.Write]
+[warn]   given arguments: name, description, category, price
+[warn]  after adaptation: SimpleInsertActionComposer.+=((name, description, category, price): (String, String, Int, Double))
+[warn]     ) += (name, description, category, price)
+[warn]       ^
+[warn] /home/paul/ebiznes/app/models/ReviewRepository.scala:31:7: Adapting argument list by creating a 4-tuple: this may not be what you want.
+[warn]         signature: SimpleInsertActionComposer.+=(value: U): JdbcActionComponent.this.ProfileAction[SimpleInsertActionComposer.this.SingleInsertResult,slick.dbio.NoStream,slick.dbio.Effect.Write]
+[warn]   given arguments: product, user, rate, text
+[warn]  after adaptation: SimpleInsertActionComposer.+=((product, user, rate, text): (Long, Long, Int, String))
+[warn]     ) += (product, user, rate, text)
+[warn]       ^
+[warn] /home/paul/ebiznes/app/models/UserClassRepository.scala:32:7: Adapting argument list by creating a 5-tuple: this may not be what you want.
+[warn]         signature: SimpleInsertActionComposer.+=(value: U): JdbcActionComponent.this.ProfileAction[SimpleInsertActionComposer.this.SingleInsertResult,slick.dbio.NoStream,slick.dbio.Effect.Write]
+[warn]   given arguments: provId, uKey, login, email, admin
+[warn]  after adaptation: SimpleInsertActionComposer.+=((provId, uKey, login, email, admin): (String, String, String, String, Boolean))
+[warn]     ) += (provId, uKey, login, email, admin)
+[warn]       ^
+[warn] 13 warnings found

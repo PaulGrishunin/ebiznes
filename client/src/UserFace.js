@@ -29,7 +29,7 @@ class UserFace extends Component {
                 let user =
                     <a href={lnkUserPage}>
                         <div className="userFace">
-                            <img id='circle' src={lnkImage} width='48px' height='48px'/>
+                            <img className="userFace" src={lnkImage} width='64px' height='64px'/>
                             <p> {usr.login}</p>
                         </div>
                     </a>

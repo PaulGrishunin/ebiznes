@@ -60,7 +60,7 @@ class Favorites extends Component {
                                         <img src={img} alt='' width="256" height="256"/>
                                         <div className="productname"><b>{prod.name}</b></div>
                                         <div className="productprice">Price: {priceDisp}</div>
-                                        <a className="button red" href="#" onClick={() => this.deleteFromFavorites(prod.id)}>Delete from Favorites</a>
+                                        <a className="button red" href="#" onClick={() => this.deleteFromFavorites(prod.id)}><b>Delete from Favorites</b></a>
                                     </div>
                                 </a>
                             ])

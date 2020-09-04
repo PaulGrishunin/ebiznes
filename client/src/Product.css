@@ -9,9 +9,13 @@
     background-color: #fff;
 }
 .productInfo {
-    padding: 40px;
+    padding: 30px;
     text-align: left;
     font-size: 16px;
+}
+.prodname{
+    color: green;
+    font-size: 20px;
 }
 .button {
     position: relative;

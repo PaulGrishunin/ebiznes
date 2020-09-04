@@ -24,7 +24,6 @@ class Delivery extends Component {
             .then(deliv => {
                 if(deliv != null)
                     this.setState({ delivery: deliv.date });
-                console.log( deliv.date)
             });
     }
 

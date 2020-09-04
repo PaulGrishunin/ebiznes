@@ -73,8 +73,8 @@ class Product extends Component {
                         <tr>
                             <td/>
                             <td className="productbuttons">
-                                <a className="button blue" href="#" onClick={this.addToBasket}>Add products</a>
-                                <a className="button red" href="#" onClick={this.hideAddToBasketFrame}>Cancel</a>
+                                <a className="button blue" href="#" onClick={this.addToBasket}><b>Add products</b></a>
+                                <a className="button red" href="#" onClick={this.hideAddToBasketFrame}><b>Cancel</b></a>
                             </td>
                         </tr>
                     </table>
@@ -130,7 +130,7 @@ class Product extends Component {
                         this.setState({ price: prod.price });
                         let priceDisp = (prod.price).toFixed(2) + " usd"
                         if(this.state.amount > 0)
-                            priceDisp = [<b><del>{prod.price} usd </del>
+                            priceDisp = [<b style={{color: 'red'}}><del>{prod.price} usd </del>
                                 { (prod.price * (100 - this.state.amount) / 100).toFixed(2)} usd
                                 <br/>
                                 Discount - {this.state.amount} %
@@ -141,15 +141,14 @@ class Product extends Component {
                                             <img src={img} alt='' width="420" height="420"/>
                                </div>
                                 <div className="productInfo">
-                                            <div className="prodname"><b>{prod.name}</b></div>
-                                            <div className="prodcategory">Category: {prod.category}</div>
-                                            <div className="proddescription">Description: {prod.description}</div>
-                                            <div className="prodprice">Price: {priceDisp}</div>
+                                            <div className="prodname"><b>{prod.name}</b></div>  <br/>
+                                            <div className="prodcategory"><b>Category: </b>{prod.category}</div>  <br/>
+                                            <div className="proddescription"><b>Description: </b>{prod.description}</div><br/>
+                                            <div className="prodprice"><b>Price: </b>{priceDisp}</div>
 
                                 <div className="productbuttons">
-                                    <a className="button blue" href="#" onClick={this.showAddToBasketFrame}>Add to Basket</a>
-                                    <a className="button blue" href="#" onClick={this.addToFavorites}>addToFavorites</a>
-                                    {/*<a className="button" href="#reviews">Product reviews</a>*/}
+                                    <a className="button blue" href="#" onClick={this.showAddToBasketFrame}><b>Add to Basket</b></a>
+                                    <a className="button blue" href="#" onClick={this.addToFavorites}><b>Add to Favorites</b></a>
                                 </div>
                                         </div>
                             </div>
