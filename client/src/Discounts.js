@@ -60,8 +60,6 @@ class Discounts extends Component {
                                 </a>
                             ])
                             this.setState({products: products})
-                            console.log(products)
-
                         }
                     })
             })

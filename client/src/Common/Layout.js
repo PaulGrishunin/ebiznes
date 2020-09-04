@@ -1,39 +1,39 @@
 import React, {Component} from 'react';
 import { Layout, Menu } from 'antd';
-import Categories from '../Categories';
-import Orders from '../Orders';
 import { Link, withRouter } from 'react-router-dom';
 import { HomeOutlined, CheckCircleOutlined, PercentageOutlined, ShoppingCartOutlined, HeartOutlined, UserOutlined } from '@ant-design/icons';
 import {Table} from "reactstrap";
-
-
 
 const { Header, Content } = Layout;
 
 class CustomLayout extends Component{
 
-    constructor (props) {
-        super(props);
-        this.menuType = undefined;
-        this.iconPath = '/';
+    constructor () {
+        super();
+        // menuType = authorized;
+        // this.menuType = "";
+        // this.iconPath = '/';
+        this.state = {
+            registred: "",
+        };
+
     }
 
     componentDidMount() {
-        this.setMenu();
+        fetch("http://localhost:9000/registred", {credentials:"include"})
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log("start")
+                    this.setState({registred: "ok"})
+                },
+                (error) => {
+                    console.log("error")
+                    this.setState({registred: "not"})
+                }
+            )
     }
 
-    setMenu() {
-        let authorizedMenuPaths = ['/signedin', '/orders', '/basket', '/userpage'];
-        let type = authorizedMenuPaths.includes(window.location.pathname)
-            // || window.location.pathname.startsWith("/user")
-            // || window.location.pathname.startsWith("/reviews")
-            ? "authorized": "non-authorized";
-
-        if (type === "authorized") this.iconPath = '/';
-        else this.iconPath = '/';
-
-        this.menuType = type;
-    }
 
     signOut() {
         fetch("http://localhost:9000/signOut", {credentials:"include"})
@@ -61,7 +61,12 @@ class CustomLayout extends Component{
                 <Menu.Item
                     key="register"
                     style={{float: 'right'}}>
-                    <Link to="/register">Sign up</Link>
+                    <a href="http://localhost:9000/authenticate/google">Google</a>
+                </Menu.Item>
+                <Menu.Item
+                    key="register"
+                    style={{float: 'right'}}>
+                    <a href="http://localhost:9000/authenticate/facebook">Facebook</a>
                 </Menu.Item>
 
             </Menu>
@@ -102,7 +107,6 @@ class CustomLayout extends Component{
 
                 <Menu.Item
                     key="signout"
-                    // onClick={() => {authService.logout()}}
                     style={{float: 'right'}}>
                     <a href="#"  onClick={this.signOut}>Sign out</a>
                 </Menu.Item>
@@ -116,14 +120,13 @@ class CustomLayout extends Component{
     }
 
     renderMenu = () => {
-        // if ( this.menuType === "authorized" )
+        if ( this.state.registred === "ok" )
             return <this.authorizedMenu/>;
-        // else
-        // return <this.nonAuthorizedMenu />;
+        else
+        return <this.nonAuthorizedMenu />;
     }
 
     render(){
-        this.setMenu();
         return (
         <Layout className="layout">
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%', background: '#ffffff' }}>
